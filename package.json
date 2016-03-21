@@ -1,0 +1,35 @@
+{
+  "name": "TPA",
+  "version": "0.0.1",
+  "description": "Total Precision Arithmetic",
+  "keywords": [
+    "number",
+    "big",
+    "precision",
+    "integer",
+    "fraction",
+    "big integer",
+    "big fraction",
+    "big number",
+    "big numbers",
+    "arithmetic",
+    "operations"
+  ],
+  "author": "Dominic Thwaites <dominicthwaites@mac.com>",
+  "main": "./index",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dthwaite/apa.js.git"
+  },
+  "scripts": {
+    "test": "mocha test/"
+  },
+  "devDependencies": {
+    "eslint": "^2.2.0",
+    "mocha": "^2.3.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10.x"
+  }
+}
