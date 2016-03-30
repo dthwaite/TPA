@@ -1,0 +1,432 @@
+Alex: Completed 1,756,982 add's in 1 second for sizes: n[4] & n[4]
+Mike: Completed 2,493,883 add's in 1 second for sizes: n[4] & n[4] (42% better)
+Dom: Completed 5,631,634 add's in 1 second for sizes: n[4] & n[4] (126% better)
+Alex: Completed 1,009,701 add's in 1 second for sizes: n[4] & n[8] 
+Mike: Completed 2,367,829 add's in 1 second for sizes: n[4] & n[8] (135% better)
+Dom: Completed 5,913,317 add's in 1 second for sizes: n[4] & n[8] (150% better)
+Alex: Completed 353,151 add's in 1 second for sizes: n[4] & n[25] 
+Mike: Completed 1,687,972 add's in 1 second for sizes: n[4] & n[25] (378% better)
+Dom: Completed 2,245,250 add's in 1 second for sizes: n[4] & n[25] (33% better)
+Alex: Completed 94,736 add's in 1 second for sizes: n[4] & n[100] 
+Mike: Completed 1,546,414 add's in 1 second for sizes: n[4] & n[100] (1532% better)
+Dom: Completed 2,188,807 add's in 1 second for sizes: n[4] & n[100] (42% better)
+Alex: Completed 9,715 add's in 1 second for sizes: n[4] & n[1,000] 
+Mike: Completed 492,719 add's in 1 second for sizes: n[4] & n[1,000] (4972% better)
+Dom: Completed 1,338,017 add's in 1 second for sizes: n[4] & n[1,000] (172% better)
+Alex: Completed 978 add's in 1 second for sizes: n[4] & n[10,000] 
+Mike: Completed 59,437 add's in 1 second for sizes: n[4] & n[10,000] (5977% better)
+Dom: Completed 277,439 add's in 1 second for sizes: n[4] & n[10,000] (367% better)
+Alex: Completed 1,508,567 add's in 1 second for sizes: n[8] & n[4] 
+Mike: Completed 2,342,079 add's in 1 second for sizes: n[8] & n[4] (55% better)
+Dom: Completed 5,156,712 add's in 1 second for sizes: n[8] & n[4] (120% better)
+Alex: Completed 1,057,625 add's in 1 second for sizes: n[8] & n[8] 
+Mike: Completed 2,334,684 add's in 1 second for sizes: n[8] & n[8] (121% better)
+Dom: Completed 6,022,432 add's in 1 second for sizes: n[8] & n[8] (158% better)
+Alex: Completed 352,334 add's in 1 second for sizes: n[8] & n[25] 
+Mike: Completed 1,793,639 add's in 1 second for sizes: n[8] & n[25] (409% better)
+Dom: Completed 2,476,083 add's in 1 second for sizes: n[8] & n[25] (38% better)
+Alex: Completed 95,094 add's in 1 second for sizes: n[8] & n[100] 
+Mike: Completed 1,541,147 add's in 1 second for sizes: n[8] & n[100] (1521% better)
+Dom: Completed 2,396,172 add's in 1 second for sizes: n[8] & n[100] (55% better)
+Alex: Completed 9,628 add's in 1 second for sizes: n[8] & n[1,000] 
+Mike: Completed 492,280 add's in 1 second for sizes: n[8] & n[1,000] (5013% better)
+Dom: Completed 1,237,594 add's in 1 second for sizes: n[8] & n[1,000] (151% better)
+Alex: Completed 974 add's in 1 second for sizes: n[8] & n[10,000] 
+Mike: Completed 60,001 add's in 1 second for sizes: n[8] & n[10,000] (6060% better)
+Dom: Completed 216,438 add's in 1 second for sizes: n[8] & n[10,000] (261% better)
+Alex: Completed 998,279 add's in 1 second for sizes: n[25] & n[4] 
+Mike: Completed 1,710,898 add's in 1 second for sizes: n[25] & n[4] (71% better)
+Dom: Completed 5,900,299 add's in 1 second for sizes: n[25] & n[4] (245% better)
+Alex: Completed 794,864 add's in 1 second for sizes: n[25] & n[8] 
+Mike: Completed 1,718,627 add's in 1 second for sizes: n[25] & n[8] (116% better)
+Dom: Completed 5,866,226 add's in 1 second for sizes: n[25] & n[8] (241% better)
+Alex: Completed 379,515 add's in 1 second for sizes: n[25] & n[25] 
+Mike: Completed 2,199,518 add's in 1 second for sizes: n[25] & n[25] (480% better)
+Dom: Completed 5,567,812 add's in 1 second for sizes: n[25] & n[25] (153% better)
+Alex: Completed 96,641 add's in 1 second for sizes: n[25] & n[100] 
+Mike: Completed 1,698,443 add's in 1 second for sizes: n[25] & n[100] (1657% better)
+Dom: Completed 2,331,902 add's in 1 second for sizes: n[25] & n[100] (37% better)
+Alex: Completed 9,679 add's in 1 second for sizes: n[25] & n[1,000] 
+Mike: Completed 520,345 add's in 1 second for sizes: n[25] & n[1,000] (5276% better)
+Dom: Completed 1,264,586 add's in 1 second for sizes: n[25] & n[1,000] (143% better)
+Alex: Completed 963 add's in 1 second for sizes: n[25] & n[10,000] 
+Mike: Completed 62,975 add's in 1 second for sizes: n[25] & n[10,000] (6439% better)
+Dom: Completed 216,022 add's in 1 second for sizes: n[25] & n[10,000] (243% better)
+Alex: Completed 428,725 add's in 1 second for sizes: n[100] & n[4] 
+Mike: Completed 782,211 add's in 1 second for sizes: n[100] & n[4] (82% better)
+Dom: Completed 5,677,751 add's in 1 second for sizes: n[100] & n[4] (626% better)
+Alex: Completed 379,662 add's in 1 second for sizes: n[100] & n[8] 
+Mike: Completed 784,390 add's in 1 second for sizes: n[100] & n[8] (107% better)
+Dom: Completed 6,156,062 add's in 1 second for sizes: n[100] & n[8] (685% better)
+Alex: Completed 242,629 add's in 1 second for sizes: n[100] & n[25] 
+Mike: Completed 887,523 add's in 1 second for sizes: n[100] & n[25] (266% better)
+Dom: Completed 5,640,832 add's in 1 second for sizes: n[100] & n[25] (536% better)
+Alex: Completed 100,964 add's in 1 second for sizes: n[100] & n[100] 
+Mike: Completed 1,857,162 add's in 1 second for sizes: n[100] & n[100] (1739% better)
+Dom: Completed 4,543,029 add's in 1 second for sizes: n[100] & n[100] (145% better)
+Alex: Completed 9,681 add's in 1 second for sizes: n[100] & n[1,000] 
+Mike: Completed 146,275 add's in 1 second for sizes: n[100] & n[1,000] (1411% better)
+Dom: Completed 1,186,843 add's in 1 second for sizes: n[100] & n[1,000] (711% better)
+Alex: Completed 963 add's in 1 second for sizes: n[100] & n[10,000] 
+Mike: Completed 14,422 add's in 1 second for sizes: n[100] & n[10,000] (1398% better)
+Dom: Completed 215,744 add's in 1 second for sizes: n[100] & n[10,000] (1396% better)
+Alex: Completed 53,174 add's in 1 second for sizes: n[1,000] & n[4] 
+Mike: Completed 134,465 add's in 1 second for sizes: n[1,000] & n[4] (153% better)
+Dom: Completed 4,296,321 add's in 1 second for sizes: n[1,000] & n[4] (3095% better)
+Alex: Completed 49,292 add's in 1 second for sizes: n[1,000] & n[8] 
+Mike: Completed 136,258 add's in 1 second for sizes: n[1,000] & n[8] (176% better)
+Dom: Completed 4,416,510 add's in 1 second for sizes: n[1,000] & n[8] (3141% better)
+Alex: Completed 47,786 add's in 1 second for sizes: n[1,000] & n[25] 
+Mike: Completed 136,761 add's in 1 second for sizes: n[1,000] & n[25] (186% better)
+Dom: Completed 4,181,248 add's in 1 second for sizes: n[1,000] & n[25] (2957% better)
+Alex: Completed 37,562 add's in 1 second for sizes: n[1,000] & n[100] 
+Mike: Completed 145,259 add's in 1 second for sizes: n[1,000] & n[100] (287% better)
+Dom: Completed 3,435,293 add's in 1 second for sizes: n[1,000] & n[100] (2265% better)
+Alex: Completed 10,186 add's in 1 second for sizes: n[1,000] & n[1,000] 
+Mike: Completed 663,120 add's in 1 second for sizes: n[1,000] & n[1,000] (6410% better)
+Dom: Completed 1,220,810 add's in 1 second for sizes: n[1,000] & n[1,000] (84% better)
+Alex: Completed 974 add's in 1 second for sizes: n[1,000] & n[10,000] 
+Mike: Completed 15,754 add's in 1 second for sizes: n[1,000] & n[10,000] (1517% better)
+Dom: Completed 200,667 add's in 1 second for sizes: n[1,000] & n[10,000] (1174% better)
+Alex: Completed 6,163 add's in 1 second for sizes: n[10,000] & n[4] 
+Mike: Completed 14,397 add's in 1 second for sizes: n[10,000] & n[4] (134% better)
+Dom: Completed 3,485,391 add's in 1 second for sizes: n[10,000] & n[4] (24109% better)
+Alex: Completed 6,071 add's in 1 second for sizes: n[10,000] & n[8] 
+Mike: Completed 14,420 add's in 1 second for sizes: n[10,000] & n[8] (138% better)
+Dom: Completed 3,835,063 add's in 1 second for sizes: n[10,000] & n[8] (26495% better)
+Alex: Completed 6,059 add's in 1 second for sizes: n[10,000] & n[25] 
+Mike: Completed 14,484 add's in 1 second for sizes: n[10,000] & n[25] (139% better)
+Dom: Completed 3,640,713 add's in 1 second for sizes: n[10,000] & n[25] (25036% better)
+Alex: Completed 5,748 add's in 1 second for sizes: n[10,000] & n[100] 
+Mike: Completed 14,463 add's in 1 second for sizes: n[10,000] & n[100] (152% better)
+Dom: Completed 2,917,439 add's in 1 second for sizes: n[10,000] & n[100] (20072% better)
+Alex: Completed 3,823 add's in 1 second for sizes: n[10,000] & n[1,000] 
+Mike: Completed 15,627 add's in 1 second for sizes: n[10,000] & n[1,000] (309% better)
+Dom: Completed 1,165,291 add's in 1 second for sizes: n[10,000] & n[1,000] (7357% better)
+Alex: Completed 1,023 add's in 1 second for sizes: n[10,000] & n[10,000] 
+Mike: Completed 83,228 add's in 1 second for sizes: n[10,000] & n[10,000] (8036% better)
+Dom: Completed 164,291 add's in 1 second for sizes: n[10,000] & n[10,000] (97% better)
+Alex: Completed 457,515 minus's in 1 second for sizes: n[4] & n[4] 
+Mike: Completed 2,145,984 minus's in 1 second for sizes: n[4] & n[4] (369% better)
+Dom: Completed 5,358,711 minus's in 1 second for sizes: n[4] & n[4] (150% better)
+Alex: Completed 279,407 minus's in 1 second for sizes: n[4] & n[8] 
+Mike: Completed 1,975,812 minus's in 1 second for sizes: n[4] & n[8] (607% better)
+Dom: Completed 4,958,505 minus's in 1 second for sizes: n[4] & n[8] (151% better)
+Alex: Completed 101,620 minus's in 1 second for sizes: n[4] & n[25] 
+Mike: Completed 1,974,355 minus's in 1 second for sizes: n[4] & n[25] (1843% better)
+Dom: Completed 2,272,597 minus's in 1 second for sizes: n[4] & n[25] (15% better)
+Alex: Completed 28,200 minus's in 1 second for sizes: n[4] & n[100] 
+Mike: Completed 2,047,984 minus's in 1 second for sizes: n[4] & n[100] (7162% better)
+Dom: Completed 2,237,595 minus's in 1 second for sizes: n[4] & n[100] (9% better)
+Alex: Completed 2,997 minus's in 1 second for sizes: n[4] & n[1,000] 
+Mike: Completed 1,175,195 minus's in 1 second for sizes: n[4] & n[1,000] (39112% better)
+Dom: Completed 1,364,545 minus's in 1 second for sizes: n[4] & n[1,000] (16% better)
+Alex: Completed 299 minus's in 1 second for sizes: n[4] & n[10,000] 
+Mike: Completed 183,304 minus's in 1 second for sizes: n[4] & n[10,000] (61206% better)
+Dom: Completed 276,618 minus's in 1 second for sizes: n[4] & n[10,000] (51% better)
+Alex: Completed 377,465 minus's in 1 second for sizes: n[8] & n[4] 
+Mike: Completed 2,514,031 minus's in 1 second for sizes: n[8] & n[4] (566% better)
+Dom: Completed 4,547,014 minus's in 1 second for sizes: n[8] & n[4] (81% better)
+Alex: Completed 260,029 minus's in 1 second for sizes: n[8] & n[8] 
+Mike: Completed 2,590,057 minus's in 1 second for sizes: n[8] & n[8] (896% better)
+Dom: Completed 4,856,000 minus's in 1 second for sizes: n[8] & n[8] (87% better)
+Alex: Completed 97,592 minus's in 1 second for sizes: n[8] & n[25] 
+Mike: Completed 1,990,345 minus's in 1 second for sizes: n[8] & n[25] (1939% better)
+Dom: Completed 2,382,039 minus's in 1 second for sizes: n[8] & n[25] (20% better)
+Alex: Completed 28,367 minus's in 1 second for sizes: n[8] & n[100] 
+Mike: Completed 2,050,291 minus's in 1 second for sizes: n[8] & n[100] (7128% better)
+Dom: Completed 2,104,312 minus's in 1 second for sizes: n[8] & n[100] (3% better)
+Alex: Completed 2,996 minus's in 1 second for sizes: n[8] & n[1,000] 
+Mike: Completed 1,162,189 minus's in 1 second for sizes: n[8] & n[1,000] (38691% better)
+Dom: Completed 1,163,371 minus's in 1 second for sizes: n[8] & n[1,000] (0% better)
+Alex: Completed 297 minus's in 1 second for sizes: n[8] & n[10,000] 
+Mike: Completed 182,502 minus's in 1 second for sizes: n[8] & n[10,000] (61348% better)
+Dom: Completed 199,663 minus's in 1 second for sizes: n[8] & n[10,000] (9% better)
+Alex: Completed 227,256 minus's in 1 second for sizes: n[25] & n[4] 
+Mike: Completed 1,980,616 minus's in 1 second for sizes: n[25] & n[4] (772% better)
+Dom: Completed 4,897,379 minus's in 1 second for sizes: n[25] & n[4] (147% better)
+Alex: Completed 180,442 minus's in 1 second for sizes: n[25] & n[8] 
+Mike: Completed 1,947,896 minus's in 1 second for sizes: n[25] & n[8] (980% better)
+Dom: Completed 4,838,127 minus's in 1 second for sizes: n[25] & n[8] (148% better)
+Alex: Completed 86,871 minus's in 1 second for sizes: n[25] & n[25] 
+Mike: Completed 2,366,466 minus's in 1 second for sizes: n[25] & n[25] (2624% better)
+Dom: Completed 4,685,173 minus's in 1 second for sizes: n[25] & n[25] (98% better)
+Alex: Completed 27,181 minus's in 1 second for sizes: n[25] & n[100] 
+Mike: Completed 2,157,876 minus's in 1 second for sizes: n[25] & n[100] (7839% better)
+Dom: Completed 2,203,934 minus's in 1 second for sizes: n[25] & n[100] (2% better)
+Alex: Completed 2,965 minus's in 1 second for sizes: n[25] & n[1,000] 
+Mike: Completed 1,164,009 minus's in 1 second for sizes: n[25] & n[1,000] (39158% better)
+Dom: Completed 1,131,461 minus's in 1 second for sizes: n[25] & n[1,000] (3% worse)
+Alex: Completed 298 minus's in 1 second for sizes: n[25] & n[10,000] 
+Mike: Completed 178,255 minus's in 1 second for sizes: n[25] & n[10,000] (59717% better)
+Dom: Completed 198,988 minus's in 1 second for sizes: n[25] & n[10,000] (12% better)
+Alex: Completed 87,126 minus's in 1 second for sizes: n[100] & n[4] 
+Mike: Completed 1,653,209 minus's in 1 second for sizes: n[100] & n[4] (1797% better)
+Dom: Completed 4,552,160 minus's in 1 second for sizes: n[100] & n[4] (175% better)
+Alex: Completed 79,091 minus's in 1 second for sizes: n[100] & n[8] 
+Mike: Completed 1,674,792 minus's in 1 second for sizes: n[100] & n[8] (2018% better)
+Dom: Completed 4,842,824 minus's in 1 second for sizes: n[100] & n[8] (189% better)
+Alex: Completed 54,746 minus's in 1 second for sizes: n[100] & n[25] 
+Mike: Completed 1,765,076 minus's in 1 second for sizes: n[100] & n[25] (3124% better)
+Dom: Completed 4,194,086 minus's in 1 second for sizes: n[100] & n[25] (138% better)
+Alex: Completed 23,539 minus's in 1 second for sizes: n[100] & n[100] 
+Mike: Completed 1,822,827 minus's in 1 second for sizes: n[100] & n[100] (7644% better)
+Dom: Completed 3,715,247 minus's in 1 second for sizes: n[100] & n[100] (104% better)
+Alex: Completed 2,930 minus's in 1 second for sizes: n[100] & n[1,000] 
+Mike: Completed 978,305 minus's in 1 second for sizes: n[100] & n[1,000] (33289% better)
+Dom: Completed 1,101,961 minus's in 1 second for sizes: n[100] & n[1,000] (13% better)
+Alex: Completed 295 minus's in 1 second for sizes: n[100] & n[10,000] 
+Mike: Completed 163,674 minus's in 1 second for sizes: n[100] & n[10,000] (55383% better)
+Dom: Completed 197,584 minus's in 1 second for sizes: n[100] & n[10,000] (21% better)
+Alex: Completed 10,307 minus's in 1 second for sizes: n[1,000] & n[4] 
+Mike: Completed 1,035,665 minus's in 1 second for sizes: n[1,000] & n[4] (9948% better)
+Dom: Completed 3,490,033 minus's in 1 second for sizes: n[1,000] & n[4] (237% better)
+Alex: Completed 9,994 minus's in 1 second for sizes: n[1,000] & n[8] 
+Mike: Completed 1,039,482 minus's in 1 second for sizes: n[1,000] & n[8] (10301% better)
+Dom: Completed 3,574,635 minus's in 1 second for sizes: n[1,000] & n[8] (244% better)
+Alex: Completed 9,571 minus's in 1 second for sizes: n[1,000] & n[25] 
+Mike: Completed 1,035,356 minus's in 1 second for sizes: n[1,000] & n[25] (10718% better)
+Dom: Completed 3,271,096 minus's in 1 second for sizes: n[1,000] & n[25] (216% better)
+Alex: Completed 7,779 minus's in 1 second for sizes: n[1,000] & n[100] 
+Mike: Completed 975,666 minus's in 1 second for sizes: n[1,000] & n[100] (12442% better)
+Dom: Completed 2,892,265 minus's in 1 second for sizes: n[1,000] & n[100] (196% better)
+Alex: Completed 2,411 minus's in 1 second for sizes: n[1,000] & n[1,000] 
+Mike: Completed 964,687 minus's in 1 second for sizes: n[1,000] & n[1,000] (39912% better)
+Dom: Completed 1,257,878 minus's in 1 second for sizes: n[1,000] & n[1,000] (30% better)
+Alex: Completed 292 minus's in 1 second for sizes: n[1,000] & n[10,000] 
+Mike: Completed 181,057 minus's in 1 second for sizes: n[1,000] & n[10,000] (61906% better)
+Dom: Completed 190,396 minus's in 1 second for sizes: n[1,000] & n[10,000] (5% better)
+Alex: Completed 1,072 minus's in 1 second for sizes: n[10,000] & n[4] 
+Mike: Completed 176,609 minus's in 1 second for sizes: n[10,000] & n[4] (16375% better)
+Dom: Completed 3,092,856 minus's in 1 second for sizes: n[10,000] & n[4] (1651% better)
+Alex: Completed 1,076 minus's in 1 second for sizes: n[10,000] & n[8] 
+Mike: Completed 176,420 minus's in 1 second for sizes: n[10,000] & n[8] (16296% better)
+Dom: Completed 3,107,750 minus's in 1 second for sizes: n[10,000] & n[8] (1662% better)
+Alex: Completed 1,066 minus's in 1 second for sizes: n[10,000] & n[25] 
+Mike: Completed 175,081 minus's in 1 second for sizes: n[10,000] & n[25] (16324% better)
+Dom: Completed 3,021,770 minus's in 1 second for sizes: n[10,000] & n[25] (1626% better)
+Alex: Completed 1,027 minus's in 1 second for sizes: n[10,000] & n[100] 
+Mike: Completed 164,754 minus's in 1 second for sizes: n[10,000] & n[100] (15942% better)
+Dom: Completed 2,737,687 minus's in 1 second for sizes: n[10,000] & n[100] (1562% better)
+Alex: Completed 795 minus's in 1 second for sizes: n[10,000] & n[1,000] 
+Mike: Completed 173,685 minus's in 1 second for sizes: n[10,000] & n[1,000] (21747% better)
+Dom: Completed 1,183,024 minus's in 1 second for sizes: n[10,000] & n[1,000] (581% better)
+Alex: Completed 241 minus's in 1 second for sizes: n[10,000] & n[10,000] 
+Mike: Completed 151,623 minus's in 1 second for sizes: n[10,000] & n[10,000] (62814% better)
+Dom: Completed 185,771 minus's in 1 second for sizes: n[10,000] & n[10,000] (23% better)
+Alex: Completed 1,219,992 times's in 1 second for sizes: n[4] & n[4] 
+Mike: Completed 2,789,247 times's in 1 second for sizes: n[4] & n[4] (129% better)
+Dom: Completed 12,290,617 times's in 1 second for sizes: n[4] & n[4] (341% better)
+Alex: Completed 682,002 times's in 1 second for sizes: n[4] & n[8] 
+Mike: Completed 2,702,859 times's in 1 second for sizes: n[4] & n[8] (296% better)
+Dom: Completed 12,427,238 times's in 1 second for sizes: n[4] & n[8] (360% better)
+Alex: Completed 224,668 times's in 1 second for sizes: n[4] & n[25] 
+Mike: Completed 1,932,937 times's in 1 second for sizes: n[4] & n[25] (760% better)
+Dom: Completed 2,977,270 times's in 1 second for sizes: n[4] & n[25] (54% better)
+Alex: Completed 59,746 times's in 1 second for sizes: n[4] & n[100] 
+Mike: Completed 1,267,938 times's in 1 second for sizes: n[4] & n[100] (2022% better)
+Dom: Completed 1,713,200 times's in 1 second for sizes: n[4] & n[100] (35% better)
+Alex: Completed 6,071 times's in 1 second for sizes: n[4] & n[1,000] 
+Mike: Completed 210,072 times's in 1 second for sizes: n[4] & n[1,000] (3360% better)
+Dom: Completed 260,385 times's in 1 second for sizes: n[4] & n[1,000] (24% better)
+Alex: Completed 609 times's in 1 second for sizes: n[4] & n[10,000] 
+Mike: Completed 23,629 times's in 1 second for sizes: n[4] & n[10,000] (3780% better)
+Dom: Completed 27,773 times's in 1 second for sizes: n[4] & n[10,000] (18% better)
+Alex: Completed 878,706 times's in 1 second for sizes: n[8] & n[4] 
+Mike: Completed 2,073,619 times's in 1 second for sizes: n[8] & n[4] (136% better)
+Dom: Completed 13,155,867 times's in 1 second for sizes: n[8] & n[4] (534% better)
+Alex: Completed 461,662 times's in 1 second for sizes: n[8] & n[8] 
+Mike: Completed 2,164,980 times's in 1 second for sizes: n[8] & n[8] (369% better)
+Dom: Completed 12,812,576 times's in 1 second for sizes: n[8] & n[8] (492% better)
+Alex: Completed 154,225 times's in 1 second for sizes: n[8] & n[25] 
+Mike: Completed 1,939,702 times's in 1 second for sizes: n[8] & n[25] (1158% better)
+Dom: Completed 2,524,687 times's in 1 second for sizes: n[8] & n[25] (30% better)
+Alex: Completed 40,422 times's in 1 second for sizes: n[8] & n[100] 
+Mike: Completed 1,125,519 times's in 1 second for sizes: n[8] & n[100] (2684% better)
+Dom: Completed 1,252,233 times's in 1 second for sizes: n[8] & n[100] (11% better)
+Alex: Completed 4,116 times's in 1 second for sizes: n[8] & n[1,000] 
+Mike: Completed 214,211 times's in 1 second for sizes: n[8] & n[1,000] (5104% better)
+Dom: Completed 187,344 times's in 1 second for sizes: n[8] & n[1,000] (14% worse)
+Alex: Completed 412 times's in 1 second for sizes: n[8] & n[10,000] 
+Mike: Completed 24,293 times's in 1 second for sizes: n[8] & n[10,000] (5796% better)
+Dom: Completed 19,565 times's in 1 second for sizes: n[8] & n[10,000] (24% worse)
+Alex: Completed 394,349 times's in 1 second for sizes: n[25] & n[4] 
+Mike: Completed 1,853,710 times's in 1 second for sizes: n[25] & n[4] (370% better)
+Dom: Completed 13,717,746 times's in 1 second for sizes: n[25] & n[4] (640% better)
+Alex: Completed 199,171 times's in 1 second for sizes: n[25] & n[8] 
+Mike: Completed 2,135,536 times's in 1 second for sizes: n[25] & n[8] (972% better)
+Dom: Completed 12,459,885 times's in 1 second for sizes: n[25] & n[8] (483% better)
+Alex: Completed 66,854 times's in 1 second for sizes: n[25] & n[25] 
+Mike: Completed 1,577,146 times's in 1 second for sizes: n[25] & n[25] (2259% better)
+Dom: Completed 1,568,822 times's in 1 second for sizes: n[25] & n[25] (1% worse)
+Alex: Completed 17,188 times's in 1 second for sizes: n[25] & n[100] 
+Mike: Completed 743,464 times's in 1 second for sizes: n[25] & n[100] (4225% better)
+Dom: Completed 909,620 times's in 1 second for sizes: n[25] & n[100] (22% better)
+Alex: Completed 1,739 times's in 1 second for sizes: n[25] & n[1,000] 
+Mike: Completed 118,345 times's in 1 second for sizes: n[25] & n[1,000] (6705% better)
+Dom: Completed 147,264 times's in 1 second for sizes: n[25] & n[1,000] (24% better)
+Alex: Completed 173 times's in 1 second for sizes: n[25] & n[10,000] 
+Mike: Completed 12,478 times's in 1 second for sizes: n[25] & n[10,000] (7113% better)
+Dom: Completed 15,763 times's in 1 second for sizes: n[25] & n[10,000] (26% better)
+Alex: Completed 116,551 times's in 1 second for sizes: n[100] & n[4] 
+Mike: Completed 1,115,266 times's in 1 second for sizes: n[100] & n[4] (857% better)
+Dom: Completed 11,405,446 times's in 1 second for sizes: n[100] & n[4] (923% better)
+Alex: Completed 57,028 times's in 1 second for sizes: n[100] & n[8] 
+Mike: Completed 1,102,185 times's in 1 second for sizes: n[100] & n[8] (1833% better)
+Dom: Completed 11,523,924 times's in 1 second for sizes: n[100] & n[8] (946% better)
+Alex: Completed 19,070 times's in 1 second for sizes: n[100] & n[25] 
+Mike: Completed 721,423 times's in 1 second for sizes: n[100] & n[25] (3683% better)
+Dom: Completed 871,697 times's in 1 second for sizes: n[100] & n[25] (21% better)
+Alex: Completed 4,885 times's in 1 second for sizes: n[100] & n[100] 
+Mike: Completed 258,098 times's in 1 second for sizes: n[100] & n[100] (5183% better)
+Dom: Completed 463,893 times's in 1 second for sizes: n[100] & n[100] (80% better)
+Alex: Completed 494 times's in 1 second for sizes: n[100] & n[1,000] 
+Mike: Completed 31,782 times's in 1 second for sizes: n[100] & n[1,000] (6334% better)
+Dom: Completed 82,679 times's in 1 second for sizes: n[100] & n[1,000] (160% better)
+Alex: Completed 48 times's in 1 second for sizes: n[100] & n[10,000] 
+Mike: Completed 3,281 times's in 1 second for sizes: n[100] & n[10,000] (6735% better)
+Dom: Completed 9,084 times's in 1 second for sizes: n[100] & n[10,000] (177% better)
+Alex: Completed 12,357 times's in 1 second for sizes: n[1,000] & n[4] 
+Mike: Completed 206,234 times's in 1 second for sizes: n[1,000] & n[4] (1569% better)
+Dom: Completed 3,710,495 times's in 1 second for sizes: n[1,000] & n[4] (1699% better)
+Alex: Completed 6,314 times's in 1 second for sizes: n[1,000] & n[8] 
+Mike: Completed 205,746 times's in 1 second for sizes: n[1,000] & n[8] (3159% better)
+Dom: Completed 3,958,555 times's in 1 second for sizes: n[1,000] & n[8] (1824% better)
+Alex: Completed 2,025 times's in 1 second for sizes: n[1,000] & n[25] 
+Mike: Completed 120,604 times's in 1 second for sizes: n[1,000] & n[25] (5856% better)
+Dom: Completed 142,931 times's in 1 second for sizes: n[1,000] & n[25] (19% better)
+Alex: Completed 510 times's in 1 second for sizes: n[1,000] & n[100] 
+Mike: Completed 32,466 times's in 1 second for sizes: n[1,000] & n[100] (6266% better)
+Dom: Completed 82,288 times's in 1 second for sizes: n[1,000] & n[100] (153% better)
+Alex: Completed 51 times's in 1 second for sizes: n[1,000] & n[1,000] 
+Mike: Completed 3,638 times's in 1 second for sizes: n[1,000] & n[1,000] (7033% better)
+Dom: Completed 13,155 times's in 1 second for sizes: n[1,000] & n[1,000] (262% better)
+Alex: Completed 5 times's in 1 second for sizes: n[1,000] & n[10,000] 
+Mike: Completed 370 times's in 1 second for sizes: n[1,000] & n[10,000] (7300% better)
+Dom: Completed 1,472 times's in 1 second for sizes: n[1,000] & n[10,000] (298% better)
+Alex: Completed 1,249 times's in 1 second for sizes: n[10,000] & n[4] 
+Mike: Completed 23,540 times's in 1 second for sizes: n[10,000] & n[4] (1785% better)
+Dom: Completed 586,453 times's in 1 second for sizes: n[10,000] & n[4] (2391% better)
+Alex: Completed 643 times's in 1 second for sizes: n[10,000] & n[8] 
+Mike: Completed 23,572 times's in 1 second for sizes: n[10,000] & n[8] (3566% better)
+Dom: Completed 579,271 times's in 1 second for sizes: n[10,000] & n[8] (2357% better)
+Alex: Completed 203 times's in 1 second for sizes: n[10,000] & n[25] 
+Mike: Completed 12,491 times's in 1 second for sizes: n[10,000] & n[25] (6053% better)
+Dom: Completed 15,270 times's in 1 second for sizes: n[10,000] & n[25] (22% better)
+Alex: Completed 50 times's in 1 second for sizes: n[10,000] & n[100] 
+Mike: Completed 3,355 times's in 1 second for sizes: n[10,000] & n[100] (6610% better)
+Dom: Completed 9,026 times's in 1 second for sizes: n[10,000] & n[100] (169% better)
+Alex: Completed 5 times's in 1 second for sizes: n[10,000] & n[1,000] 
+Mike: Completed 370 times's in 1 second for sizes: n[10,000] & n[1,000] (7300% better)
+Dom: Completed 1,479 times's in 1 second for sizes: n[10,000] & n[1,000] (300% better)
+Alex: Completed 0 times's in 1 second for sizes: n[10,000] & n[10,000] 
+Mike: Completed 37 times's in 1 second for sizes: n[10,000] & n[10,000] 
+Dom: Completed 158 times's in 1 second for sizes: n[10,000] & n[10,000] (327% better)
+Alex: Completed 45,836 div's in 1 second for sizes: n[4] & n[4] 
+Mike: Completed 148,008 div's in 1 second for sizes: n[4] & n[4] (223% better)
+Dom: Completed 3,069,127 div's in 1 second for sizes: n[4] & n[4] (1974% better)
+Alex: Completed 192,057 div's in 1 second for sizes: n[4] & n[8] 
+Mike: Completed 147,732 div's in 1 second for sizes: n[4] & n[8] (30% worse)
+Dom: Completed 2,486,467 div's in 1 second for sizes: n[4] & n[8] (1583% better)
+Alex: Completed 146,430 div's in 1 second for sizes: n[4] & n[25] 
+Mike: Completed 170,291 div's in 1 second for sizes: n[4] & n[25] (16% better)
+Dom: Completed 2,513,625 div's in 1 second for sizes: n[4] & n[25] (1376% better)
+Alex: Completed 77,396 div's in 1 second for sizes: n[4] & n[100] 
+Mike: Completed 613,364 div's in 1 second for sizes: n[4] & n[100] (693% better)
+Dom: Completed 3,224,972 div's in 1 second for sizes: n[4] & n[100] (426% better)
+Alex: Completed 11,382 div's in 1 second for sizes: n[4] & n[1,000] 
+Mike: Completed 567,547 div's in 1 second for sizes: n[4] & n[1,000] (4886% better)
+Dom: Completed 1,741,578 div's in 1 second for sizes: n[4] & n[1,000] (207% better)
+Alex: Completed 1,196 div's in 1 second for sizes: n[4] & n[10,000] 
+Mike: Completed 551,002 div's in 1 second for sizes: n[4] & n[10,000] (45970% better)
+Dom: Completed 336,943 div's in 1 second for sizes: n[4] & n[10,000] (64% worse)
+Alex: Completed 12,508 div's in 1 second for sizes: n[8] & n[4] 
+Mike: Completed 146,256 div's in 1 second for sizes: n[8] & n[4] (1069% better)
+Dom: Completed 2,333,518 div's in 1 second for sizes: n[8] & n[4] (1496% better)
+Alex: Completed 22,279 div's in 1 second for sizes: n[8] & n[8] 
+Mike: Completed 149,526 div's in 1 second for sizes: n[8] & n[8] (571% better)
+Dom: Completed 2,269,414 div's in 1 second for sizes: n[8] & n[8] (1418% better)
+Alex: Completed 81,860 div's in 1 second for sizes: n[8] & n[25] 
+Mike: Completed 163,484 div's in 1 second for sizes: n[8] & n[25] (100% better)
+Dom: Completed 2,758,809 div's in 1 second for sizes: n[8] & n[25] (1588% better)
+Alex: Completed 54,293 div's in 1 second for sizes: n[8] & n[100] 
+Mike: Completed 579,653 div's in 1 second for sizes: n[8] & n[100] (968% better)
+Dom: Completed 2,914,217 div's in 1 second for sizes: n[8] & n[100] (403% better)
+Alex: Completed 10,783 div's in 1 second for sizes: n[8] & n[1,000] 
+Mike: Completed 1,099,771 div's in 1 second for sizes: n[8] & n[1,000] (10099% better)
+Dom: Completed 1,667,853 div's in 1 second for sizes: n[8] & n[1,000] (52% better)
+Alex: Completed 1,216 div's in 1 second for sizes: n[8] & n[10,000] 
+Mike: Completed 663,610 div's in 1 second for sizes: n[8] & n[10,000] (54473% better)
+Dom: Completed 330,326 div's in 1 second for sizes: n[8] & n[10,000] (101% worse)
+Alex: Completed 3,042 div's in 1 second for sizes: n[25] & n[4] 
+Mike: Completed 112,540 div's in 1 second for sizes: n[25] & n[4] (3600% better)
+Dom: Completed 2,106,780 div's in 1 second for sizes: n[25] & n[4] (1772% better)
+Alex: Completed 1,701 div's in 1 second for sizes: n[25] & n[8] 
+Mike: Completed 128,358 div's in 1 second for sizes: n[25] & n[8] (7446% better)
+Dom: Completed 1,983,249 div's in 1 second for sizes: n[25] & n[8] (1445% better)
+Alex: Completed 6,333 div's in 1 second for sizes: n[25] & n[25] 
+Mike: Completed 143,649 div's in 1 second for sizes: n[25] & n[25] (2168% better)
+Dom: Completed 1,112,553 div's in 1 second for sizes: n[25] & n[25] (674% better)
+Alex: Completed 15,072 div's in 1 second for sizes: n[25] & n[100] 
+Mike: Completed 604,591 div's in 1 second for sizes: n[25] & n[100] (3911% better)
+Dom: Completed 2,258,060 div's in 1 second for sizes: n[25] & n[100] (273% better)
+Alex: Completed 7,135 div's in 1 second for sizes: n[25] & n[1,000] 
+Mike: Completed 546,379 div's in 1 second for sizes: n[25] & n[1,000] (7558% better)
+Dom: Completed 1,393,432 div's in 1 second for sizes: n[25] & n[1,000] (155% better)
+Alex: Completed 1,146 div's in 1 second for sizes: n[25] & n[10,000] 
+Mike: Completed 426,709 div's in 1 second for sizes: n[25] & n[10,000] (37135% better)
+Dom: Completed 327,307 div's in 1 second for sizes: n[25] & n[10,000] (30% worse)
+Alex: Completed 723 div's in 1 second for sizes: n[100] & n[4] 
+Mike: Completed 78,688 div's in 1 second for sizes: n[100] & n[4] (10784% better)
+Dom: Completed 1,302,518 div's in 1 second for sizes: n[100] & n[4] (1555% better)
+Alex: Completed 315 div's in 1 second for sizes: n[100] & n[8] 
+Mike: Completed 77,148 div's in 1 second for sizes: n[100] & n[8] (24391% better)
+Dom: Completed 1,325,675 div's in 1 second for sizes: n[100] & n[8] (1618% better)
+Alex: Completed 171 div's in 1 second for sizes: n[100] & n[25] 
+Mike: Completed 87,840 div's in 1 second for sizes: n[100] & n[25] (51268% better)
+Dom: Completed 283,890 div's in 1 second for sizes: n[100] & n[25] (223% better)
+Alex: Completed 751 div's in 1 second for sizes: n[100] & n[100] 
+Mike: Completed 105,998 div's in 1 second for sizes: n[100] & n[100] (14014% better)
+Dom: Completed 858,877 div's in 1 second for sizes: n[100] & n[100] (710% better)
+Alex: Completed 1,276 div's in 1 second for sizes: n[100] & n[1,000] 
+Mike: Completed 535,689 div's in 1 second for sizes: n[100] & n[1,000] (41882% better)
+Dom: Completed 1,342,062 div's in 1 second for sizes: n[100] & n[1,000] (151% better)
+Alex: Completed 664 div's in 1 second for sizes: n[100] & n[10,000] 
+Mike: Completed 410,913 div's in 1 second for sizes: n[100] & n[10,000] (61784% better)
+Dom: Completed 314,079 div's in 1 second for sizes: n[100] & n[10,000] (31% worse)
+Alex: Completed 63 div's in 1 second for sizes: n[1,000] & n[4] 
+Mike: Completed 16,898 div's in 1 second for sizes: n[1,000] & n[4] (26722% better)
+Dom: Completed 354,725 div's in 1 second for sizes: n[1,000] & n[4] (1999% better)
+Alex: Completed 38 div's in 1 second for sizes: n[1,000] & n[8] 
+Mike: Completed 16,837 div's in 1 second for sizes: n[1,000] & n[8] (44208% better)
+Dom: Completed 343,110 div's in 1 second for sizes: n[1,000] & n[8] (1938% better)
+Alex: Completed 11 div's in 1 second for sizes: n[1,000] & n[25] 
+Mike: Completed 15,431 div's in 1 second for sizes: n[1,000] & n[25] (140182% better)
+Dom: Completed 29,115 div's in 1 second for sizes: n[1,000] & n[25] (89% better)
+Alex: Completed 0 div's in 1 second for sizes: n[1,000] & n[100] 
+Mike: Completed 10,653 div's in 1 second for sizes: n[1,000] & n[100] 
+Dom: Completed 15,152 div's in 1 second for sizes: n[1,000] & n[100] (42% better)
+Alex: Completed 14 div's in 1 second for sizes: n[1,000] & n[1,000] 
+Mike: Completed 31,949 div's in 1 second for sizes: n[1,000] & n[1,000] (228107% better)
+Dom: Completed 243,024 div's in 1 second for sizes: n[1,000] & n[1,000] (661% better)
+Alex: Completed 15 div's in 1 second for sizes: n[1,000] & n[10,000] 
+Mike: Completed 404,638 div's in 1 second for sizes: n[1,000] & n[10,000] (2697487% better)
+Dom: Completed 287,681 div's in 1 second for sizes: n[1,000] & n[10,000] (41% worse)
+Alex: Completed 7 div's in 1 second for sizes: n[10,000] & n[4] 
+Mike: Completed 1,915 div's in 1 second for sizes: n[10,000] & n[4] (27257% better)
+Dom: Completed 40,757 div's in 1 second for sizes: n[10,000] & n[4] (2028% better)
+Alex: Completed 4 div's in 1 second for sizes: n[10,000] & n[8] 
+Mike: Completed 1,914 div's in 1 second for sizes: n[10,000] & n[8] (47750% better)
+Dom: Completed 40,050 div's in 1 second for sizes: n[10,000] & n[8] (1992% better)
+Alex: Completed 1 div's in 1 second for sizes: n[10,000] & n[25] 
+Mike: Completed 1,727 div's in 1 second for sizes: n[10,000] & n[25] (172600% better)
+Dom: Completed 2,887 div's in 1 second for sizes: n[10,000] & n[25] (67% better)
+Alex: Completed 0 div's in 1 second for sizes: n[10,000] & n[100] 
+Mike: Completed 1,106 div's in 1 second for sizes: n[10,000] & n[100] 
+Dom: Completed 1,402 div's in 1 second for sizes: n[10,000] & n[100] (27% better)
+Alex: Completed 0 div's in 1 second for sizes: n[10,000] & n[1,000] 
+Mike: Completed 255 div's in 1 second for sizes: n[10,000] & n[1,000] 
+Dom: Completed 253 div's in 1 second for sizes: n[10,000] & n[1,000] (1% worse)
+Alex: Completed 0 div's in 1 second for sizes: n[10,000] & n[10,000] 
+Mike: Completed 4,019 div's in 1 second for sizes: n[10,000] & n[10,000] 
+Dom: Completed 29,527 div's in 1 second for sizes: n[10,000] & n[10,000] (635% better)

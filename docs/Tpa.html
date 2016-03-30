@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: ~Tpa</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: ~Tpa</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>~Tpa</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="~Tpa"><span class="type-signature"></span>new ~Tpa<span class="signature">(initial-value<span class="signature-attributes">opt</span>, is-integer<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Tpa stores and manipulates rational numbers with total precision</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>initial-value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Tpa</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Initial value to set this number.</p>
+<ol>
+<li>Numeric values are only represented to a precision of 8 decimal places and, in any case, are limited by the precision of a JS floating point number. To initialse a number with definite accuracy the string form is recommended.</li>
+<li>String values can be represented in decimal or fractional form.<ul>
+<li>Decimal form: <code>&lt;+/-&gt;iii.ddd[rrr]</code> where <code>+/-</code> is optional, <code>iii</code> represents the integer part and <code>ddd</code> the decimal part with <code>[rrr]</code> representing an optional recurring decimal part</li>
+<li>Fractional form: <code>&lt;+/-&gt; iii nnn/ddd</code> where <code>+/-</code> is optional, <code>iii</code> represents the (optional) integer part, <code>nnn</code> the numerator and <code>ddd</code> the denominator. The fraction may be top heavy.</li>
+</ul>
+</li>
+<li>Tpa instance causes this constructor to return a copy of it.</li>
+</ol>
+<p>Tpa may be called statically, in which case a new instance is still returned.<br><strong>Note well:</strong> If initial-value is itself a Tpa, then the same Tpa is returned <em>without</em> making a copy when called statically.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>is-integer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><p>Set to <code>false</code> to enable this number to represent fractions.<br>If the initial-value is fractional in any way then is-integer will default to <code>false</code>.<br>The initial setting of this number (integer or fractional) is always kept throughout its life unless<br>the Tpa~makeFraction or Tpa~makeInteger methods are called to change it.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tpa.js.html">tpa.js</a>, <a href="tpa.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var a=new Tpa();                 // Creates a new number set to zero
+var b=Tpa(20);                   // Creates a new number preset to 20
+var c=Tpa['0.[6]'];              // Creates a new number preset to 2/3
+var d=new Tpa('2/3'];            // Creates a new number preset to 2/3
+var e=new Tpa('-4 538/1284');    // Creates a new number preset to -4.4[19003115264797507788161993769470404984423676012461059]
+var f=new Tpa(b);                // Creates a new number preset to 20
+var g=Tpa(e);                    // Does NOT create a new number: Object g references Object f
+var h=Tpa(false);                // Creates a new number set to zero but is configured to represent fractions
+var i=Tpa(100,false);            // Creates a new number set to 100 but is configured to represent fractions
+var j=Tpa(100.5,true);           // Creates a new number set to 100 as we explicitly set it to be integer only and the fractional part is ignored
+var k=Tpa('10 20/3',true);       // Creates a new number set to 16 as we explicitly set it to be integer only and the fractional part is ignored</code></pre>
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getBASE"><span class="type-signature">(static) </span>getBASE<span class="signature">()</span><span class="type-signature"> &rarr; {number}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>The BASE to which all numbers is stored.</p>
+<p>This is preset to 2^25 which is the optimal size. However, it may be lower (not higher!) in order to test the integrity of internal representation and manipulation of numbers.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tpa.js.html">tpa.js</a>, <a href="tpa.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setBASE"><span class="type-signature">(static) </span>setBASE<span class="signature">(base)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets the BASE to which numbers are internally represented.</p>
+<p>This should <em>only</em> be set for experimentation and testing purposes. Any existing instances of Tpa will become corrupt or invalid once the base is changed.<br>Safe rule: Don't call this set method!</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>base</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The new BASE for number internal representation</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="tpa.js.html">tpa.js</a>, <a href="tpa.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="TPA-N.html">N</a></li><li><a href="Tpa.html">~Tpa</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Mar 29 2016 16:50:03 GMT+0100 (BST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

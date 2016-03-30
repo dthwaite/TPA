@@ -1,0 +1,26 @@
+{
+  "opts": {
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true
+  },
+  "plugins": [ "plugins/markdown"],
+
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  },
+  "source": {
+    "include": [
+      "lib/"
+    ]
+  },
+
+  "templates": {
+    "default": {
+      "staticFiles": {
+
+      }
+    }
+  }
+}
