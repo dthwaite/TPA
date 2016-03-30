@@ -1,5 +1,8 @@
 ## TPA - Total Precision Arithmetic
 
+[![Build Status](https://secure.travis-ci.org/dthwaite/TPA.js.png)](http://travis-ci.org/dthwaite/Tpa.min.js)
+
+
 tpa.js performs basic arithmetic operations with total precision.
 
 The main features are:
