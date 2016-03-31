@@ -82,8 +82,8 @@
      *
      * @param {number} base The new BASE for number internal representation
      */
-    Tpa.setBASE=function(n) {
-        BASE=n;
+    Tpa.setBASE=function(base) {
+        BASE=base;
         ROOTBASE=Math.floor(Math.sqrt(BASE));
         SQUAREBASE=Math.pow(BASE,2);
     };
@@ -100,8 +100,8 @@
     };
 
     Tpa.setBASE(Math.pow(2,25));
-    
-    var N=(/** @lends Tpa */function() {
+
+    var N=(/** @lends TPA */function() {
         /**
          * N is the core vehicle to store and manipulate arbitrarily long integers
          *
@@ -111,36 +111,36 @@
          * For efficiency reasons many methods do not have error checking or may make assumptions about the state of the number.
          * Any assumptions, however, are documented.
          *
-         * @param {number|string|Tpa~N} [initial-value] The initial value assigned to this number.
+         * @param {number|string|Tpa~N} [initialValue] The initial value assigned to this number.
          * This may be a JS numeric value, a string or another N instance. If numeric, any fractional part is ignored.
          * If string it may only contain digits starting with an optional + or - sign. If N, the new N will be a duplicate.
          * @constructor
          * @throws {Error} If parameter passed is not one of the above or is badly formed.
          */
-        var N=function(initial) {
+        var N=function(initialValue) {
             if (this instanceof N) {
                 this.reset();
                 if (arguments.length==0) return;
-                if (initial instanceof N) {
-                    this.digits=initial.digits.slice(0);
-                    this.safemaximum=initial.safemaximum;
+                if (initialValue instanceof N) {
+                    this.digits=initialValue.digits.slice(0);
+                    this.safemaximum=initialValue.safemaximum;
                 } else {
-                    if (typeof initial == 'number') {
-                        if (isNaN(initial)) throw new Error(INPUT_ERROR_MESSAGE);
-                        else this.set(Math.trunc(initial));
+                    if (typeof initialValue == 'number') {
+                        if (isNaN(initialValue)) throw new Error(INPUT_ERROR_MESSAGE);
+                        else this.set(Math.trunc(initialValue));
                     } else {
-                        if (typeof initial == 'string') {
-                            var sign=initial[0]=='-'? -1 : 1;
-                            for (var i=(initial[0]=='-' || initial[0]=='+' ? 1 : 0); i&lt;initial.length &amp;&amp; /^\d$/.test(initial[i]); i++) {
-                                this._digitMultiplyWithAdd(10, sign*parseInt(initial[i]));
+                        if (typeof initialValue == 'string') {
+                            var sign=initialValue[0]=='-'? -1 : 1;
+                            for (var i=(initialValue[0]=='-' || initialValue[0]=='+' ? 1 : 0); i&lt;initialValue.length &amp;&amp; /^\d$/.test(initialValue[i]); i++) {
+                                this._digitMultiplyWithAdd(10, sign*parseInt(initialValue[i]));
                             }
-                            if (i!=initial.length) throw new Error(INPUT_ERROR_MESSAGE);
+                            if (i!=initialValue.length) throw new Error(INPUT_ERROR_MESSAGE);
                         } else throw new Error(INPUT_ERROR_MESSAGE);
                     }
                 }
             } else {
-                if (typeof initial=='undefined') return new N();
-                else return new N(initial);
+                if (typeof initialValue=='undefined') return new N();
+                else return new N(initialValue);
             }
         };
 
@@ -154,10 +154,10 @@
          * and the positivise method is required to remove them.
          *
          * @see positivise
-         * @param {boolean} [no-reduction=false] set to true if we wish to keep any trailing zero digits
+         * @param {boolean} [noReduction=false] set to true if we wish to keep any trailing zero digits
          * @returns {Tpa~N} This number for chaining purposes
          */
-        N.prototype.normalise=function(noreduction) {
+        N.prototype.normalise=function(noReduction) {
             if (this.safemaximum>=BASE) {
                 for (var i = 0, carry = 0; i &lt; this.digits.length; i++) {
                     carry += this.digits[i];
@@ -167,7 +167,7 @@
                 if (carry) this.digits[this.digits.length] = carry;
                 this.safemaximum = BASE-1;
             }
-            if (noreduction) return this;
+            if (noReduction) return this;
             while (this.digits.length>0 &amp;&amp; this.digits[this.digits.length-1]==0) this.digits.length--;
             return this;
         };
@@ -179,7 +179,7 @@
          * and is normalised.
          */
         N.prototype.positivise=function() {
-            for (var i=0;i&lt;this.digits.length;i++) {
+            for (var i=0; i&lt;this.digits.length; i++) {
                 if (this.digits[i]&lt;0) {
                     this.digits[i]+=BASE;
                     this.digits[i+1]--;
@@ -243,28 +243,27 @@
          *
          * The divisor *must* be positive and less than the BASE
          *
-         * @param {number} test-divisor The number to test as a factor of this number
+         * @param {number} testDivisor The number to test as a factor of this number
          * @return {boolean} `true` if this number is divisible by the test-divisor
          */
-        N.prototype.isDivisibleBy=function(factor) {
-            var i;
-            if (factor&lt;BASE) {
-                for (i = this.digits.length - 1, temp = 0; i >= 0; i--) temp = (temp % factor) * BASE + this.digits[i];
-                return temp % factor == 0;
+        N.prototype.isDivisibleBy=function(testDivisor) {
+            if (testDivisor&lt;BASE) {
+                for (var i = this.digits.length - 1, temp = 0; i >= 0; i--) temp = (temp % testDivisor) * BASE + this.digits[i];
+                return temp % testDivisor == 0;
             }
         };
 
         /**
          * Sets a new numeric value into this number
          *
-         * @param {number} new-value As per instantiation, setting Tpa with a JS native number is subject to accuracy constraints
+         * @param {number} newValue As per instantiation, setting Tpa with a JS native number is subject to accuracy constraints
          * @return {Tpa~N} This number for chaining purposes
          */
-        N.prototype.set=function(n) {
+        N.prototype.set=function(newValue) {
             this.reset();
-            for (var i=0; n!=0; i++) {
-                this.digits[i]=n%BASE;
-                n=Math.trunc(n/BASE);
+            for (var i=0; newValue!=0; i++) {
+                this.digits[i]=newValue%BASE;
+                newValue=Math.trunc(newValue/BASE);
             }
             this.safemaximum=BASE-1;
             return this;
@@ -292,12 +291,12 @@
          * @param {Tpa~N}  comparison The number to compare with this number
          * @return {number} 0 if equal, -1 if this &lt; comparison, +1 if this > comparison
          */
-        N.prototype.compare=function(number) {
-            if (this.digits.length> number.digits.length) return 1;
-            if (this.digits.length&lt; number.digits.length) return -1;
+        N.prototype.compare=function(comparison) {
+            if (this.digits.length> comparison.digits.length) return 1;
+            if (this.digits.length&lt; comparison.digits.length) return -1;
             for (var i= this.digits.length-1; i>=0; i--) {
-                if (this.digits[i]> number.digits[i]) return 1;
-                if (this.digits[i]&lt; number.digits[i]) return -1;
+                if (this.digits[i]> comparison.digits[i]) return 1;
+                if (this.digits[i]&lt; comparison.digits[i]) return -1;
             }
             return 0;
         };
@@ -308,8 +307,8 @@
          * @param {Tpa~N} number The number to copy and make positive
          * @return {Tpa~N} A new number that is the positive version of number
          */
-        N.abs=function(n) {
-            return new N(n).abs();
+        N.abs=function(number) {
+            return new N(number).abs();
         };
 
         /**
@@ -335,7 +334,7 @@
             var len=this.digits.length;
             this.digits.length=Math.max(this.digits.length,number.digits.length);
             for (i = len; i &lt; number.digits.length; i++) this.digits[i] = number.digits[i];
-            for (i=Math.min(len,number.digits.length)-1;i>=0; i--) this.digits[i]+=number.digits[i];
+            for (i=Math.min(len,number.digits.length)-1; i>=0; i--) this.digits[i]+=number.digits[i];
             return this;
         };
 
@@ -347,7 +346,7 @@
          * @return {Tpa~N} This number for chaining purposes
          */
         N.prototype.negate=function() {
-            for (var i=0;i&lt;this.digits.length;i++) this.digits[i]=-this.digits[i];
+            for (var i=0; i&lt;this.digits.length; i++) this.digits[i]=-this.digits[i];
             return this;
         };
 
@@ -364,7 +363,7 @@
             var len=this.digits.length;
             this.digits.length=Math.max(this.digits.length,number.digits.length);
             for (i = len; i &lt; number.digits.length; i++) this.digits[i] = -number.digits[i];
-            for (i=Math.min(len,number.digits.length)-1;i>=0; i--) this.digits[i]-=number.digits[i];
+            for (i=Math.min(len,number.digits.length)-1; i>=0; i--) this.digits[i]-=number.digits[i];
             return this;
         };
 
@@ -449,7 +448,7 @@
          * @throws {Error} If divisor is zero
          */
         N.prototype.divide=function(number) {
-            var i, j,carry;
+            var i, j;
             var remainder=new N();
 
             // Normalise our numbers
@@ -473,41 +472,43 @@
 
             var compare=this.compare(number);
             switch (compare) {
-                case -1: // numerator &lt; denominator; easy
-                    remainder=new N(this);
-                    this.reset();
-                    break;
-                case 0: // numerator==denominator; even easier
-                    this.set(1);
-                    break;
-                case 1: // numerator>denominator; trickier
-                    // Load up our remainder to close to the size of the denominator
-                    var num_digits=number.digits;
-                    var rem_digits=remainder.digits=this.digits.slice(this.digits.length-number.digits.length);
+            case -1: // numerator &lt; denominator; easy
+                remainder=new N(this);
+                this.reset();
+                break;
 
-                    remainder.safemaximum=this.safemaximum;
-                    this.digits.length-=rem_digits.length;
+            case 0: // numerator==denominator; even easier
+                this.set(1);
+                break;
 
-                    var difference;
-                    // For each remaining digit in the numerator we get the digit that represents on step of the long division
-                    for (i = this.digits.length; i >= 0; i--) {
-                        this.digits[i] = 0;
-                        while (remainder.compare(number) >= 0) {
-                            // If our remainder is greater then denominator, then we get a good estimate of how much greater in difference
-                            difference = rem_digits[rem_digits.length - 1] * BASE + rem_digits[rem_digits.length - 2];
-                            if (num_digits.length &lt; rem_digits.length) difference = Math.max(1, Math.trunc(difference / (num_digits[num_digits.length - 1] + (num_digits[num_digits.length - 2] + 1)/BASE)));
-                            else difference = Math.max(1, Math.trunc(difference / (num_digits[num_digits.length - 1] * BASE + num_digits[num_digits.length - 2] + 1)));
-                            // Accumulate the difference and reduce the remainder by that number of denominators ... and then compare again
-                            this.digits[i] += difference;
-                            remainder._subtractMultiple(num_digits, difference);
-                            // More than likely our estimate was good and our remainder now stands at below the denominator, but we cant be sure...
-                        }
-                        if (i>0) {
-                            // Considerably faster than Array.unshift() !!!
-                            for (j=rem_digits.length;j>0;j--) rem_digits[j]=rem_digits[j-1];
-                            rem_digits[0]=this.digits[i-1];
-                        }
+            case 1: // numerator>denominator; trickier
+                // Load up our remainder to close to the size of the denominator
+                var numDigits=number.digits;
+                var remDigits=remainder.digits=this.digits.slice(this.digits.length-number.digits.length);
+
+                remainder.safemaximum=this.safemaximum;
+                this.digits.length-=remDigits.length;
+
+                var difference;
+                // For each remaining digit in the numerator we get the digit that represents on step of the long division
+                for (i = this.digits.length; i >= 0; i--) {
+                    this.digits[i] = 0;
+                    while (remainder.compare(number) >= 0) {
+                        // If our remainder is greater then denominator, then we get a good estimate of how much greater in difference
+                        difference = remDigits[remDigits.length - 1] * BASE + remDigits[remDigits.length - 2];
+                        if (numDigits.length &lt; remDigits.length) difference = Math.max(1, Math.trunc(difference / (numDigits[numDigits.length - 1] + (numDigits[numDigits.length - 2] + 1)/BASE)));
+                        else difference = Math.max(1, Math.trunc(difference / (numDigits[numDigits.length - 1] * BASE + numDigits[numDigits.length - 2] + 1)));
+                        // Accumulate the difference and reduce the remainder by that number of denominators ... and then compare again
+                        this.digits[i] += difference;
+                        remainder._subtractMultiple(numDigits, difference);
+                        // More than likely our estimate was good and our remainder now stands at below the denominator, but we cant be sure...
                     }
+                    if (i>0) {
+                        // Considerably faster than Array.unshift() !!!
+                        for (j=remDigits.length; j>0; j--) remDigits[j]=remDigits[j-1];
+                        remDigits[0]=this.digits[i-1];
+                    }
+                }
             }
             if (s1*s2&lt;0) {
                 // Set our results negative if our original numbers had different signs
@@ -571,10 +572,10 @@
         // It is assumed that this number has been reset to contain the required number
         // of zero digits.
         N.prototype._basicMultiplication=function(a,b) {
-            if (a.length> b.length) (c=a,a=b,b=c);
-            for (var i= 0,j= 1,aDigit=0;i&lt;a.length;i++) {
+            if (a.length> b.length) {var c=a; a=b; b=c;}
+            for (var i= 0,j= 1,aDigit= 0,carry=0; i&lt;a.length; i++) {
                 aDigit=a[i]%BASE;
-                for (j= 0,carry=0;j&lt;b.length;j++) {
+                for (j= 0,carry=0; j&lt;b.length; j++) {
                     carry+=(aDigit * b[j]+this.digits[i+j]);
                     this.digits[i+j]=carry%BASE;
                     carry = Math.trunc(carry / BASE);
@@ -590,8 +591,8 @@
         // For large numbers this makes for greater efficency. msb tells us which half of the multicand to take.
         N.prototype._rapidMultiplication=function(a,b,msb) {
             var q;
-            if (a.length> b.length) (c=a,a=b,b=c);
-            for (var i= a.length-1;i>=0;i--) {
+            if (a.length> b.length) {var c=a; a=b; b=c;}
+            for (var i= a.length-1; i>=0; i--) {
                 if (msb) q=Math.trunc(a[i]/ROOTBASE);
                 else q=a[i]%ROOTBASE;
                 if (q!=0) for (var j = b.length - 1; j >= 0; j--) this.digits[i + j] += q * b[j];
@@ -647,7 +648,6 @@
         // common factors to a fraction to allow us to simplify that fraction
         N.Primes=(function() {
             var primes=[2,3];                     // cache of prime numbers
-            var limit=Math.floor(BASE/10);        // max size of cache
 
             // Instantiation sets up an iterator to start from the first prime (2)
             function Primes() {
@@ -693,6 +693,7 @@
 
     // Constructor for a new Tpa
     function TPA(initial,integer) {
+        var me=this;
 
         // Logic to redirect a static call to return a new object
         if (!(this instanceof Tpa)) {
@@ -757,23 +758,23 @@
         // Helper function to parse and create a fraction from an arbitrary number of decimal input representation
         // Note that the input is assumed to be "clean"
         function parseDecimal(input,sign) {
-            this.remainder=standardRemainder();
+            me.remainder=standardRemainder();
             for (var i= 0,recurring=null; i&lt;input.length; i++) {
                 if (input[i]=='[' &amp;&amp; recurring===null) {
                     recurring = {
-                        numerator: new N(this.remainder.numerator),
-                        denominator: new N(this.remainder.denominator)
+                        numerator: new N(me.remainder.numerator),
+                        denominator: new N(me.remainder.denominator)
                     };
                     continue;
                 }
                 // The recurring section is mathematically achieved by subtracting the the values at the start
                 if (recurring &amp;&amp; input[i]==']') {
-                    this.remainder.numerator.subtract(recurring.numerator);
-                    this.remainder.denominator.subtract(recurring.denominator);
+                    me.remainder.numerator.subtract(recurring.numerator);
+                    me.remainder.denominator.subtract(recurring.denominator);
                     return;
                 }
-                this.remainder.denominator._digitMultiplyWithAdd(10, 0);
-                this.remainder.numerator._digitMultiplyWithAdd(10, sign*parseInt(input[i]));
+                me.remainder.denominator._digitMultiplyWithAdd(10, 0);
+                me.remainder.numerator._digitMultiplyWithAdd(10, sign*parseInt(input[i]));
             }
             if (recurring) throw new Error(INPUT_ERROR_MESSAGE);
         }
@@ -783,11 +784,11 @@
         function parseFraction(input) {
             var remainder=standardRemainder(new N(input.match(/^[\+\-]?\d+/)[0]),new N(input.match(/\/(\d+)$/)[1]));
             if (remainder.denominator.isZero()) throw new Error(INPUT_ERROR_MESSAGE);
-            if (!this.integer) {
-                this.remainder=remainder;
-                this._normaliseRemainder();
+            if (!me.integer) {
+                me.remainder=remainder;
+                me._normaliseRemainder();
             }
-            else this.number.add(remainder.numerator.quotient(remainder.denominator));
+            else me.number.add(remainder.numerator.quotient(remainder.denominator));
         }
 
         if (typeof initial == 'string') {
@@ -796,27 +797,27 @@
             if (initial.match(/^[\+\-]?\d+\/\d+$/)) {                               // [+/-]nnn/nnn
                 if (typeof integer != 'boolean') this.integer = false;
                 this.number=new N();
-                parseFraction.call(this,initial);
+                parseFraction(initial);
             } else {
                 var sign=initial[0]=='-';
-                if (initial.match(/^[\+\-]?\d*/)==null) throw new Error(INPUT_ERROR_MESSAGE);
+                if (initial.match(/^[\+\-]?\d*/)===null) throw new Error(INPUT_ERROR_MESSAGE);
                 this.number=new N(initial.match(/^[\+\-]?\d*/)[0]);                 // [+/-]nnn
                 if (initial.match(/^[\+\-]?\d*$/)) return;
                 var match=initial.match(/^[\+\-]?\d*([\. ])/);
-                if (match==null) throw new Error(INPUT_ERROR_MESSAGE);
+                if (match===null) throw new Error(INPUT_ERROR_MESSAGE);
                 var remaining=initial.match(/^[\+\-]?\d*[\. ](.*)/)[1];             // [+/-]nnn[./ ]
                 if (typeof integer != 'boolean') this.integer = false;
                 switch (match[1]) {
                 case '.':
                     // Parse dor decimal representation
-                    if (remaining.match(/^\d*\[?\d+\]?$/)==null) throw new Error(INPUT_ERROR_MESSAGE);
-                    if (!this.integer) parseDecimal.call(this,remaining,sign ? -1 : 1);
+                    if (remaining.match(/^\d*\[?\d+\]?$/)===null) throw new Error(INPUT_ERROR_MESSAGE);
+                    if (!this.integer) parseDecimal(remaining,sign ? -1 : 1);
                     break;
 
                 case ' ':
                     // Parse for fractional representation
-                    if (remaining.match(/^\d+\/\d+$/)==null) throw new Error(INPUT_ERROR_MESSAGE);
-                    parseFraction.call(this,(sign ? '-' : '')+remaining);
+                    if (remaining.match(/^\d+\/\d+$/)===null) throw new Error(INPUT_ERROR_MESSAGE);
+                    parseFraction((sign ? '-' : '')+remaining);
                     break;
                 }
             }
@@ -827,7 +828,7 @@
         // If we had no initialiser, then set this number to zero
         this.number=new Tpa.N();
         if (!this.integer) this.remainder = standardRemainder();
-    };
+    }
 
     /**
      * Attempts a simplification of the remaining fraction
@@ -982,28 +983,46 @@
     };
 
     /**
+     * Sets a number to hold fractional value
+     *
+     * @param {Tpa|number|string} number The number to set
+     */
+    Tpa.makeFractional=function(number) {
+        return new Tpa(number).makeFractional();
+    };
+
+    /**
+     * Sets a number to hold integer values only
+     *
+     * @param {Tpa|number|string} number The number to set
+     */
+    Tpa.makeInteger=function(number) {
+        return new Tpa(number).makeInteger();
+    };
+
+    /**
      * Sets the integer part of a number to zero
      *
-     * @param {Tpa} number The number from which the integer part is to be removed
+     * @param {Tpa|number|string} number The number from which the integer part is to be removed
      */
-    Tpa.frac=function(a) {
-        return new Tpa(a).frac();
+    Tpa.frac=function(number) {
+        return new Tpa(number).frac();
     };
 
     /**
      * Sets the fractional part of a number to zero
      *
-     * @param {Tpa} number The number from which the fractional part is to be removed
+     * @param {Tpa|number|string} number The number from which the fractional part is to be removed
      */
-    Tpa.int=function(a) {
-        return new Tpa(a).int();
+    Tpa.int=function(number) {
+        return new Tpa(number).int();
     };
 
     /**
      * Adds two numbers
      *
-     * @param {Tpa} a First number
-     * @param {Tpa} b Second number
+     * @param {Tpa|number|string} a First number
+     * @param {Tpa|number|string} b Second number
      * @returns {Tpa} a + b
      */
     Tpa.add=function(a,b) {
@@ -1013,8 +1032,8 @@
     /**
      * Subtracts two numbers
      *
-     * @param {Tpa} a First number
-     * @param {Tpa} b Second number
+     * @param {Tpa|number|string} a First number
+     * @param {Tpa|number|string} b Second number
      * @returns {Tpa} a - b
      */
     Tpa.subtract=function(a,b) {
@@ -1024,8 +1043,8 @@
     /**
      * Multiplies two numbers
      *
-     * @param {Tpa} a First number
-     * @param {Tpa} b Second number
+     * @param {Tpa|number|string} a First number
+     * @param {Tpa|number|string} b Second number
      * @returns {Tpa} a * b
      */
     Tpa.multiply=function(a,b) {
@@ -1035,8 +1054,8 @@
     /**
      * Divides two numbers
      *
-     * @param {Tpa} a First number
-     * @param {Tpa} b Second number
+     * @param {Tpa|number|string} a First number
+     * @param {Tpa|number|string} b Second number
      * @returns {Tpa} a / b
      */
     Tpa.divide=function(a,b) {
@@ -1046,8 +1065,8 @@
     /**
      * Modulus of two numbers
      *
-     * @param {Tpa} a First number
-     * @param {Tpa} b Second number
+     * @param {Tpa|number|string} a First number
+     * @param {Tpa|number|string} b Second number
      * @returns {Tpa} a mod b
      */
     Tpa.mod=function(a,b) {
@@ -1057,7 +1076,7 @@
     /**
      * Absolute value of a number
      *
-     * @param {Tpa} n The number
+     * @param {Tpa|number|string} n The number
      * @returns {Tpa} |n|
      */
     Tpa.abs=function(n) {
@@ -1081,71 +1100,71 @@
     /**
      * Compares the given number with this number
      *
-     * @param {Tpa} number The number to compare
+     * @param {Tpa|number|string} number The number to compare
      * @returns {number} `-1` if this number is less than the given number, `0` if equal, `1` if greater
      */
-    Tpa.prototype.compare=function(tpa) {
+    Tpa.prototype.compare=function(number) {
         function compare(a,b) {
             return N.abs(a).normalise().positivise().compare(N.abs(b).positivise().normalise());
-        };
+        }
 
-        if (tpa===this) return 0;
-        tpa = Tpa(tpa);
+        if (number===this) return 0;
+        number = Tpa(number);
         this._normaliseRemainder();
-        tpa._normaliseRemainder();
-        if (this.sign()!=tpa.sign()) return this.sign();
-        var result = compare(this.number,tpa.number);
+        number._normaliseRemainder();
+        if (this.sign()!=number.sign()) return this.sign();
+        var result = compare(this.number,number.number);
         if (result == 0 &amp;&amp; this.isFractional()) {
-            if (tpa.isFractional()) result=compare(new N(this.remainder.numerator).multiply(tpa.remainder.denominator),new N(this.remainder.denominator).multiply(tpa.remainder.numerator));
+            if (number.isFractional()) result=compare(new N(this.remainder.numerator).multiply(number.remainder.denominator),new N(this.remainder.denominator).multiply(number.remainder.numerator));
             else if (!this.remainder.numerator.isZero()) result=1;
         }
         return result;
     };
 
     /**
-     * @param {Tpa} number The number to compare
+     * @param {Tpa|number|string} number The number to compare
      * @returns {boolean} `true` if this number is less than the given number
      */
-    Tpa.prototype.lt=function(tpa) {
-        return this.compare(tpa)==-1;
+    Tpa.prototype.lt=function(number) {
+        return this.compare(number)==-1;
     };
 
     /**
-     * @param {Tpa} number The number to compare
+     * @param {Tpa|number|string} number The number to compare
      * @returns {boolean} `true` if this number is less than or equal to the given number
      */
-    Tpa.prototype.lte=function(tpa) {
-        return this.compare(tpa)!=1;
+    Tpa.prototype.lte=function(number) {
+        return this.compare(number)!=1;
     };
 
     /**
-     * @param {Tpa} number The number to compare
+     * @param {Tpa|number|string} number The number to compare
      * @returns {boolean} `true` if this number is greater than the given number
      */
-    Tpa.prototype.gt=function(tpa) {
-        return this.compare(tpa)==1;
+    Tpa.prototype.gt=function(number) {
+        return this.compare(number)==1;
     };
 
     /**
-     * @param {Tpa} number The number to compare
+     * @param {Tpa|number|string} number The number to compare
      * @returns {boolean} `true` if this number is greater than or equal to the given number
      */
-    Tpa.prototype.gte=function(tpa) {
-        return this.compare(tpa)!=-1;
+    Tpa.prototype.gte=function(number) {
+        return this.compare(number)!=-1;
     };
 
     /**
-     * @param {Tpa} number The number to compare
+     * @param {Tpa|number|string} number The number to compare
      * @returns {boolean} `true` if this number is equal to the given number
      */
-    Tpa.prototype.eq=function(tpa) {
-        return this.compare(tpa)==0;
+    Tpa.prototype.eq=function(number) {
+        return this.compare(number)==0;
     };
 
     /**
      * Sets the fractional part of this number to zero
      *
-     * @return {Tpa} This number for chaining purposes
+     * @return {Tpa|number|string} This number for chaining purposes
      */
     Tpa.prototype.int=function() {
         if (!this.integer) this.remainder=standardRemainder();
@@ -1155,7 +1174,7 @@
     /**
      * Sets the integer part of this number to zero
      *
-     * @return {Tpa} This number for chaining purposes
+     * @return {Tpa|number|string} This number for chaining purposes
      */
     Tpa.prototype.frac=function() {
         this._normaliseRemainder().number.reset();
@@ -1165,7 +1184,7 @@
     /**
      * Takes the absolute value of this number
      *
-     * @return {Tpa} This number for chaining purposes
+     * @return {Tpa|number|string} This number for chaining purposes
      */
     Tpa.prototype.abs=function() {
         this.number.abs();
@@ -1179,19 +1198,19 @@
      * If this number is fractional, then it will perform a full fractional multiplication.
      * If it is set as an integer then the multiplication will ignore any fractional part of the multiplier
      *
-     * @param {Tpa} number The number to multiply by
+     * @param {Tpa|number|string} number The number to multiply by
      * @returns {Tpa} This number for chaining purposes
      */
-    Tpa.prototype.multiply=function(tpa) {
-        if (!(tpa instanceof TPA)) tpa=Tpa(tpa);
+    Tpa.prototype.multiply=function(number) {
+        if (!(number instanceof TPA)) number=Tpa(number);
         if (!this.integer) {
-            if (!tpa.integer) {
-                this.remainder.numerator.multiply(new N(tpa.remainder.numerator).add(new N(tpa.remainder.denominator).multiply(tpa.number)));
-                this.remainder.numerator.add(new N(tpa.remainder.numerator).multiply(this.number).multiply(this.remainder.denominator));
-                this.remainder.denominator.multiply(tpa.remainder.denominator);
-            } else this.remainder.numerator.multiply(tpa.number);
+            if (!number.integer) {
+                this.remainder.numerator.multiply(new N(number.remainder.numerator).add(new N(number.remainder.denominator).multiply(number.number)));
+                this.remainder.numerator.add(new N(number.remainder.numerator).multiply(this.number).multiply(this.remainder.denominator));
+                this.remainder.denominator.multiply(number.remainder.denominator);
+            } else this.remainder.numerator.multiply(number.number);
         }
-        this.number.multiply(tpa.number);
+        this.number.multiply(number.number);
         return this;
     };
 
@@ -1201,20 +1220,20 @@
      * If this number is fractional, then it will perform a full fractional division.
      * If it is set as an integer then the division will ignore any fractional part of the divisor
      *
-     * @param {Tpa} number The number to multiply by
+     * @param {Tpa|number|string} number The number to multiply by
      * @returns {Tpa} This number for chaining purposes
      */
-    Tpa.prototype.divide=function(tpa) {
-        if (!(tpa instanceof TPA)) tpa=Tpa(tpa);
+    Tpa.prototype.divide=function(number) {
+        if (!(number instanceof TPA)) number=Tpa(number);
         if (!this.integer) {
-            if (!tpa.integer) {
-                this.number.multiply(this.remainder.denominator).add(this.remainder.numerator).multiply(tpa.remainder.denominator);
-                this.remainder.numerator =this.number.divide(this.remainder.denominator.multiply(new N(tpa.number).multiply(tpa.remainder.denominator).add(tpa.remainder.numerator)));
+            if (!number.integer) {
+                this.number.multiply(this.remainder.denominator).add(this.remainder.numerator).multiply(number.remainder.denominator);
+                this.remainder.numerator =this.number.divide(this.remainder.denominator.multiply(new N(number.number).multiply(number.remainder.denominator).add(number.remainder.numerator)));
             } else {
                 this.number.multiply(this.remainder.denominator).add(this.remainder.numerator);
-                this.remainder.numerator = this.number.divide(this.remainder.denominator.multiply(tpa.number));
+                this.remainder.numerator = this.number.divide(this.remainder.denominator.multiply(number.number));
             }
-        } else this.number.divide(tpa.number);
+        } else this.number.divide(number.number);
         return this;
     };
 
@@ -1223,12 +1242,12 @@
      *
      * Fractional parts of either number are ignored - the modulus is based on the integer parts ony
      *
-     * @param {Tpa} number The divisor number
+     * @param {Tpa|number|string} number The divisor number
      * @returns {Tpa} This number for chaining purposes
      */
-    Tpa.prototype.mod=function(tpa) {
-        if (!(tpa instanceof TPA)) tpa=Tpa(tpa);
-        this.number=this.number.divide(tpa.number);
+    Tpa.prototype.mod=function(number) {
+        if (!(number instanceof TPA)) number=Tpa(number);
+        this.number=this.number.divide(number.number);
         if (!this.integer) this.remainder=standardRemainder();
         return this;
     };
@@ -1239,17 +1258,17 @@
      * If this number is fractional, then it will perform a full fractional subtraction.
      * If it is set as an integer then the subtraction will ignore any fractional part of the number to be subtracted
      *
-     * @param {Tpa} number The number to subtract
+     * @param {Tpa|number|string} number The number to subtract
      * @returns {Tpa} This number for chaining purposes
      */
-    Tpa.prototype.subtract=function(tpa) {
-        if (!(tpa instanceof TPA)) tpa=Tpa(tpa);
-        this.number.subtract(tpa.number);
+    Tpa.prototype.subtract=function(number) {
+        if (!(number instanceof TPA)) number=Tpa(number);
+        this.number.subtract(number.number);
         if (!this.integer) {
-            if (!tpa.integer &amp;&amp; !tpa.remainder.numerator.isZero()) {
-                this.remainder.numerator.multiply(tpa.remainder.denominator);
-                this.remainder.numerator.subtract(new N(tpa.remainder.numerator).multiply(this.remainder.denominator));
-                this.remainder.denominator.multiply(tpa.remainder.denominator);
+            if (!number.integer &amp;&amp; !number.remainder.numerator.isZero()) {
+                this.remainder.numerator.multiply(number.remainder.denominator);
+                this.remainder.numerator.subtract(new N(number.remainder.numerator).multiply(this.remainder.denominator));
+                this.remainder.denominator.multiply(number.remainder.denominator);
             }
             this._normaliseRemainder();
         }
@@ -1262,17 +1281,17 @@
      * If this number is fractional, then it will perform a full fractional addition.
      * If it is set as an integer then the addition will ignore any fractional part of the number to be added
      *
-     * @param {Tpa} number The number to add
+     * @param {Tpa|number|string} number The number to add
      * @returns {Tpa} This number for chaining purposes
      */
-    Tpa.prototype.add=function(tpa) {
-        if (!(tpa instanceof TPA)) tpa=Tpa(tpa);
-        this.number.add(tpa.number);
+    Tpa.prototype.add=function(number) {
+        if (!(number instanceof TPA)) number=Tpa(number);
+        this.number.add(number.number);
         if (!this.integer) {
-            if (!tpa.integer &amp;&amp; !tpa.remainder.numerator.isZero()) {
-                this.remainder.numerator.multiply(tpa.remainder.denominator);
-                this.remainder.numerator.add(new N(tpa.remainder.numerator).multiply(this.remainder.denominator));
-                this.remainder.denominator.multiply(tpa.remainder.denominator);
+            if (!number.integer &amp;&amp; !number.remainder.numerator.isZero()) {
+                this.remainder.numerator.multiply(number.remainder.denominator);
+                this.remainder.numerator.add(new N(number.remainder.numerator).multiply(this.remainder.denominator));
+                this.remainder.denominator.multiply(number.remainder.denominator);
             }
             this._normaliseRemainder();
         }
@@ -1285,11 +1304,11 @@
      * All Tpa numbers are rational and thus have a limited or recurring set of decimal places.
      * Recurring decimals are notated in square brackets - e.g. 33.[3] for 33 and one third
      *
-     * @param {number} [max-decimal-places=100] The maximum number of decimal places to give
+     * @param {number} [maxDecimalPlaces=100] The maximum number of decimal places to give
      * @returns {string} The number in format: `[-]nnn.ddd[rrr]`
      */
-    Tpa.prototype.toDecimal=function(maxdp) {
-        return this.toString.apply(this,arguments);
+    Tpa.prototype.toDecimal=function(maxDecimalPlaces) {
+        return typeof maxDecimalPlaces=='undefined' ? this.toString() : this.toString(maxDecimalPlaces);
     };
 
     /**
@@ -1321,7 +1340,7 @@
      */
     Tpa.prototype.toString=function(maxdp) {
         if (typeof maxdp != 'number' || isNaN(maxdp)) {
-            if (arguments.length>0) throw new Error("toString() takes an optional parameter to specify the maximum DPs to output [default=100] (0=limitless)");
+            if (arguments.length>0) throw new Error('toString() takes an optional parameter to specify the maximum DPs to output [default=100] (0=limitless)');
             else maxdp=100;
         }
 
@@ -1329,7 +1348,7 @@
         if (this.isFractional() &amp;&amp; !this.remainder.numerator.isZero()) {
             result+='.';
             var numeratorstore=[];
-            for (var numerator=new N(this.remainder.numerator).abs().normalise().positivise(),remainder=0; !numerator.isZero() &amp;&amp; maxdp>0;maxdp--) {
+            for (var numerator=new N(this.remainder.numerator).abs().normalise().positivise(),remainder=0; !numerator.isZero() &amp;&amp; maxdp>0; maxdp--) {
                 for (var i=numeratorstore.length-1; i>=0; i--) {
                     if (numeratorstore[i].compare(numerator)==0) break;
                 }
@@ -1346,7 +1365,6 @@
         }
         return result;
     };
-
 
     /**
      * Normalises the remainder - ensures the numerator is less than the denominator
@@ -1413,13 +1431,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DJT-Tpa.html">Tpa</a></li><li><a href="Tpa-N.html">N</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DJT-Tpa.html">Tpa</a></li><li><a href="TPA-N.html">N</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Mar 30 2016 18:28:53 GMT+0100 (BST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Mar 31 2016 09:27:24 GMT+0100 (BST)
 </footer>
 
 <script> prettyPrint(); </script>

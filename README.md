@@ -13,6 +13,8 @@ The main features are:
 * Expressive - inputs/outputs numbers using decimal or fractional forms
 * Quality - comprehensively tested and documented
 
+For a terse list of methods go to the end of this readme. The usage section below is more descriptive.
+
 There are many similar libraries available. I wrote this one partly as an exercise. But I also wrote it because it achieves all the features listed above as well as, or considerably better (IMHO ;-), than the others.
 
 Installation:
@@ -30,14 +32,14 @@ console.log(n.toString()); // Outputs '123.123'
 ```
 To use in the browser:
 ```javascript
-<script src ="tpa.min.js"></script>
+<script src ="https://cdn.rawgit.com/dthwaite/TPA/master/lib/tpa.min.js"></script>
 <script>
 var n=new Tpa(100.123);
 console.log(n.toString()); // Outputs '123.123'
 </script>
 ```
 
-### Usage summary
+### Usage
 
 #### Set up
 ```javascript
@@ -69,7 +71,7 @@ console.log(n7.toFraction());    // '-4 269/642'
 console.log(n7.toDecimal());     // '-4.4[19003115264797507788161993769470404984423676012461059]'
 console.log(n7.toDecimal(20));   // '-4.41900311526479750778...' (limit dp's to 20)
 ```
-Note that there is a `value()` method that gives the number in JS floating point number. This will clearly be an approximation in many cases.
+Note that there is a `value()` method that gives the number as a javascript floating point number. This will clearly be an approximation in many cases.
 #### Operations
 Methods `add()`, `subtract()`, `multiply()` and `divide()` all operate in-situ on the number on which they are called. They return the number to allow for chaining of operations. Each takes a parameter that may either be an existing `Tpa` object (which is not changed) or a number or string that is a valid representation. Aliases for the above are: `plus()`, `sub()`, `minus()`, `mult()`, `times()`, `div()`.
 ```javascript
@@ -100,7 +102,7 @@ console.log(d.toString());                  // '7' (d was constructed to ignore 
 var e=new Tpa('23 100/23',true);            // Explicitly set e to be integer
 console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)
 ```
-You can find out what type a number is with the `isInteger()` and `isFractiona()` methods and you can convert a number to one or other representation with the `makeInteger()` and `makeFractional()` methods:
+You can find out what type a number is with the `isInteger()` and `isFraction()` methods and you can convert a number to one or other representation with the `makeInteger()` and `makeFractional()` methods:
 ```javascript
 var a=new Tpa('33 2/3');
 console.log(a.isInteger());                 // false
@@ -118,9 +120,9 @@ Fractions are never automatically simplified. However, the `simplify()` method m
 var n=new Tpa('1/3');
 n.multiply('3/5').multiply('9/7').multiply('23/45').multiply('12 45/87').divide('99.75');
 console.log(n.toString(25));                // '0.0164924626838031038186599...'
-console.log(n.toFraction());                // 0 67626900/4100473125
+console.log(n.toFraction());                // '0 67626900/4100473125'
 console.log(n.simplify());                  // true - indicates that simplification was fully achieved
-console.log(n.toFraction());                // 0 11132/674975
+console.log(n.toFraction());                // '0 11132/674975'
 n=new Tpa('234789789167435342333343/4239123411142533478912');
 console.log(n.simplify());                  // false - defaults to 100 ms which is probably not enough time
 console.log(n.toFraction());                // '55 1638001554596000993183/4239123411142533478912'
@@ -197,7 +199,7 @@ I invested some effort in ensuring speed of operations. I have performed extensi
 
 * Around 5 million per second for either number < 500 digits
 * Around 1 million per second for both numbers in the region of 1,000 digits
-* Around 150 thousand for both numbers in the region of 10,000 digits
+* Around 150 thousand per second for both numbers in the region of 10,000 digits
 
 ##### Multiplication
 
@@ -216,6 +218,65 @@ I invested some effort in ensuring speed of operations. I have performed extensi
 * Around 15 thousand per second for dividing 1,000 digit numbers by 100 digit numbers
 * Around 1 thousand per second for dividing 10,000 digit numbers by 100 digit numbers
 * Around 250 per second for dividing 10,000 digit numbers by 1,000 digit numbers
+
+See `performance.txt` for full details of a test that compared this library (referred to as `Dom`) with two others (referred to `Alex` and `Mike`).
+
+### Method index
+Construction and mutators take numbers as parameters in the following forms:
+
+1. Tpa object
+2. Javascript number
+3. Javascript string (decimal or fractional format)
+
+##### Construction
+* `new Tpa()` or `Tpa()`
+
+##### Unary mutators
+* `frac()`
+* `int()`
+* `abs()`
+* `makeInteger()`
+* `makeFractional()`
+
+##### Binary mutators
+* `add()` or `plus()`
+* `subtract()` or `sub()` or `minus()`
+* `multiply()` or `mult()` or `times()`
+* `divide()` or `div()`
+* `mod()`
+
+##### Enquirers
+* `sign()`
+* `hasFraction()`
+* `isZero()`
+* `isPositive()`
+* `isNegative()`
+* `isInteger()`
+* `isFraction()`
+* `lt()`
+* `lte()`
+* `gt()`
+* `gte()`
+* `eq()`
+
+##### Output
+* `toDecimal()` or `toString()`
+* `toFraction()`
+* `value()`
+
+##### Miscellaneous
+* `simplify()`
+
+Note that all mutators are available as static methods to preserve the original value as per this example
+```javascript
+var x=Tpa(100);
+var y=Tpa(50);
+Tpa.divide(x,y);         // Returns a new number = x/y, x and y remain unchanged
+x.divide(y);             // Returns x having been divided by y, only y remains unchanged
+```
+
+
+
 
 
 

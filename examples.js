@@ -114,3 +114,9 @@ console.log(Tpa.mod(a,b).value());        // 5
 console.log(Tpa.frac(b).value());         // 0.5
 console.log(Tpa.int(b).value());          // 12
 console.log(Tpa.abs(-23).value());        // 23
+
+// Static vs in-place
+var a=Tpa(100);
+var b=Tpa(50);
+Tpa.divide(a,b);         // Returns a new number = a/b, a and b remain unchanged
+a.divide(b);             // Returns a having been divided by b, only b remains unchanged

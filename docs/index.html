@@ -43,7 +43,8 @@
 
 
     <section>
-        <article><h2>TPA - Total Precision Arithmetic</h2><p>tpa.js performs basic arithmetic operations with total precision.</p>
+        <article><h2>TPA - Total Precision Arithmetic</h2><p><a href="http://travis-ci.org/dthwaite/TPA"><img src="https://secure.travis-ci.org/dthwaite/TPA.png" alt="Build Status"></a></p>
+<p>tpa.js performs basic arithmetic operations with total precision.</p>
 <p>The main features are:</p>
 <ul>
 <li>Simplicity - one library, add/subtract/multiply/divide</li>
@@ -52,6 +53,7 @@
 <li>Expressive - inputs/outputs numbers using decimal or fractional forms</li>
 <li>Quality - comprehensively tested and documented</li>
 </ul>
+<p>For a terse list of methods go to the end of this readme. The usage section below is more descriptive.</p>
 <p>There are many similar libraries available. I wrote this one partly as an exercise. But I also wrote it because it achieves all the features listed above as well as, or considerably better (IMHO ;-), than the others.</p>
 <p>Installation:<br><code>npm install</code></p>
 <p>Test:<br><code>npm test</code></p>
@@ -60,11 +62,11 @@
 
 var n=new Tpa(100.123);
 console.log(n.toString()); // Outputs '123.123'</code></pre><p>To use in the browser:</p>
-<pre class="prettyprint source lang-javascript"><code>&lt;script src =&quot;tpa.min.js&quot;>&lt;/script>
+<pre class="prettyprint source lang-javascript"><code>&lt;script src =&quot;https://cdn.rawgit.com/dthwaite/TPA/master/lib/tpa.min.js&quot;>&lt;/script>
 &lt;script>
 var n=new Tpa(100.123);
 console.log(n.toString()); // Outputs '123.123'
-&lt;/script></code></pre><h3>Usage summary</h3><h4>Set up</h4><pre class="prettyprint source lang-javascript"><code>var n1=new Tpa();                // new integer set to zero
+&lt;/script></code></pre><h3>Usage</h3><h4>Set up</h4><pre class="prettyprint source lang-javascript"><code>var n1=new Tpa();                // new integer set to zero
 var n2=new Tpa(123);             // new integer set to 123
 var n3=new Tpa(213.5);           // new fraction set to 123.5
 var n4=new Tpa('123');           // new integer set to 123
@@ -86,7 +88,7 @@ console.log(n7.toFraction());    // '-4 538/1284'
 n7.simplify();
 console.log(n7.toFraction());    // '-4 269/642'
 console.log(n7.toDecimal());     // '-4.4[19003115264797507788161993769470404984423676012461059]'
-console.log(n7.toDecimal(20));   // '-4.41900311526479750778...' (limit dp's to 20)</code></pre><p>Note that there is a <code>value()</code> method that gives the number in JS floating point number. This will clearly be an approximation in many cases.</p>
+console.log(n7.toDecimal(20));   // '-4.41900311526479750778...' (limit dp's to 20)</code></pre><p>Note that there is a <code>value()</code> method that gives the number as a javascript floating point number. This will clearly be an approximation in many cases.</p>
 <h4>Operations</h4><p>Methods <code>add()</code>, <code>subtract()</code>, <code>multiply()</code> and <code>divide()</code> all operate in-situ on the number on which they are called. They return the number to allow for chaining of operations. Each takes a parameter that may either be an existing <code>Tpa</code> object (which is not changed) or a number or string that is a valid representation. Aliases for the above are: <code>plus()</code>, <code>sub()</code>, <code>minus()</code>, <code>mult()</code>, <code>times()</code>, <code>div()</code>.</p>
 <pre class="prettyprint source lang-javascript"><code>console.log(n2.add(n2).toString());         // '246'
 console.log(n2.subtract(123).toString());   // '123'
@@ -109,7 +111,7 @@ console.log(c.toString());                  // '10.8' (c is fractional and so op
 var d=new Tpa(b,true);                      // Explicitly set d to be integer
 console.log(d.toString());                  // '7' (d was constructed to ignore any fractional part)
 var e=new Tpa('23 100/23',true);            // Explicitly set e to be integer
-console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)</code></pre><p>You can find out what type a number is with the <code>isInteger()</code> and <code>isFractiona()</code> methods and you can convert a number to one or other representation with the <code>makeInteger()</code> and <code>makeFractional()</code> methods:</p>
+console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)</code></pre><p>You can find out what type a number is with the <code>isInteger()</code> and <code>isFraction()</code> methods and you can convert a number to one or other representation with the <code>makeInteger()</code> and <code>makeFractional()</code> methods:</p>
 <pre class="prettyprint source lang-javascript"><code>var a=new Tpa('33 2/3');
 console.log(a.isInteger());                 // false
 console.log(a.makeInteger().value());       // 33
@@ -122,9 +124,9 @@ console.log(b.makeInteger().toDecimal());    // '-1'</code></pre><p>The reason T
 <pre class="prettyprint source lang-javascript"><code>var n=new Tpa('1/3');
 n.multiply('3/5').multiply('9/7').multiply('23/45').multiply('12 45/87').divide('99.75');
 console.log(n.toString(25));                // '0.0164924626838031038186599...'
-console.log(n.toFraction());                // 0 67626900/4100473125
+console.log(n.toFraction());                // '0 67626900/4100473125'
 console.log(n.simplify());                  // true - indicates that simplification was fully achieved
-console.log(n.toFraction());                // 0 11132/674975
+console.log(n.toFraction());                // '0 11132/674975'
 n=new Tpa('234789789167435342333343/4239123411142533478912');
 console.log(n.simplify());                  // false - defaults to 100 ms which is probably not enough time
 console.log(n.toFraction());                // '55 1638001554596000993183/4239123411142533478912'
@@ -181,9 +183,78 @@ console.log(Tpa.frac(b).value());         // 0.5
 console.log(Tpa.int(b).value());          // 12
 console.log(Tpa.abs(-23).value());        // 23</code></pre><p>Note that for methods that take two arguments the first one dictates whether the result is integer or fractional. Thus the subtraction of 12.5 from 5 yields 7 as the operation is only working on integer parts. As opposed to the division that takes the type of b which is fractional.</p>
 <h3>Performance</h3><p>I invested some effort in ensuring speed of operations. I have performed extensive comparisons with other libraries and can confidently say that this library is orders of magnitude faster in many areas. I have measured performance against two &quot;competitors&quot; for add, subtract, multiply and divide using numbers of various sizes ranging from a few decimal digits long to tens of thousands. Performance can also vary according to the order in which these numbers are presented. I have optimised in all these permutations and I have detailed timings for each. I present here a short summary (this all for integer values only):</p>
-<h5>Addition &amp; subtraction</h5><p>Around 5 million per second for either number &lt; 500 digits<br>Around 1 million per second for both numbers in the region of 1,000 digits<br>Around 150 thousand for both numbers in the region of 10,000 digits</p>
-<h5>Multiplication</h5><p>Around 10 million per second for small numbers (&lt;10 digits)<br>Around 1 million per second for both numbers in the region of 25 digits<br>Around 1/2 million per second for both numbers in the region of 100 digits<br>Around 10 thousand per second for both numbers in the region of 1,000 digits<br>Around 150 per second for both numbers in the region of 10,000 digits</p>
-<h5>Division</h5><p>Around 2-3 million per second for both numbers &lt; 25 digits<br>Around 1 million per second for both numbers in &lt; 100 digits<br>Around 300 thousand per second dividing 1,000 digit numbers by &lt;8 digit numbers<br>Around 40 thousand per second dividing 10,000 digit numbers by &lt;8 digit numbers<br>Around 15 thousand per second for dividing 1,000 digit numbers by 100 digit numbers<br>Around 1 thousand per second for dividing 10,000 digit numbers by 100 digit numbers<br>Around 250 per second for dividing 10,000 digit numbers by 1,000 digit numbers</p></article>
+<h5>Addition &amp; subtraction</h5><ul>
+<li>Around 5 million per second for either number &lt; 500 digits</li>
+<li>Around 1 million per second for both numbers in the region of 1,000 digits</li>
+<li>Around 150 thousand per second for both numbers in the region of 10,000 digits</li>
+</ul>
+<h5>Multiplication</h5><ul>
+<li>Around 10 million per second for small numbers (&lt;10 digits)</li>
+<li>Around 1 million per second for both numbers in the region of 25 digits</li>
+<li>Around 1/2 million per second for both numbers in the region of 100 digits</li>
+<li>Around 10 thousand per second for both numbers in the region of 1,000 digits</li>
+<li>Around 150 per second for both numbers in the region of 10,000 digits</li>
+</ul>
+<h5>Division</h5><ul>
+<li>Around 2-3 million per second for both numbers &lt; 25 digits</li>
+<li>Around 1 million per second for both numbers in &lt; 100 digits</li>
+<li>Around 300 thousand per second dividing 1,000 digit numbers by &lt;8 digit numbers</li>
+<li>Around 40 thousand per second dividing 10,000 digit numbers by &lt;8 digit numbers</li>
+<li>Around 15 thousand per second for dividing 1,000 digit numbers by 100 digit numbers</li>
+<li>Around 1 thousand per second for dividing 10,000 digit numbers by 100 digit numbers</li>
+<li>Around 250 per second for dividing 10,000 digit numbers by 1,000 digit numbers</li>
+</ul>
+<p>See <code>performance.txt</code> for full details of a test that compared this library (referred to as <code>Dom</code>) with two others (referred to <code>Alex</code> and <code>Mike</code>).</p>
+<h3>Method index</h3><p>Construction and mutators take numbers as parameters in the following forms:</p>
+<ol>
+<li>Tpa object</li>
+<li>Javascript number</li>
+<li>Javascript string (decimal or fractional format)</li>
+</ol>
+<h5>Construction</h5><ul>
+<li><code>new Tpa()</code> or <code>Tpa()</code></li>
+</ul>
+<h5>Unary mutators</h5><ul>
+<li><code>frac()</code></li>
+<li><code>int()</code></li>
+<li><code>abs()</code></li>
+<li><code>makeInteger()</code></li>
+<li><code>makeFractional()</code></li>
+</ul>
+<h5>Binary mutators</h5><ul>
+<li><code>add()</code> or <code>plus()</code></li>
+<li><code>subtract()</code> or <code>sub()</code> or <code>minus()</code></li>
+<li><code>multiply()</code> or <code>mult()</code> or <code>times()</code></li>
+<li><code>divide()</code> or <code>div()</code></li>
+<li><code>mod()</code></li>
+</ul>
+<h5>Enquirers</h5><ul>
+<li><code>sign()</code></li>
+<li><code>hasFraction()</code></li>
+<li><code>isZero()</code></li>
+<li><code>isPositive()</code></li>
+<li><code>isNegative()</code></li>
+<li><code>isInteger()</code></li>
+<li><code>isFraction()</code></li>
+<li><code>lt()</code></li>
+<li><code>lte()</code></li>
+<li><code>gt()</code></li>
+<li><code>gte()</code></li>
+<li><code>eq()</code></li>
+</ul>
+<h5>Output</h5><ul>
+<li><code>toDecimal()</code> or <code>toString()</code></li>
+<li><code>toFraction()</code></li>
+<li><code>value()</code></li>
+</ul>
+<h5>Miscellaneous</h5><ul>
+<li><code>simplify()</code></li>
+</ul>
+<p>Note that all mutators are available as static methods to preserve the original value as per this example</p>
+<pre class="prettyprint source lang-javascript"><code>var x=Tpa(100);
+var y=Tpa(50);
+Tpa.divide(x,y);         // Returns a new number = x/y, x and y remain unchanged
+x.divide(y);             // Returns x having been divided by y, only y remains unchanged</code></pre></article>
     </section>
 
 
@@ -298,13 +369,13 @@ console.log(Tpa.abs(-23).value());        // 23</code></pre><p>Note that for met
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DJT-Tpa.html">Tpa</a></li><li><a href="Tpa-N.html">N</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="DJT-Tpa.html">Tpa</a></li><li><a href="TPA-N.html">N</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Mar 30 2016 18:28:53 GMT+0100 (BST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Mar 31 2016 09:27:24 GMT+0100 (BST)
 </footer>
 
 <script> prettyPrint(); </script>
