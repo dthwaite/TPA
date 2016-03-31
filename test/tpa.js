@@ -251,6 +251,20 @@ function alltests() {
         });
 
         describe('Miscellaneous functions', function () {
+            it('Setting new values',function() {
+                assert.equal(Tpa().set().value(), 0, 'reset an already reset number');
+                assert.equal(Tpa(123).set().value(), 0, 'reset an already non zero number');
+                assert.equal(Tpa(123).set(false).isFractional(), true, 'reset an Integer number to be fractional');
+                assert.equal(Tpa(123.5).set(1.5,true).value(), 1, 'reset a fractional number to be integer');
+                assert.equal(Tpa(123).set('100').value(), 100, 'reset a number to a new value');
+                assert.equal(Tpa(123).set('100 1/4').value(), 100.25, 'reset a number to a new fractional value');
+                assert.equal(Tpa(123).set('100',false).isFractional(), true, 'reset a number to a new integer value explicit set to fractional');
+                var x=new Tpa(100);
+                var y=Tpa(123).set(x);
+                assert.equal(y.value(), 100, 'reset a number to that of another');
+                assert.equal(y.set().isZero(), true, 'reset a number to be zero');
+                assert.equal(x.value(), 100, 'Ensure a copied number was not changed');
+            });
             it('Status tests', function () {
                 assert.equal(Tpa('123 3/4', true).isInteger(), true, 'isInteger for explicit integer');
                 assert.equal(Tpa('123 3/4').isInteger(), false, 'isInteger for implied fraction');

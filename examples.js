@@ -11,6 +11,11 @@ var n4=new Tpa('123');           // new integer set to 123
 var n5=new Tpa('123.3[3]');      // new fraction set to 123 1/3
 var n6=new Tpa('123 1/3');       // new fraction set to 123 1/3
 var n7=new Tpa('-4 538/1284');   // new fraction set to to -4.41900311...
+var n8=new Tpa('-.2[512]');      // new fraction
+n8.set(-9);                      // Sets an existing number to a new value
+n8.set();                        // resets an existing number to zero
+n8.set('-4 538/1284');           // resets an existing number 4.41900311...
+n8.set(n2);                      // Sets an existing number to equal another (takes a copy)
 
 //Outputting
 console.log(n1.toString());      // '0'
@@ -54,6 +59,7 @@ var d=new Tpa(b,true);                      // Explicitly set d to be integer
 console.log(d.toString());                  // '7' (d was constructed to ignore any fractional part)
 var e=new Tpa('23 100/23',true);            // Explicitly set e to be integer
 console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)
+console.log(e.set(3,false));                // Sets an existing number tto a new value and to be fractional
 
 // Conversions
 var a=new Tpa('33 2/3');
