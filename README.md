@@ -33,7 +33,7 @@ console.log(n.toString()); // Outputs '123.123'
 ```
 To use in the browser:
 ```javascript
-<script src ="https://cdn.rawgit.com/dthwaite/TPA/V1.0.0/lib/tpa.min.js"></script>
+<script src ="https://cdn.rawgit.com/dthwaite/TPA/V1.0.1/lib/tpa.min.js"></script>
 <script>
 var n=new Tpa(100.123);
 console.log(n.toString()); // Outputs '123.123'
