@@ -1,7 +1,8 @@
 {
   "name": "TPA",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Total Precision Arithmetic",
+  "homepage": "http://dthwaite.github.io/tpa",
   "keywords": [
     "number",
     "big",
@@ -12,23 +13,31 @@
     "big fraction",
     "big number",
     "big numbers",
-    "arithmetic"
+    "arithmetic",
+    "precision",
+    "exact arithmetic",
+    "huge numbers"
   ],
-  "author": "Dominic Thwaites <dominicthwaites@mac.com>",
+  "author": "Dominic Thwaites <dominicthwaites@mac.com> (http://www.domt.name)",
   "main": "./index",
   "repository": {
     "type": "git",
-    "url": "git@github.com:dthwaite/apa.js.git"
+    "url": "git@github.com:dthwaite/TPA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dthwaite/TPA/issues",
+    "email": "dominicthwaites@mac.com"
   },
   "scripts": {
     "test": "mocha test/"
   },
   "devDependencies": {
     "eslint": "^2.2.0",
-    "mocha": "^2.3.0"
+    "mocha": "^2.3.0",
+    "assert": "^1.3.0"
   },
   "license": "MIT",
   "engines": {
-    "node": ">= 0.10.x"
+    "node": ">= 2.2.x"
   }
 }

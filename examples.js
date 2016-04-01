@@ -1,7 +1,7 @@
 /*
 Examples as given in README.md
  */
-var Tpa=require('./lib/Tpa.js');
+var Tpa=require('TPA');
 
 // Inputting
 var n1=new Tpa();                // new integer set to zero
