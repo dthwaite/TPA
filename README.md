@@ -2,8 +2,9 @@
 
 [![Build Status](https://secure.travis-ci.org/dthwaite/TPA.png)](http://travis-ci.org/dthwaite/TPA)
 
+##### tpa.js performs basic arithmetic operations with total precision.
 
-tpa.js performs basic arithmetic operations with total precision.
+Available on [GitHub](https://github.com/dthwaite/TPA), details on [JsDocs](http://dthwaite.github.io/tpa/docs/). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
 
 The main features are:
 
@@ -108,7 +109,7 @@ var e=new Tpa('23 100/23',true);            // Explicitly set e to be integer
 console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)
 console.log(e.set(3,false));                // Sets an existing number tto a new value and to be fractional
 ```
-You can find out what type a number is with the `isInteger()` and `isFraction()` methods and you can convert a number to one or other representation with the `makeInteger()` and `makeFractional()` methods:
+You can find out what type a number is with the `isInteger()` and `isFractional()` methods and you can convert a number to one or other representation with the `makeInteger()` and `makeFractional()` methods:
 ```javascript
 var a=new Tpa('33 2/3');
 console.log(a.isInteger());                 // false
@@ -233,38 +234,41 @@ Construction and mutators take numbers as parameters in the following forms:
 1. Tpa object
 2. Javascript number
 3. Javascript string (decimal or fractional format)
-
+  
 ##### Construction & setting
 * `new Tpa()` or `Tpa()`
 * `set()`
 
-##### Unary mutators
-* `frac()`
-* `int()`
-* `abs()`
-* `makeInteger()`
-* `makeFractional()`
+##### Mutators
+* Unary
+    * `frac()`
+    * `int()`
+    * `abs()`
+    * `makeInteger()`
+    * `makeFractional()`
 
-##### Binary mutators
-* `add()` or `plus()`
-* `subtract()` or `sub()` or `minus()`
-* `multiply()` or `mult()` or `times()`
-* `divide()` or `div()`
-* `mod()`
+* Binary
+    * `add()` or `plus()`
+    * `subtract()` or `sub()` or `minus()`
+    * `multiply()` or `mult()` or `times()`
+    * `divide()` or `div()`
+    * `mod()`
 
 ##### Enquirers
-* `sign()`
-* `hasFraction()`
-* `isZero()`
-* `isPositive()`
-* `isNegative()`
-* `isInteger()`
-* `isFraction()`
-* `lt()`
-* `lte()`
-* `gt()`
-* `gte()`
-* `eq()`
+* Unary
+    * `sign()`
+    * `hasFraction()`
+    * `isZero()`
+    * `isPositive()`
+    * `isNegative()`
+    * `isInteger()`
+    * `isFractional()`
+* Binary
+    * `lt()`
+    * `lte()`
+    * `gt()`
+    * `gte()`
+    * `eq()`
 
 ##### Output
 * `toDecimal()` or `toString()`

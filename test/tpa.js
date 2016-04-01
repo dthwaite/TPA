@@ -346,6 +346,11 @@ function alltests() {
                     assert.throws(function () {
                         new Tpa(1).lt()
                     }, Error, 'Must pass something into lt()');
+                    assert.equal(Tpa().lt(5),true,'zero and positive');
+                    assert.equal(Tpa().lt(0),false,'zero and zero');
+                    assert.equal(Tpa().lt(-5),false,'zero and negative');
+                    assert.equal(Tpa(5).lt(0),false,'positive and zero');
+                    assert.equal(Tpa(-5).lt(0),true,'negative and zero');
                     assert.equal(Tpa(5).lt(5), false, 'Two equal numbers');
                     assert.equal(Tpa(5).lt(-5), false, 'Two equal opposite sign numbers - second negative');
                     assert.equal(Tpa(-5).lt(5), true, 'Two equal opposite sign numbers - first negative');
@@ -380,6 +385,11 @@ function alltests() {
                     assert.throws(function () {
                         new Tpa(1).gt()
                     }, Error, 'Must pass something into gt()');
+                    assert.equal(Tpa().gt(5),false,'zero and positive');
+                    assert.equal(Tpa().gt(0),false,'zero and zero');
+                    assert.equal(Tpa().gt(-5),true,'zero and negative');
+                    assert.equal(Tpa(5).gt(0),true,'positive and zero');
+                    assert.equal(Tpa(-5).gt(0),false,'negative and zero');
                     assert.equal(Tpa(5).gt(5), false, 'Two equal numbers');
                     assert.equal(Tpa(5).gt(-5), true, 'Two equal opposite sign numbers - second negative');
                     assert.equal(Tpa(-5).gt(5), false, 'Two equal opposite sign numbers - first negative');
@@ -397,6 +407,11 @@ function alltests() {
                     assert.throws(function () {
                         new Tpa(1).gte()
                     }, Error, 'Must pass something into gte()');
+                    assert.equal(Tpa().eq(5),false,'zero and positive');
+                    assert.equal(Tpa().eq(0),true,'zero and zero');
+                    assert.equal(Tpa().eq(-5),false,'zero and negative');
+                    assert.equal(Tpa(5).eq(0),false,'positive and zero');
+                    assert.equal(Tpa(-5).eq(0),false,'negative and zero');
                     assert.equal(Tpa(5).gte(5), true, 'Two equal numbers');
                     assert.equal(Tpa(5).gte(-5), true, 'Two equal opposite sign numbers - second negative');
                     assert.equal(Tpa(-5).gte(5), false, 'Two equal opposite sign numbers - first negative');
