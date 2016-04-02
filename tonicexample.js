@@ -1,4 +1,4 @@
-var Tpa=require("TPA");
+var Tpa=require('TPA');
 
 // Create 3 new Tpa numbers
 var n1=new Tpa('123 43/57');
@@ -10,4 +10,4 @@ var product=Tpa(1,false); // 'false' means NOT an integer - i.e. can hold fracti
 product.multiply(n1).multiply(n2).multiply(n3).simplify();
 
 // et voila...
-"["+n1.toFraction()+"] * ["+n2.toFraction()+"] * ["+n3.toFraction()+"] equals ["+product.toFraction()+"] ("+product.toDecimal()+")";
+'['+n1.toFraction()+'] * ['+n2.toFraction()+'] * ['+n3.toFraction()+'] equals ['+product.toFraction()+'] ('+product.toDecimal()+')';

@@ -1,3 +1,4 @@
+/*global describe, it*/
 var assert = require('assert');
 var Tpa = require('../');
 var advanced=false;
@@ -893,7 +894,7 @@ function alltests() {
             assert.equal(n.toFraction(), '123 5/10', 'Power down fractional');
             n.subtract('123 1/2');
             assert.equal(n.isZero(), true, 'Power down to zero');
-            assert.equal(Tpa().simplify(),true,"Simplification of zero");
+            assert.equal(Tpa().simplify(),true,'Simplification of zero');
         });
 
     });

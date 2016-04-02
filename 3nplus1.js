@@ -19,4 +19,5 @@ while (n.digits.length>1 && n.digits[0]>1) { // Go on until we reach 1!
         ups++;
     }
 }
-console.log("ups: "+ups+" downs: "+downs);
+/*eslint no-console: "off" */
+console.log('ups: '+ups+' downs: '+downs);
