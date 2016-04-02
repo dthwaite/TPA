@@ -1,7 +1,7 @@
 {
     "critics": {
       "eslint": {"engine": "standard"},
-      "wc": { "limit": 10000 }
+      "lc": { "limit": 1500 }
     },
 
     "ignore": [
