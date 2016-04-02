@@ -1,10 +1,12 @@
 ## TPA - Total Precision Arithmetic change log
 
+### v1.0.8
+Added bithound analysis & eslinted all files
+
 ### v1.0.7 (2016-04-02)
 Very minor optimisation for multiplication
 Further tests to improve coverage (99.32% of lines)
 Added coverage folder to `.npmignore`
-Added bithound analysis & eslinted all files
 
 ### v1.0.6 (2016-04-02)
 

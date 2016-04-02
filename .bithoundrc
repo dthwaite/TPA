@@ -1,9 +1,8 @@
 "critics": {
   "eslint": {"engine": "standard"}
+  "wc": { "limit": 7500 }
 }
-"critics": {
-  "wc": { "limit": 10000 }
-}
+
 "ignore": [
     "**/deps/**",
     "**/node_modules/**",
