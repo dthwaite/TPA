@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "Total Precision Arithmetic",
   "homepage": "http://dthwaite.github.io/tpa",
+  "tonicExampleFilename": "tonicexample.js",
   "keywords": [
     "number",
     "big",

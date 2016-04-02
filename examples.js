@@ -1,7 +1,7 @@
 /*
 Examples as given in README.md
  */
-var Tpa=require('TPA');
+var Tpa=require('./lib/tpa');
 
 // Inputting
 var n1=new Tpa();                // new integer set to zero
@@ -59,7 +59,7 @@ var d=new Tpa(b,true);                      // Explicitly set d to be integer
 console.log(d.toString());                  // '7' (d was constructed to ignore any fractional part)
 var e=new Tpa('23 100/23',true);            // Explicitly set e to be integer
 console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)
-console.log(e.set(3,false));                // Sets an existing number tto a new value and to be fractional
+console.log(e.set(3,false).value());        // Sets an existing number to a new value and to be fractional
 
 // Conversions
 var a=new Tpa('33 2/3');

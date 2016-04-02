@@ -107,7 +107,7 @@ var d=new Tpa(b,true);                      // Explicitly set d to be integer
 console.log(d.toString());                  // '7' (d was constructed to ignore any fractional part)
 var e=new Tpa('23 100/23',true);            // Explicitly set e to be integer
 console.log(e.value());                     // 27 (e took on the integer evaluation of the initialising string)
-console.log(e.set(3,false));                // Sets an existing number tto a new value and to be fractional
+console.log(e.set(3,false).value());        // Sets an existing number to a new value and to be fractional
 ```
 You can find out what type a number is with the `isInteger()` and `isFractional()` methods and you can convert a number to one or other representation with the `makeInteger()` and `makeFractional()` methods:
 ```javascript
