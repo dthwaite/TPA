@@ -1,6 +1,11 @@
 ## TPA - Total Precision Arithmetic change log
 
-### v1.0.6
+### v1.0.7 (2016-04-02)
+Very minor optimisation for multiplication
+Further tests to improve coverage (99.32% of lines)
+Added coverage folder to `.npmignore`
+
+### v1.0.6 (2016-04-02)
 
 Added modulus() as an alias to mod() and tests for all aliases
 Performed coverage testing with istanbul and enhanced tests to achieve 100% function coverage

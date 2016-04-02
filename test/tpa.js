@@ -28,6 +28,15 @@ function alltests() {
             n.set(Math.pow(10, 8));
             assert.equal(n.divide(new Tpa.N().set(Math.pow(10, 4))).value(), 0, 'Basic division returns remainder');
             assert.equal(n.value(), Math.pow(10, 4), 'Result of division');
+            assert.equal(Tpa.N(123).value(), 123, 'Static construction');
+            var u;
+            assert.equal(Tpa.N(u).value(), 0, 'Static construction with undefined');
+            assert.throws(function() {
+                new Tpa.N({});
+            }, Error, 'Wrong argument to new N');
+            assert.throws(function() {
+                new Tpa.N('123f');
+            }, Error, 'Bad string argument to new N');
         });
 
         describe('Instantiations', function() {
@@ -327,6 +336,7 @@ function alltests() {
                 var r2=Math.ceil(Math.log(Tpa.random(10).value())/Math.log(10));
                 assert.equal(r1>=1 && r1<=3,true,'Create a 2 digit random number');
                 assert.equal(r2>=9 && r2<=11,true,'Create a 10 digit random number');
+                assert.equal(Tpa(100).toFraction(),'100','fractional output of an integer');
                 assert.throws(function() {
                     Tpa.random();
                 }, Error, 'Must pass a parameter to random()');
@@ -339,6 +349,9 @@ function alltests() {
                 assert.throws(function() {
                     new Tpa('125 1/.1').toString(parseInt('d123'));
                 }, Error, 'Nan to the toString function');
+                assert.throws(function() {
+                    Tpa(123.4).toDecimal('qwe');
+                }, Error, 'Bad argument to toDecimal');
             });
             it('Status changes', function() {
                 var n = Tpa(123);
@@ -880,6 +893,7 @@ function alltests() {
             assert.equal(n.toFraction(), '123 5/10', 'Power down fractional');
             n.subtract('123 1/2');
             assert.equal(n.isZero(), true, 'Power down to zero');
+            assert.equal(Tpa().simplify(),true,"Simplification of zero");
         });
 
     });

@@ -6,3 +6,4 @@ performance.txt
 *.min.js
 .idea
 .travis.yml
+coverage
