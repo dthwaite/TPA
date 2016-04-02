@@ -1,11 +1,13 @@
-"critics": {
-  "eslint": {"engine": "standard"},
-  "wc": { "limit": 7500 }
-}
+{
+    "critics": {
+      "eslint": {"engine": "standard"},
+      "wc": { "limit": 7500 }
+    },
 
-"ignore": [
-    "**/deps/**",
-    "**/node_modules/**",
-    "**/thirdparty/**",
-    "**/third_party/**"
-  ]
+    "ignore": [
+        "**/deps/**",
+        "**/node_modules/**",
+        "**/thirdparty/**",
+        "**/third_party/**"
+      ]
+}
