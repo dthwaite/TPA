@@ -1,6 +1,6 @@
 var assert = require('assert');
 var Tpa = require('../');
-var advanced=true;
+var advanced=false;
 
 alltests(); // Perform all tests on the standard base
 
