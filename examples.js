@@ -106,7 +106,7 @@ console.log(Tpa(-3).sign());                        // -1
 console.log(Tpa(3.3).hasFraction());                // true
 console.log(Tpa('-3 1/3').frac().toFraction());     // '-0 1/3'
 console.log(Tpa('-3 1/3').int().toFraction());      // '-3'
-console.log(Tpa(22).mod(3).toString());             // '1'
+console.log(Tpa(22).modulus(3).toString());             // '1'
 console.log(Tpa(-33.5).abs().value());              // 33.5
 
 // Static methods
@@ -116,7 +116,7 @@ console.log(Tpa.add(a,b).value());        // 17
 console.log(Tpa.subtract(a,b).value());   // -7
 console.log(Tpa.multiply(a,b).value());   // 60
 console.log(Tpa.divide(b,a).toFraction());// '2 25/50'
-console.log(Tpa.mod(a,b).value());        // 5
+console.log(Tpa.modulus(a,b).value());        // 5
 console.log(Tpa.frac(b).value());         // 0.5
 console.log(Tpa.int(b).value());          // 12
 console.log(Tpa.abs(-23).value());        // 23

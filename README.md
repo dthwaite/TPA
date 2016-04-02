@@ -4,7 +4,7 @@
 
 ##### tpa.js performs basic arithmetic operations with total precision.
 
-Available on [GitHub](https://github.com/dthwaite/TPA), details on [JsDocs](http://dthwaite.github.io/tpa/docs/). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
+Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http://dthwaite.github.io/tpa/docs/). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
 
 The main features are:
 
@@ -164,7 +164,7 @@ console.log(d.eq(c));               // true
 * `hasFraction()` return true if the number has a non zero fractional part
 * `frac()` removes the integer value from the number
 * `int()` removes the fractional value from the number
-* `mod()` set this number to the modulus of the number passed in
+* `modulus()` set this number to the modulus of the number passed in
 * `abs()` set this number to its absolute value
 
 ```javascript
@@ -172,7 +172,7 @@ console.log(Tpa(-3).sign());                        // -1
 console.log(Tpa(3.3).hasFraction());                // true
 console.log(Tpa('-3 1/3').frac().toFraction());     // '-0 1/3'
 console.log(Tpa('-3 1/3').int().toFraction());      // '-3'
-console.log(Tpa(22).mod(3).toString());             // '1'
+console.log(Tpa(22).modulus(3).toString());             // '1'
 console.log(Tpa(-33.5).abs().value());              // 33.5
 ```
 #### Static methods
@@ -181,7 +181,7 @@ Typically the arithmetical operations change the number on which they are called
 * `Tpa.subtract(a,b)` subtracts b from a and returns the result in a new number (aliases: `sub()` & `minus()`)
 * `Tpa.multiply(a,b)` multiplies two numbers and returns the result in a new number (aliases: `times()` & `mult()`)
 * `Tpa.divide(a,b)` divides a by b and returns the result in a new number (aliases: `div()`)
-* `Tpa.mod(a,b)` performs a mod b and returns the result in a new number
+* `Tpa.modulus(a,b)` performs a modulus b and returns the result in a new number (aliases: `mod()`)
 * `Tpa.frac(a)` takes the fractional part of a and returns it in a new number
 * `Tpa.int(a)` takes the integer part of a and returns it in a new number
 * `Tpa.abs(a)` takes the absolute value of a and returns it in a new number
@@ -193,7 +193,7 @@ console.log(Tpa.add(a,b).value());        // 17
 console.log(Tpa.subtract(a,b).value());   // -7
 console.log(Tpa.multiply(a,b).value());   // 60
 console.log(Tpa.divide(b,a).toFraction());// '2 25/50'
-console.log(Tpa.mod(a,b).value());        // 5
+console.log(Tpa.modulus(a,b).value());        // 5
 console.log(Tpa.frac(b).value());         // 0.5
 console.log(Tpa.int(b).value());          // 12
 console.log(Tpa.abs(-23).value());        // 23
@@ -252,7 +252,7 @@ Construction and mutators take numbers as parameters in the following forms:
     * `subtract()` or `sub()` or `minus()`
     * `multiply()` or `mult()` or `times()`
     * `divide()` or `div()`
-    * `mod()`
+    * `modulus()` or `mod()`
 
 ##### Enquirers
 * Unary

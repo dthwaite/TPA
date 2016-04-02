@@ -1,18 +1,20 @@
 var assert = require('assert');
-Tpa = require('../');
-var base;
+var Tpa = require('../');
+var advanced=true;
 
 alltests(); // Perform all tests on the standard base
 
-// Perform all the tests with 100 different bases which checks internal representational integrity
-for (var i = 0; i < 100; i++) {
-    Tpa.setBASE(10 * (1 + i / 2) + Math.floor(Math.random() * Math.pow(2, i / 4)));
-    alltests();
+if (advanced) {
+    // Perform all the tests with 100 different bases which checks internal representational integrity
+    for (var i = 0; i < 100; i++) {
+        Tpa.setBASE(10 * (1 + i / 2) + Math.floor(Math.random() * Math.pow(2, i / 4)));
+        alltests();
+    }
 }
 
 function alltests() {
-    describe('Tpa.js with BASE set to '+Tpa.getBASE(), function () {
-        it('N - internal Number class, basic sanity checks', function () {
+    describe('Tpa.js with BASE set to '+Tpa.getBASE(), function() {
+        it('N - internal Number class, basic sanity checks', function() {
             assert.equal(new Tpa.N().isZero(), true, 'New N is zero');
             assert.equal(new Tpa.N().set(100).value(), 100, 'Set a small value');
             assert.equal(new Tpa.N().set(10000000000).value(), Math.pow(10, 10), 'Set a large value');
@@ -28,8 +30,8 @@ function alltests() {
             assert.equal(n.value(), Math.pow(10, 4), 'Result of division');
         });
 
-        describe('Instantiations', function () {
-            it('Empty construction', function () {
+        describe('Instantiations', function() {
+            it('Empty construction', function() {
                 var n = new Tpa();
                 assert.equal(n.value(), 0, 'Construction of an Tpa with no parameter should yield a zero value');
                 assert.equal(Tpa(n), n, 'Static construction with exising Tpa should deliver back the same Tpa');
@@ -52,7 +54,7 @@ function alltests() {
                 assert.equal(Tpa().hasFraction(), false, 'Static empty construction has no fraction');
             });
 
-            it('Construction from an Tpa', function () {
+            it('Construction from an Tpa', function() {
                 var n = new Tpa(123);
                 assert.equal(Tpa(n), n, 'Static construction yields same object');
                 assert.notEqual(new Tpa(n), n, 'New construction yields new object');
@@ -67,11 +69,11 @@ function alltests() {
             });
 
 
-            it('Integer, numeric construction', function () {
+            it('Integer, numeric construction', function() {
                 assert.equal(new Tpa(0).value(), 0, 'Construction of an Tpa with numeric 0 parameter should yield a numeric value');
                 assert.equal(new Tpa(123).value(), 123, 'Construction of an Tpa with numeric parameter should yield a numeric value');
-                assert.throws(function () {
-                    new Tpa(NaN)
+                assert.throws(function() {
+                    new Tpa(NaN);
                 }, Error, 'Construction with NaN should fail');
                 assert.equal(new Tpa(123.123).value(), 123.123, 'Fractional part accepted for non explicit integer');
                 assert.equal(new Tpa(123.123).isFractional(), true, 'Fractional number for non explicit integer bcomes fractional');
@@ -85,10 +87,10 @@ function alltests() {
                 assert.equal(new Tpa(213).hasFraction(), false, 'New integer construction has no fraction');
             });
 
-            it('Decimal, numeric construction', function () {
+            it('Decimal, numeric construction', function() {
                 assert.equal(Tpa(123.123, false).value(), 123.123, 'Fractional positive number construction value');
                 assert.equal(Tpa(123.9, false).value(), 123.9, 'Fractional positive number construction value');
-                assert.equal(Tpa(-1234, false).value(), -1234, 'Fractional positive number construction negative value');
+                assert.equal(Tpa(-1234, false).toString(), '-1234', 'Fractional positive number construction negative value');
                 assert.equal(Tpa(-1234, false).isFractional(), true, 'Fractional negative number is fractional');
                 assert.equal(Tpa(1234, false).isInteger(), false, 'Fractional positive number is not integer');
                 assert.equal(Tpa(1234, false).hasFraction(), false, 'Fractional positive integer has no fraction');
@@ -98,7 +100,7 @@ function alltests() {
                 assert.equal(Tpa(12345678912345.123456789, false).value(), 12345678912345.123, 'larger number with 9 significant figures - loses some precision');
             });
 
-            it('Integer, string construction', function () {
+            it('Integer, string construction', function() {
                 assert.equal(new Tpa('0').value(), 0, 'Construction of an Tpa with numeric 0 parameter should yield a numeric value');
                 assert.equal(new Tpa('123').value(), 123, 'Construction of an Tpa with numeric parameter should yield a numeric value');
                 assert.equal(new Tpa('+123').value(), 123, 'Construction of an Tpa with nexplicit + sign');
@@ -118,73 +120,76 @@ function alltests() {
                     '12345678901234567890123456789012345678901234567890123456789012345678901234567890', 'Large size number');
             });
 
-            it('Bad format for string instantiation', function () {
-                assert.throws(function () {
-                    new Tpa('1-9')
+            it('Bad format for string instantiation', function() {
+                assert.throws(function() {
+                    new Tpa('1-9');
                 }, Error, 'Construction with +/- not at start should fail');
-                assert.throws(function () {
-                    new Tpa('+123s')
+                assert.throws(function() {
+                    new Tpa('+123s');
                 }, Error, 'Construction with bad character should fail');
-                assert.throws(function () {
-                    new Tpa('+123..0')
+                assert.throws(function() {
+                    new Tpa('+123..0');
                 }, Error, 'Construction with multiple decimal points should fail');
-                assert.throws(function () {
-                    new Tpa('1.23.45')
+                assert.throws(function() {
+                    new Tpa('1.23.45');
                 }, Error, 'Construction with multiple separate decimal points should fail');
-                assert.throws(function () {
-                    new Tpa('+-123.0')
+                assert.throws(function() {
+                    new Tpa('+-123.0');
                 }, Error, 'Construction with plus and minus sign should fail');
-                assert.throws(function () {
-                    new Tpa('qwerty')
+                assert.throws(function() {
+                    new Tpa('qwerty');
                 }, Error, 'Construction bad characters should fail');
-                assert.throws(function () {
-                    new Tpa('125!')
+                assert.throws(function() {
+                    new Tpa('125!');
                 }, Error, 'Construction with exclamation mark in numerator should fail');
-                assert.throws(function () {
-                    new Tpa('125.!')
+                assert.throws(function() {
+                    new Tpa('125.!');
                 }, Error, 'Construction with no decimals after exclamation mark should fail');
-                assert.throws(function () {
-                    new Tpa('125 3')
+                assert.throws(function() {
+                    new Tpa('125 3');
                 }, Error, 'No denominator in fraction');
-                assert.throws(function () {
-                    new Tpa('125 /')
+                assert.throws(function() {
+                    new Tpa('125 /');
                 }, Error, 'No numerator in fraction');
-                assert.throws(function () {
-                    new Tpa('125 /10')
+                assert.throws(function() {
+                    new Tpa('125 /10');
                 }, Error, 'No denominator in fraction');
-                assert.throws(function () {
-                    new Tpa('125 1.5/10')
+                assert.throws(function() {
+                    new Tpa('125 1.5/10');
                 }, Error, 'Cannot have decimals in fractional numerator');
-                assert.throws(function () {
-                    new Tpa('125 1/.1')
+                assert.throws(function() {
+                    new Tpa('125 1/.1');
                 }, Error, 'Cannot have decimals in fractional denominator');
-                assert.throws(function () {
-                    new Tpa('125 3s2/12')
+                assert.throws(function() {
+                    new Tpa('125 3s2/12');
                 }, Error, 'Bad character in fractional numerator');
-                assert.throws(function () {
-                    new Tpa('125 32/121!')
+                assert.throws(function() {
+                    new Tpa('125 32/121!');
                 }, Error, 'Bad character in fractional denominator');
-                assert.throws(function () {
-                    new Tpa('/12')
+                assert.throws(function() {
+                    new Tpa('/12');
                 }, Error, 'Fractional only number with no numerator');
-                assert.throws(function () {
-                    new Tpa('123/')
+                assert.throws(function() {
+                    new Tpa('123/');
                 }, Error, 'Fractional only number with no denominator');
-                assert.throws(function () {
-                    new Tpa('123.3[')
+                assert.throws(function() {
+                    new Tpa('123.3[');
                 }, Error, 'Decimal with incomplete recurring section');
-                assert.throws(function () {
-                    new Tpa('123.3[]')
+                assert.throws(function() {
+                    new Tpa('123.3[]');
                 }, Error, 'Decimal with empty recurring section');
-                assert.throws(function () {
-                    new Tpa('123.3[123')
+                assert.throws(function() {
+                    new Tpa('123.3[123');
                 }, Error, 'Decimal non terminated recurring section');
-                assert.throws(function () {
-                    new Tpa('123.3[123]4')
+                assert.throws(function() {
+                    new Tpa('123.3[123]4');
                 }, Error, 'Decimal with digits after recurring section termination');
+                assert.throws(function() {
+                    new Tpa('+X');
+                }, Error, 'no digits');
             });
 
-            it('Decimal, string construction', function () {
+            it('Decimal, string construction', function() {
                 assert.equal(new Tpa('123.123').value(), 123.123, 'Fractional part accepted for implied integer construction');
                 assert.equal(new Tpa('123.123', true).value(), 123, 'Fractional part ignored for explicit integer construction');
                 assert.equal(new Tpa('123.123').isFractional(), true, 'Fractional construction implies fraction construction');
@@ -206,24 +211,24 @@ function alltests() {
                     '0.1234567890123456789012345678901234567890123456789012345678901234567890123456789', 'very large number of decimal places');
             });
 
-            it("Recurring decimals", function () {
-                assert.equal(Tpa('3.[3]').toString(), '3.[3]', "Immediate single recurring decimal");
-                assert.equal(Tpa('100.[714285]').toString(), '100.[714285]', "Immediate multiple recurring decimal");
-                assert.equal(Tpa('123456.1234[5678]').toString(), '123456.1234[5678]', "Multiple recurring decimal in a larger number");
-                assert.equal(Tpa('1.35[45]').toString(), '1.3[54]', "Subsequent multiple recurring decimal that is better expressed");
-                assert.equal(Tpa('3.33[33]').toString(), '3.[3]', "Tortuous 1/3 recurring decimal technically correct");
+            it('Recurring decimals', function() {
+                assert.equal(Tpa('3.[3]').toString(), '3.[3]', 'Immediate single recurring decimal');
+                assert.equal(Tpa('100.[714285]').toString(), '100.[714285]', 'Immediate multiple recurring decimal');
+                assert.equal(Tpa('123456.1234[5678]').toString(), '123456.1234[5678]', 'Multiple recurring decimal in a larger number');
+                assert.equal(Tpa('1.35[45]').toString(), '1.3[54]', 'Subsequent multiple recurring decimal that is better expressed');
+                assert.equal(Tpa('3.33[33]').toString(), '3.[3]', 'Tortuous 1/3 recurring decimal technically correct');
             });
 
-            it("Fraction string construction", function () {
-                assert.equal(Tpa('3 1/3').toString(), '3.[3]', "Simple number with recurring fraction");
-                assert.equal(Tpa('10 1/2').value(), 10.5, "Simple number with fixed fraction");
-                assert.equal(Tpa('100 255/256').value().toFixed(7), 100.9960938, "Simple number with larger fraction");
-                assert.equal(Tpa('1234567890 12345/23456').toString(), '1234567890.52630[4570259208731241473396998635743519781718963165075034106412005]', "Number with large fraction");
+            it('Fraction string construction', function() {
+                assert.equal(Tpa('3 1/3').toString(), '3.[3]', 'Simple number with recurring fraction');
+                assert.equal(Tpa('10 1/2').value(), 10.5, 'Simple number with fixed fraction');
+                assert.equal(Tpa('100 255/256').value().toFixed(7), 100.9960938, 'Simple number with larger fraction');
+                assert.equal(Tpa('1234567890 12345/23456').toString(), '1234567890.52630[4570259208731241473396998635743519781718963165075034106412005]', 'Number with large fraction');
                 assert.equal(Tpa('123456789012334567890123456789012345678901234567890 12345/23456').toString(),
-                    '123456789012334567890123456789012345678901234567890.52630[4570259208731241473396998635743519781718963165075034106412005]', "Large number with large fraction");
-                assert.equal(Tpa('100/50').value(), 2, "Fractional only number yield integer");
-                assert.equal(Tpa('12345/23456').toString(), '0.52630[4570259208731241473396998635743519781718963165075034106412005]', "Complex fraction only");
-                assert.equal(Tpa('300/250').toString(), '1.2', "Small top-heavy fraction only");
+                    '123456789012334567890123456789012345678901234567890.52630[4570259208731241473396998635743519781718963165075034106412005]', 'Large number with large fraction');
+                assert.equal(Tpa('100/50').value(), 2, 'Fractional only number yield integer');
+                assert.equal(Tpa('12345/23456').toString(), '0.52630[4570259208731241473396998635743519781718963165075034106412005]', 'Complex fraction only');
+                assert.equal(Tpa('300/250').toString(), '1.2', 'Small top-heavy fraction only');
                 assert.equal(Tpa('12/5', true).value(), 2, 'Heavy fraction ignored if explicitly requesting integer');
                 assert.equal(Tpa('123/1234', true).value(), 0, 'Fraction ignored if explicitly requesting integer');
                 assert.equal(Tpa('-400/800', false).value(), -0.5, 'Negative fraction');
@@ -231,10 +236,10 @@ function alltests() {
                 assert.equal(Tpa('-400/800', true).toString(), '0', 'Negative fraction into integer should yield non negative zero');
                 assert.equal(Tpa('-500/100', false).value(), -5, 'Negative heavy fraction');
                 assert.equal(Tpa('0/123').isZero(), true, 'Fractional 0 numerator yields 0');
-                assert.throws(function () {
-                    new Tpa('123/0')
+                assert.throws(function() {
+                    new Tpa('123/0');
                 }, Error, 'Fractional denominator cannot be 0');
-                assert.equal(Tpa('12345/23456').toString(10), '0.5263045702...', "Complex fraction with 10 dp");
+                assert.equal(Tpa('12345/23456').toString(10), '0.5263045702...', 'Complex fraction with 10 dp');
                 assert.equal(Tpa('1/5').toString(1), '0.2', 'Small complete fraction to 1 dp');
                 assert.equal(Tpa('1/4').toString(1), '0.2...', 'Small incomplete fraction to 1 dp');
                 assert.equal(Tpa('1/4').toString(2), '0.25', 'Small complete fraction to 2 dp');
@@ -250,7 +255,7 @@ function alltests() {
             });
         });
 
-        describe('Miscellaneous functions', function () {
+        describe('Miscellaneous functions', function() {
             it('Setting new values',function() {
                 assert.equal(Tpa().set().value(), 0, 'reset an already reset number');
                 assert.equal(Tpa(123).set().value(), 0, 'reset an already non zero number');
@@ -264,8 +269,17 @@ function alltests() {
                 assert.equal(y.value(), 100, 'reset a number to that of another');
                 assert.equal(y.set().isZero(), true, 'reset a number to be zero');
                 assert.equal(x.value(), 100, 'Ensure a copied number was not changed');
+                assert.equal(Tpa(123).int().value(),123,'Positive integer part of integer');
+                assert.equal(Tpa(123.5).frac().value(),0.5,'Positive fractional part');
+                assert.equal(Tpa(-123.5).frac().value(),-0.5,'Negative fractional part');
+                assert.equal(Tpa(123.5).int().value(),123,'Positive integer part');
+                assert.equal(Tpa(-123.5).int().value(),-123,'Negative iteger part');
+                assert.equal(Tpa.frac(123.5).value(),0.5,'Static Positive fractional part');
+                assert.equal(Tpa.frac(-123.5).value(),-0.5,'Static Negative fractional part');
+                assert.equal(Tpa.int(123.5).value(),123,'Static Positive integer part');
+                assert.equal(Tpa.int(-123.5).value(),-123,'Static Negative iteger part');
             });
-            it('Status tests', function () {
+            it('Status tests', function() {
                 assert.equal(Tpa('123 3/4', true).isInteger(), true, 'isInteger for explicit integer');
                 assert.equal(Tpa('123 3/4').isInteger(), false, 'isInteger for implied fraction');
                 assert.equal(Tpa('123', false).isInteger(), false, 'isInteger for explicit fraction');
@@ -282,7 +296,14 @@ function alltests() {
                 assert.equal(Tpa('123 10/5').hasFraction(), false, 'number has no fraction part');
                 assert.equal(Tpa('123 1/126642').hasFraction(), true, 'number has small fraction part');
             });
-            it('Zero, negative and positive checks', function () {
+            it('Absolute function',function() {
+                assert.equal(Tpa(123).abs().value(),123,'abs on positive number');
+                assert.equal(Tpa(0).abs().value(),0,'abs on zero number');
+                assert.equal(Tpa(-123).abs().value(),123,'abs on negative integer');
+                assert.equal(Tpa('-123 3/4').abs().value(),123.75,'abs on negative fraction');
+                assert.equal(Tpa.abs(-123).value(),123,'abs on static method');
+            });
+            it('Zero, negative and positive checks', function() {
                 assert.equal(Tpa().isZero(), true, 'isZero for zero number');
                 assert.equal(Tpa(12).isZero(), false, 'isZero for integer');
                 assert.equal(Tpa('12 3/4').isZero(), false, 'isZero for fraction');
@@ -301,7 +322,25 @@ function alltests() {
                 assert.equal(Tpa('4/12').isPositive(), true, 'isPositive for positive fraction<1');
                 assert.equal(Tpa('-4/12').isPositive(), false, 'isPositive for negative fraction>-1');
             });
-            it('Status changes', function () {
+            it('Miscellaneous',function() {
+                var r1=Math.ceil(Math.log(Tpa.random(2).value())/Math.log(10));
+                var r2=Math.ceil(Math.log(Tpa.random(10).value())/Math.log(10));
+                assert.equal(r1>=1 && r1<=3,true,'Create a 2 digit random number');
+                assert.equal(r2>=9 && r2<=11,true,'Create a 10 digit random number');
+                assert.throws(function() {
+                    Tpa.random();
+                }, Error, 'Must pass a parameter to random()');
+                assert.throws(function() {
+                    Tpa.random(NaN);
+                }, Error, 'NaN passed into random()');
+                assert.throws(function() {
+                    new Tpa('125 1/.1').toString('asd');
+                }, Error, 'Bad parameter to the toString function');
+                assert.throws(function() {
+                    new Tpa('125 1/.1').toString(parseInt('d123'));
+                }, Error, 'Nan to the toString function');
+            });
+            it('Status changes', function() {
                 var n = Tpa(123);
                 assert.equal(n.isInteger(), true, 'isInteger for implicit integer');
                 n.add(.5);
@@ -313,16 +352,19 @@ function alltests() {
                 n.makeInteger();
                 assert.equal(n.isFractional(), false, 'isInteger for implicit integer');
                 assert.equal(n.value(), 123, 'Integer change has effect');
-                assert.equal(Tpa('-123 3/4').abs().toFraction(),'123 3/4',"Absolute of a negative fraction");
-                assert.equal(Tpa('-1000').abs().toString(),'1000',"Absolute of a negative number");
-                assert.equal(Tpa('1.5').abs().value(),1.5,"Absolute of a positive number");
+                assert.equal(Tpa('-123 3/4').abs().toFraction(),'123 3/4','Absolute of a negative fraction');
+                assert.equal(Tpa('-1000').abs().toString(),'1000','Absolute of a negative number');
+                assert.equal(Tpa('1.5').abs().value(),1.5,'Absolute of a positive number');
+                assert.equal(Tpa.makeFractional(Tpa(123)).isFractional(),true,'Static make fractional');
+                assert.equal(Tpa.makeInteger(Tpa(123.5)).isInteger(),true,'Static make integer');
+                assert.equal(Tpa.makeFractional(Tpa(123.5)).value(),123.5,'Static make fraction on fraction');
             });
         });
 
-        describe('Comparisons', function () {
-            it('Equals for integers', function () {
-                assert.throws(function () {
-                    new Tpa(1).eq()
+        describe('Comparisons', function() {
+            it('Equals for integers', function() {
+                assert.throws(function() {
+                    new Tpa(1).eq();
                 }, Error, 'Must pass something into eq()');
                 assert.equal(Tpa().eq(0), true, 'Empty constructor yields zero number');
                 assert.equal(Tpa(5).eq(5), true, 'Two equal integers');
@@ -333,7 +375,7 @@ function alltests() {
                 assert.equal(Tpa(5).eq(-5), false, 'Two equal integers of different sign, first positive');
                 assert.equal(Tpa(-1000).eq(+1000), false, 'Two equal integers of different sign, second positive');
             });
-            it('Equals for fractions', function () {
+            it('Equals for fractions', function() {
                 assert.equal(Tpa(5).eq(5.123), true, 'Implied integer ignores fraction of comparator');
                 assert.equal(Tpa(5, false).eq(5.123), false, 'Explicit fractional integer uses fraction of comparator');
                 assert.equal(Tpa(5.5).eq(5.5), true, 'Two equal decimals');
@@ -341,10 +383,10 @@ function alltests() {
                 assert.equal(Tpa('5 4234/3245667').eq('5 4234/3245667'), true, 'Two equal complex decimals');
                 assert.equal(Tpa('5 4234/3245667').eq('5 4234/3245668'), false, 'Two unequal complex decimals');
             });
-            describe('Other comparitor functions', function () {
-                it('Less than', function () {
-                    assert.throws(function () {
-                        new Tpa(1).lt()
+            describe('Other comparitor functions', function() {
+                it('Less than', function() {
+                    assert.throws(function() {
+                        new Tpa(1).lt();
                     }, Error, 'Must pass something into lt()');
                     assert.equal(Tpa().lt(5),true,'zero and positive');
                     assert.equal(Tpa().lt(0),false,'zero and zero');
@@ -364,9 +406,9 @@ function alltests() {
                     assert.equal(Tpa('6 125/400').lt('6 125/400'), false, 'Two larger equal fractions');
                     assert.equal(Tpa('-6 125/400').lt('6 125/400'), true, 'Two larger equal fractions - first negative');
                 });
-                it('Less than or equal', function () {
-                    assert.throws(function () {
-                        new Tpa(1).lte()
+                it('Less than or equal', function() {
+                    assert.throws(function() {
+                        new Tpa(1).lte();
                     }, Error, 'Must pass something into lte()');
                     assert.equal(Tpa(5).lte(5), true, 'Two equal numbers');
                     assert.equal(Tpa(5).lte(-5), false, 'Two equal opposite sign numbers - second negative');
@@ -381,9 +423,9 @@ function alltests() {
                     assert.equal(Tpa('6 125/400').lte('6 125/400'), true, 'Two larger equal fractions');
                     assert.equal(Tpa('-6 125/400').lte('6 125/400'), true, 'Two larger equal fractions - first negative');
                 });
-                it('Greater than', function () {
-                    assert.throws(function () {
-                        new Tpa(1).gt()
+                it('Greater than', function() {
+                    assert.throws(function() {
+                        new Tpa(1).gt();
                     }, Error, 'Must pass something into gt()');
                     assert.equal(Tpa().gt(5),false,'zero and positive');
                     assert.equal(Tpa().gt(0),false,'zero and zero');
@@ -403,9 +445,9 @@ function alltests() {
                     assert.equal(Tpa('6 125/400').gt('6 125/400'), false, 'Two larger equal fractions');
                     assert.equal(Tpa('-6 125/400').gt('6 125/400'), false, 'Two larger equal fractions - first negative');
                 });
-                it('Greater than or equal', function () {
-                    assert.throws(function () {
-                        new Tpa(1).gte()
+                it('Greater than or equal', function() {
+                    assert.throws(function() {
+                        new Tpa(1).gte();
                     }, Error, 'Must pass something into gte()');
                     assert.equal(Tpa().eq(5),false,'zero and positive');
                     assert.equal(Tpa().eq(0),true,'zero and zero');
@@ -425,13 +467,26 @@ function alltests() {
                     assert.equal(Tpa('6 125/400').gte('6 125/400'), true, 'Two larger equal fractions');
                     assert.equal(Tpa('-6 125/400').gte('6 125/400'), false, 'Two larger equal fractions - first negative');
                 });
+                it('Compare',function() {
+                    assert.equal(Tpa(2).compare(2),0,'compare integers equal numbers');
+                    assert.equal(Tpa(5).compare(2),1,'compare integers greater than');
+                    assert.equal(Tpa(2).compare(5),-1,'compare integers less than');
+                    assert.equal(Tpa(2).compare(2.5),0,'compare integer with fraction equal');
+                    assert.equal(Tpa(2).compare(3.5),-1,'compare integer with fraction greater than');
+                    assert.equal(Tpa(3.5).compare(3),0,'compare fraction with integer equal');
+                    assert.equal(Tpa(3.5).compare(Tpa(3,false)),1,'compare fraction with integer forced fraction greater than');
+                    assert.equal(Tpa(3.5).compare(2),1,'compare fraction with integer greater than');
+                    assert.equal(Tpa(3.5).compare(3.5),0,'compare fraction with fraction equal');
+                    assert.equal(Tpa(3.6).compare(3.5),1,'compare fraction with fraction greater than');
+                    assert.equal(Tpa(3.6).compare(3.7),-1,'compare fraction with fraction less than');
+                });
             });
         });
 
-        describe('Addition', function () {
-            it('Add various positive integers', function () {
-                assert.throws(function () {
-                    new Tpa(1).add()
+        describe('Addition', function() {
+            it('Add various positive integers', function() {
+                assert.throws(function() {
+                    new Tpa(1).add();
                 }, Error, 'Must pass something into add()');
                 assert.equal(Tpa(1).add(0).value(), 1);
                 assert.equal(Tpa(1).add(1).value(), 2);
@@ -448,7 +503,7 @@ function alltests() {
                 assert.equal(Tpa(199773).add(227).value(), 200000);
             });
 
-            it('Consistency', function () {
+            it('Consistency', function() {
                 var n = Tpa(123);
                 assert.equal((Tpa.add(n, 5), n.value()), 123, 'Static add call should not modify first parameter');
                 assert.equal((Tpa.add(1000, n), n.value()), 123, 'Static add call should not modify second parameter');
@@ -458,7 +513,7 @@ function alltests() {
                 assert.equal(x.add(x), 2246, 'Add the same number object');
             });
 
-            it('Add a mixture of negative and positive integers', function () {
+            it('Add a mixture of negative and positive integers', function() {
                 assert.equal(Tpa(1).add(-1).value(), 0);
                 assert.equal(Tpa(1).add(-7).value(), -6);
                 assert.equal(Tpa(1).add(-100).value(), -99);
@@ -468,7 +523,7 @@ function alltests() {
                 assert.equal(Tpa(-5).add(-99).value(), -104);
             });
 
-            it('Add positive mixed fractions', function () {
+            it('Add positive mixed fractions', function() {
                 assert.equal(Tpa('1 1/10').add('1').value(), 2.1, 'Simple fraction+integer');
                 assert.equal(Tpa('1').add('1 2/10').value(), 2, 'Assumed integer will ignore fractional operand');
                 assert.equal(Tpa('1', false).add('1 2/10').value(), 2.2, 'Explicit fraction will include fractional operand');
@@ -477,7 +532,7 @@ function alltests() {
                 assert.equal(Tpa('1 15/10').add('1 2/10').value(), 3.7, 'Simple heavy fraction+fraction');
             });
 
-            it('Add positive & negative mixed fractions', function () {
+            it('Add positive & negative mixed fractions', function() {
                 assert.equal(Tpa('1 1/10').add('-1').value(), 0.1, 'Simple fraction minus integer');
                 assert.equal(Tpa('1 1/10').add('-2', false).value(), -0.9, 'Simple fraction minus integer to yield negative number');
                 assert.equal(Tpa('1').add('-1 2/10').value(), 0, 'Simple integer minus ignored fraction');
@@ -488,7 +543,7 @@ function alltests() {
                 assert.equal(Tpa('1 3/10').add('-1 8/10').value(), -.5, 'Simple fraction-larger fraction to yield negative number');
             });
 
-            it('Add positive & negative mixed fractions, other way around', function () {
+            it('Add positive & negative mixed fractions, other way around', function() {
                 assert.equal(Tpa('-1', false).add('1 1/10').value(), 0.1, 'Simple fraction minus integer');
                 assert.equal(Tpa('-2', false).add('1 1/10', false).value(), -0.9, 'Simple fraction minus integer to yield negative number');
                 assert.equal(Tpa('-1 2/10').add('1').value(), -.2, 'Negative fraction adding integer to yield negative number');
@@ -499,23 +554,23 @@ function alltests() {
                 assert.equal(Tpa('-1 8/10').add('1 3/10').value(), -.5, 'Simple fraction-larger fraction to yield negative number');
             });
 
-            it('Add positive and negative decimal numbers', function () {
-                assert.equal(Tpa(123.123).add(321.321).value(), 444.444, "Addition of two positive numbers");
-                assert.equal(Tpa(100.5).add(-100.2).value(), 0.3, "Addition of a positive and negative number");
-                assert.equal(Tpa(-100.5).add(100.2).value(), -0.3, "Addition of a negative and positive number to yield a negative number");
-                assert.equal(Tpa(100).add(1.12345).value(), 101, "Addition of integer to decimal which should be ignored");
-                assert.equal(Tpa(100, false).add(1.12345).toString(), '101.12345', "Addition of explicit fraction integer to decimal");
-                assert.equal(Tpa(100, false).add(-99.5).toString(), '0.5', "Subtraction of explicit fraction integer to decimal to yield positive");
-                assert.equal(Tpa(100, false).add(-100.5).toString(), '-0.5', "Subtraction of explicit fraction integer to decimal to yield negative");
-                assert.equal(Tpa(0.12345).add(0.12344).value(), 0.24689, "Addition of two significant decimals");
-                assert.equal(Tpa(0.11).add(-0.01).value(), 0.1, "Subtraction of two significant decimals to small positive");
-                assert.equal(Tpa(100.987).add(-101.123456).value(), -0.136456, "Subtraction of two significant decimals to small negative");
-                assert.equal(Tpa(1.36784571).add(1.2394362).value().toFixed(7), 2.6072819, "Addition of two longer decimals");
-                assert.equal(Tpa(10.36784571).add(-9.06784571).value(), 1.3, "Addition of two longer decimals yielding positive");
-                assert.equal(Tpa(10.36784571).add(-11.06784571).value(), -.7, "Addition of two longer decimals yielding negative");
+            it('Add positive and negative decimal numbers', function() {
+                assert.equal(Tpa(123.123).add(321.321).value(), 444.444, 'Addition of two positive numbers');
+                assert.equal(Tpa(100.5).add(-100.2).value(), 0.3, 'Addition of a positive and negative number');
+                assert.equal(Tpa(-100.5).add(100.2).value(), -0.3, 'Addition of a negative and positive number to yield a negative number');
+                assert.equal(Tpa(100).add(1.12345).value(), 101, 'Addition of integer to decimal which should be ignored');
+                assert.equal(Tpa(100, false).add(1.12345).toString(), '101.12345', 'Addition of explicit fraction integer to decimal');
+                assert.equal(Tpa(100, false).add(-99.5).toString(), '0.5', 'Subtraction of explicit fraction integer to decimal to yield positive');
+                assert.equal(Tpa(100, false).add(-100.5).toString(), '-0.5', 'Subtraction of explicit fraction integer to decimal to yield negative');
+                assert.equal(Tpa(0.12345).add(0.12344).value(), 0.24689, 'Addition of two significant decimals');
+                assert.equal(Tpa(0.11).add(-0.01).value(), 0.1, 'Subtraction of two significant decimals to small positive');
+                assert.equal(Tpa(100.987).add(-101.123456).value(), -0.136456, 'Subtraction of two significant decimals to small negative');
+                assert.equal(Tpa(1.36784571).add(1.2394362).value().toFixed(7), 2.6072819, 'Addition of two longer decimals');
+                assert.equal(Tpa(10.36784571).add(-9.06784571).value(), 1.3, 'Addition of two longer decimals yielding positive');
+                assert.equal(Tpa(10.36784571).add(-11.06784571).value(), -.7, 'Addition of two longer decimals yielding negative');
             });
 
-            it('Add various larger numbers', function () {
+            it('Add various larger numbers', function() {
                 assert.equal(Tpa('123456789').add('987654321').toString(), '1111111110', 'normal number addition');
                 assert.equal(Tpa('123456789123456789').add('987654321987654321').toString(), '1111111111111111110', 'normal larger number addition');
                 assert.equal(Tpa('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111').add(
@@ -536,10 +591,10 @@ function alltests() {
             });
         });
 
-        describe('subtraction - same tests as for addition', function () {
-            it('Subtract various positive integers', function () {
-                assert.throws(function () {
-                    new Tpa(1).subtract()
+        describe('subtraction - same tests as for addition', function() {
+            it('Subtract various positive integers', function() {
+                assert.throws(function() {
+                    new Tpa(1).subtract();
                 }, Error, 'Must pass something into subtract()');
                 assert.equal(Tpa(1).subtract(0).value(), 1);
                 assert.equal(Tpa(1).subtract(1).value(), 0);
@@ -556,7 +611,7 @@ function alltests() {
                 assert.equal(Tpa(199773).subtract(227).value(), 199546);
             });
 
-            it('Consistency', function () {
+            it('Consistency', function() {
                 var n = Tpa(123);
                 assert.equal((Tpa.subtract(n, 5), n.value()), 123, 'Static subtract call should not modify first parameter');
                 assert.equal((Tpa.subtract(1000, n), n.value()), 123, 'Static subtract call should not modify second parameter');
@@ -566,7 +621,7 @@ function alltests() {
                 assert.equal(x.subtract(x), 0, 'Subtract the same number object');
             });
 
-            it('Subtract a mixture of negative and positive integers', function () {
+            it('Subtract a mixture of negative and positive integers', function() {
                 assert.equal(Tpa(1).subtract(-1).value(), 2);
                 assert.equal(Tpa(1).subtract(-7).value(), 8);
                 assert.equal(Tpa(1).subtract(-100).value(), 101);
@@ -576,7 +631,7 @@ function alltests() {
                 assert.equal(Tpa(-5).subtract(-99).value(), 94);
             });
 
-            it('Subtract positive mixed fractions', function () {
+            it('Subtract positive mixed fractions', function() {
                 assert.equal(Tpa('1 1/10').subtract('1').value(), 0.1, 'Simple fraction+integer');
                 assert.equal(Tpa('1').subtract('1 2/10').value(), 0, 'Assumed integer will ignore fractional operand');
                 assert.equal(Tpa('1', false).subtract('1 2/10').value(), -0.2, 'Explicit fraction will include fractional operand');
@@ -585,7 +640,7 @@ function alltests() {
                 assert.equal(Tpa('1 15/10').subtract('1 2/10').value(), 1.3, 'Simple heavy fraction+fraction');
             });
 
-            it('Subtract positive & negative mixed fractions', function () {
+            it('Subtract positive & negative mixed fractions', function() {
                 assert.equal(Tpa('1 1/10').subtract('-1').value(), 2.1, 'Simple fraction minus integer');
                 assert.equal(Tpa('1 1/10').subtract('-2', false).value(), 3.1, 'Simple fraction minus integer to yield negative number');
                 assert.equal(Tpa('1').subtract('-1 2/10').value(), 2, 'Simple integer minus ignored fraction');
@@ -596,7 +651,7 @@ function alltests() {
                 assert.equal(Tpa('1 3/10').subtract('-1 8/10').value(), 3.1, 'Simple fraction-larger fraction to yield negative number');
             });
 
-            it('Subtract positive & negative mixed fractions, other way around', function () {
+            it('Subtract positive & negative mixed fractions, other way around', function() {
                 assert.equal(Tpa('-1', false).subtract('1 1/10').value(), -2.1, 'Simple fraction minus integer');
                 assert.equal(Tpa('-2', false).subtract('1 1/10', false).value(), -3.1, 'Simple fraction minus integer to yield negative number');
                 assert.equal(Tpa('-1 2/10').subtract('1').value(), -2.2, 'Negative fraction subtracting integer to yield negative number');
@@ -607,23 +662,23 @@ function alltests() {
                 assert.equal(Tpa('-1 8/10').subtract('1 3/10').value(), -3.1, 'Simple fraction-larger fraction to yield negative number');
             });
 
-            it('Subtract positive and negative decimal numbers', function () {
-                assert.equal(Tpa(123.123).subtract(321.321).value(), -198.198, "Two positive numbers");
-                assert.equal(Tpa(100.5).subtract(-100.2).value(), 200.7, "Positive and negative number");
-                assert.equal(Tpa(-100.5).subtract(100.2).value(), -200.7, "Negative and positive number to yield a negative number");
-                assert.equal(Tpa(100).subtract(1.12345).value(), 99, "Integer to decimal which should be ignored");
-                assert.equal(Tpa(100, false).subtract(1.12345).toString(), '98.87655', "Explicit fraction integer to decimal");
-                assert.equal(Tpa(100, false).subtract(-99.5).toString(), '199.5', "Explicit fraction integer to decimal to yield positive");
-                assert.equal(Tpa(100, false).subtract(-100.5).toString(), '200.5', "Explicit fraction integer to decimal to yield negative");
-                assert.equal(Tpa(0.12345).subtract(0.12344).toString(), '0.00001', "Two significant decimals");
-                assert.equal(Tpa(0.11).subtract(-0.01).value(), 0.12, "Two significant decimals to small positive");
-                assert.equal(Tpa(100.987).subtract(-101.123456).value(), 202.110456, "Two significant decimals to small negative");
-                assert.equal(Tpa(1.36784571).subtract(1.2394362).value().toFixed(7), 0.1284095, "Two longer decimals");
-                assert.equal(Tpa(10.36784571).subtract(-9.06784571).value().toFixed(7), 19.4356914, "Two longer decimals yielding positive");
-                assert.equal(Tpa(10.36784571).subtract(-11.06784571).value().toFixed(7), 21.4356914, "Two longer decimals yielding negative");
+            it('Subtract positive and negative decimal numbers', function() {
+                assert.equal(Tpa(123.123).subtract(321.321).value(), -198.198, 'Two positive numbers');
+                assert.equal(Tpa(100.5).subtract(-100.2).value(), 200.7, 'Positive and negative number');
+                assert.equal(Tpa(-100.5).subtract(100.2).value(), -200.7, 'Negative and positive number to yield a negative number');
+                assert.equal(Tpa(100).subtract(1.12345).value(), 99, 'Integer to decimal which should be ignored');
+                assert.equal(Tpa(100, false).subtract(1.12345).toString(), '98.87655', 'Explicit fraction integer to decimal');
+                assert.equal(Tpa(100, false).subtract(-99.5).toString(), '199.5', 'Explicit fraction integer to decimal to yield positive');
+                assert.equal(Tpa(100, false).subtract(-100.5).toString(), '200.5', 'Explicit fraction integer to decimal to yield negative');
+                assert.equal(Tpa(0.12345).subtract(0.12344).toString(), '0.00001', 'Two significant decimals');
+                assert.equal(Tpa(0.11).subtract(-0.01).value(), 0.12, 'Two significant decimals to small positive');
+                assert.equal(Tpa(100.987).subtract(-101.123456).value(), 202.110456, 'Two significant decimals to small negative');
+                assert.equal(Tpa(1.36784571).subtract(1.2394362).value().toFixed(7), 0.1284095, 'Two longer decimals');
+                assert.equal(Tpa(10.36784571).subtract(-9.06784571).value().toFixed(7), 19.4356914, 'Two longer decimals yielding positive');
+                assert.equal(Tpa(10.36784571).subtract(-11.06784571).value().toFixed(7), 21.4356914, 'Two longer decimals yielding negative');
             });
 
-            it('Subtract various larger numbers', function () {
+            it('Subtract various larger numbers', function() {
                 assert.equal(Tpa('123456789').subtract('987654321').toString(), '-864197532', 'normal number subtractition');
                 assert.equal(Tpa('123456789123456789').subtract('987654321987654321').toString(), '-864197532864197532', 'normal larger number subtractition');
                 assert.equal(Tpa('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111').subtract(
@@ -644,14 +699,14 @@ function alltests() {
             });
         });
 
-        describe('Multiplication', function () {
-            it('Various integers', function () {
+        describe('Multiplication', function() {
+            it('Various integers', function() {
                 assert.equal(Tpa(1).multiply(0).value(), 0, 'Multiplication by zero yields zero');
                 assert.equal(Tpa(123).multiply(1).value(), 123, 'Multiplication by one yields same number');
                 assert.equal(Tpa(123).multiply(2).value(), 246, 'Multiplication by two doubles number');
             });
 
-            it('Consistency', function () {
+            it('Consistency', function() {
                 var n = Tpa(123);
                 assert.equal((Tpa.multiply(n, 5), n.value()), 123, 'Static divide call should not modify first parameter');
                 assert.equal((Tpa.multiply(1000, n), n.value()), 123, 'Static divide call should not modify second parameter');
@@ -661,7 +716,7 @@ function alltests() {
                 assert.equal(x.multiply(x), 15129000000, 'Multiply the same number object');
             });
 
-            it('Various fractions', function () {
+            it('Various fractions', function() {
                 assert.equal(Tpa(1.5).multiply(2).value(), 3, 'Multiplication by simple fraction to yield integer');
                 assert.equal(Tpa(1).multiply(2.5).value(), 2, 'Multiplication of implied integer by a fraction should ignore fraction');
                 assert.equal(Tpa(3, false).multiply(2.5).value(), 7.5, 'Multiplication of explicit fractional integer by a fraction should use fraction');
@@ -671,7 +726,7 @@ function alltests() {
                 assert.equal(Tpa('1 7/12').multiply('13 20/13').toString(), '23.01[923076]', 'Multiplication of two more complex fractions');
             });
 
-            it('Negative and positive combinations', function () {
+            it('Negative and positive combinations', function() {
                 assert.equal(Tpa(123).multiply(-5).value(), -615, 'Simple multiplication with one negative number');
                 assert.equal(Tpa(-123).multiply(-5).value(), 615, 'Simple multiplication with two negative numbers');
                 assert.equal(Tpa(-10.5).multiply(2).value(), -21, 'Simple multiplication with first negative fraction');
@@ -679,9 +734,9 @@ function alltests() {
                 assert.equal(Tpa(-100.5, false).multiply('-3.7').value(), 371.85, 'Simple multiplication with both negative fractions');
             });
 
-            it('Larger numbers', function () {
-                assert.equal(Tpa('1234567890').multiply(Tpa('98765432198654321987654321')).toString(), '121932631234430727135679001126352690', "Larger numbers smaller/larger");
-                assert.equal(Tpa('98765432198654321987654321').multiply(Tpa('1234567890')).toString(), '121932631234430727135679001126352690', "Larger numbers larger/smaller");
+            it('Larger numbers', function() {
+                assert.equal(Tpa('1234567890').multiply(Tpa('98765432198654321987654321')).toString(), '121932631234430727135679001126352690', 'Larger numbers smaller/larger');
+                assert.equal(Tpa('98765432198654321987654321').multiply(Tpa('1234567890')).toString(), '121932631234430727135679001126352690', 'Larger numbers larger/smaller');
                 var a = Tpa('6721807898352 12421331/1233490');
                 var b = Tpa('6464929372516485923 423245/8651732749');
                 var c = Tpa.multiply(a, b);
@@ -695,27 +750,28 @@ function alltests() {
                 for (var i = 0; i < 1000; i++) {
                     x += '0';
                     y += '0';
-                    z += '00'
+                    z += '00';
                 }
                 assert.equal(Tpa.multiply(x, y).toString(), z, 'Huge multiplication');
                 assert.equal(a.multiply(b).toFraction(),'43456013318534256644743932583046 7492827342642432/10671825828564010','Large in-place fractional multiplication');
                 a.makeInteger();
                 b.makeInteger();
                 assert.equal(a.times(b).toString(),'280940056915459726919514677725201367745916287461458','Large in-place integer multiplication');
+                assert.equal(Tpa(123).times(10000).times(10000).times(10000).times(10000).times(10000).toString(),'12300000000000000000000','Multiplications of many smaller numbers');
             });
         });
 
-        describe('Division', function () {
-            it('Various integers', function () {
-                assert.throws(function () {
-                    new Tpa(123).divide(0)
+        describe('Division', function() {
+            it('Various integers', function() {
+                assert.throws(function() {
+                    new Tpa(123).divide(0);
                 }, Error, 'Divide by zero');
                 assert.equal(Tpa(123).divide(1).value(), 123, 'Division by 1 yields the same number');
                 assert.equal(Tpa(123).divide(2).value(), 61, 'Division by yeilds a round integer');
                 assert.equal(Tpa(10000).divide(100).value(), 100, 'Division by a factor yields an exact answer');
             });
 
-            it('Consistency', function () {
+            it('Consistency', function() {
                 var n = Tpa(123);
                 assert.equal((Tpa.divide(n, 5), n.value()), 123, 'Static divide call should not modify first parameter');
                 assert.equal((Tpa.divide(1000, n), n.value()), 123, 'Static divide call should not modify second parameter');
@@ -730,7 +786,7 @@ function alltests() {
                 assert.equal(x.divide(x), 1, 'Divide the same number object');
             });
 
-            it('Various fractions', function () {
+            it('Various fractions', function() {
                 assert.equal(Tpa(3.5).divide(1).value(), 3.5, 'Divide a fraction by 1 to yield the same number');
                 assert.equal(Tpa(3.5).divide(2).value(), 1.75, 'Divide a fraction by 2 to yield the an exact half');
                 assert.equal(Tpa(3.123).divide(4).value(), 0.78075, 'Divide more complex fraction by a larger number');
@@ -738,48 +794,72 @@ function alltests() {
                 assert.equal(Tpa('3 123/432').divide(50).toString(), '0.06569[4]', 'Divide a complex fraction by larger number');
                 assert.equal(Tpa('2.5').divide(2.5).value(), 1, 'Divide two identical fractions to get 1');
                 assert.equal(Tpa(5.5).divide(2.5).value(), 2.2, 'Divide two dissimilar fractions');
+                assert.equal(Tpa(5.5).divide(-2.5).value(), -2.2, 'Divide two dissimilar fractions with a negative');
+                assert.equal(Tpa(123135.5).divide('-2213213976721367821365812').toFraction(), '-0 1231355/22132139767213678213658120', 'Divide fraction fractions with a large negative number');
                 assert.equal(Tpa('123 764/999').divide('5 512/1001').toString(500), '22.[455778417532994295727665312584652805787480429496017678000639755216517949887534806875028009702651718239900222861977438740172109757029097250231924873940462122445084199660962394331979251319472454147096162684344667306421883184616554201473541694676369318384906566889528644105406838776423695763916898591540607128789111750866327629060998645917986139120813762829351011333973088549851283220868140208361343035985051573233556195310772073505443090362430583565258207273795]', 'Divide two complex dissimilar fractions');
                 assert.equal(Tpa('123 764/999').divide('5 512/1001').toFraction(), '22 2512015/5511483', 'Fractional form of previous division test');
                 assert.equal(Tpa('-20 1/2').toFraction(), '-20 1/2', 'Negative fraction');
             });
 
-            it('Modulus', function () {
-                assert.equal(Tpa(5).mod(2).value(), 1, "Simple modulus");
-                assert.equal(Tpa(12542).mod(284).value(), 46, "Larger modulus");
-                assert.equal(Tpa(12542.123).mod(284).value(), 46, "Larger modulus should ignore fractional part in numerator");
-                assert.equal(Tpa(12542.123).mod('284 9/10').value(), 46, "Larger modulus should ignore fractional part in denominator");
-                assert.equal(Tpa.mod(123, 5).value(), 3, "Static call");
+            it('Modulus', function() {
+                assert.equal(Tpa(5).mod(2).value(), 1, 'Simple modulus');
+                assert.equal(Tpa(12542).mod(284).value(), 46, 'Larger modulus');
+                assert.equal(Tpa(12542.123).mod(284).value(), 46, 'Larger modulus should ignore fractional part in numerator');
+                assert.equal(Tpa(12542.123).mod('284 9/10').value(), 46, 'Larger modulus should ignore fractional part in denominator');
+                assert.equal(Tpa.mod(123, 5).value(), 3, 'Static call');
             });
-            if (base > 500000) { // Note: Simplification requires a large base to work reliably
-                it('Simplification', function () {
+            if (Tpa.getBASE() > 500000) { // Note: Simplification requires a large base to work reliably
+                it('Simplification', function() {
                     var n = Tpa('5 3/10');
                     n.simplify();
-                    assert.equal(n.toFraction(), '5 3/10', "No simplification");
+                    assert.equal(n.toFraction(), '5 3/10', 'No simplification');
                     n.add('2/10');
                     assert.equal(n.simplify(), true, 'Simplification should indicate success');
-                    assert.equal(n.toFraction(), '5 1/2', "Pending simplification");
+                    assert.equal(n.toFraction(), '5 1/2', 'Pending simplification');
                     n.multiply('-5.[3]');
                     n.simplify();
-                    assert.equal(n.toFraction(), '-29 1/3', "Pending simplification");
+                    assert.equal(n.toFraction(), '-29 1/3', 'Pending simplification');
                     n.multiply(-1234583.45);
-                    assert.equal(n.toString(), '36214447.8[6]', "Slightly larger fraction simplification");
+                    assert.equal(n.toString(), '36214447.8[6]', 'Slightly larger fraction simplification');
                     n.simplify();
-                    assert.equal(n.toFraction(), '36214447 13/15', "Slightly larger fraction simplification");
+                    assert.equal(n.toFraction(), '36214447 13/15', 'Slightly larger fraction simplification');
                     n.divide(1000.125);
                     n.simplify();
-                    assert.equal(n.toFraction(), '36209 110609/120015', "Larger fraction simplification");
+                    assert.equal(n.toFraction(), '36209 110609/120015', 'Larger fraction simplification');
                     n.divide(1520.674);
                     assert.equal(n.simplify(1), false, '1 millisecond will not be enough time to simplify: ' + n.toFraction());
-                    if (n.simplify(1000)) assert.equal(n.toFraction(), '23 14814887147/18250369011', "Larger fraction simplification");
+                    if (n.simplify(1000)) assert.equal(n.toFraction(), '23 14814887147/18250369011', 'Larger fraction simplification');
                     else assert.equal(false, '1st Simplification not performed within time constraint');
                     n.multiply(1520.674);
-                    if (n.simplify()) assert.equal(n.toFraction(), '36209 110609/120015', "Larger fraction considerably simplified");
+                    if (n.simplify()) assert.equal(n.toFraction(), '36209 110609/120015', 'Larger fraction considerably simplified');
                     else assert.equal(false, '2nd Simplification not performed within time constraint');
+                    n.set();
+                    assert.equal(n.simplify(),true,'Simplification of integer 0');
+                    assert.equal(n.add(123).simplify(),true,'Simplification of positive integer');
+                    assert.throws(function() {
+                        n.simplify('123');
+                    }, Error, 'Bad argument passed to simplify');
                 });
             }
         });
 
-        it('Various, complex chained combinations', function () {
+        it('Aliases', function() {
+            assert.equal(Tpa(1).add(2).value(),3,'add');
+            assert.equal(Tpa(1).plus(2).value(),3,'plus');
+            assert.equal(Tpa(1).subtract(2).value(),-1,'subtract');
+            assert.equal(Tpa(1).sub(2).value(),-1,'sub');
+            assert.equal(Tpa(1).minus(2).value(),-1,'minus');
+            assert.equal(Tpa(1).multiply(2).value(),2,'multiply');
+            assert.equal(Tpa(1).times(2).value(),2,'times');
+            assert.equal(Tpa(1).mult(2).value(),2,'mult');
+            assert.equal(Tpa(1,false).divide(2).value(),0.5,'divide');
+            assert.equal(Tpa(1,false).div(2).value(),0.5,'div');
+            assert.equal(Tpa(1).modulus(2).value(),1,'modulus');
+            assert.equal(Tpa(1).mod(2).value(),1,'mod');
+        });
+
+        it('Various, complex chained combinations', function() {
+            var i;
             var n = Tpa('123.5');
             n.multiply(5.5).add(1001).multiply('500.123').subtract('4041244 25/89').divide('666 100/77');
             n.multiply('666 100/77').add('4041244 25/89').divide('500.123').subtract(1001).divide(5.5);
@@ -787,13 +867,13 @@ function alltests() {
             n.divide('2835325284393 64280/865273').add('232123 44/20').multiply('3274729926465837464735647659').subtract('232456788978962374523').divide('2134234 7/8');
             n.multiply('2134234 7/8').add('232456788978962374523').divide('3274729926465837464735647659').subtract('232123 44/20').multiply('2835325284393 64280/865273');
             assert.equal(n.toDecimal(), '123.5', 'More complex build up and build down');
-            var n = Tpa('123.5');
+            n = Tpa('123.5');
             var x = new Tpa(n);
-            for (var i = 0; i < 20; i++) {
+            for (i = 0; i < 20; i++) {
                 x.multiply(n);
             }
             assert.equal(x.toDecimal(), '84140697819361566263630764279294864662329687.298320293426513671875', 'Power up');
-            for (var i = 0; i < 20; i++) {
+            for (i = 0; i < 20; i++) {
                 x.divide(n);
             }
             assert.equal(n.toDecimal(), '123.5', 'Power down');
