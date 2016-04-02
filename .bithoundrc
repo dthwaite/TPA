@@ -1,7 +1,7 @@
 {
     "critics": {
       "eslint": {"engine": "standard"},
-      "wc": { "limit": 7500 }
+      "wc": { "limit": 10000 }
     },
 
     "ignore": [
@@ -9,5 +9,6 @@
         "**/node_modules/**",
         "**/thirdparty/**",
         "**/third_party/**"
+        "lib/tpa.min.js"
       ]
 }
