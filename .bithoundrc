@@ -1,5 +1,5 @@
 "critics": {
-  "eslint": {"engine": "standard"}
+  "eslint": {"engine": "standard"},
   "wc": { "limit": 7500 }
 }
 
