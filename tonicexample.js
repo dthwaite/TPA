@@ -10,4 +10,4 @@ var product=Tpa(1,false); // 'false' means NOT an integer - i.e. can hold fracti
 product.multiply(n1).multiply(n2).multiply(n3).simplify();
 
 // et voila...
-"["+product.toFraction()+"] * ["+n2.toFraction()+"] * ["+n3.toFraction()+"] equals ["+product.toFraction()+"] ("+product.toDecimal()+")";
+"["+n1.toFraction()+"] * ["+n2.toFraction()+"] * ["+n3.toFraction()+"] equals ["+product.toFraction()+"] ("+product.toDecimal()+")";
