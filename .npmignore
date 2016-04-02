@@ -1,0 +1,8 @@
+3nplus1.js
+.eslintrc
+.gitignore
+jsdoc.json
+performance.txt
+*.min.js
+.idea
+.travis.yml
