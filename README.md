@@ -26,6 +26,10 @@ Installation:
 Test:
 `npm test`
 
+Coverage:
+`npm run coverage`
+`open coverage/lcov-report/index.html`
+
 To use in Node:
 ```javascript
 var Tpa = require('Tpa');

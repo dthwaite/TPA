@@ -1,11 +1,10 @@
 /*global describe, it*/
 var assert = require('assert');
 var Tpa = require('../');
-var advanced=false;
 
 alltests(); // Perform all tests on the standard base
 
-if (advanced) {
+if (process.env.ALL_BASES=="yes") {
     // Perform all the tests with 100 different bases which checks internal representational integrity
     for (var i = 0; i < 100; i++) {
         Tpa.setBASE(10 * (1 + i / 2) + Math.floor(Math.random() * Math.pow(2, i / 4)));

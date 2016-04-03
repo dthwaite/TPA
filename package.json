@@ -30,7 +30,7 @@
     "email": "dominicthwaites@mac.com"
   },
   "scripts": {
-    "test": "mocha test/",
+    "test": "ALL_BASES='yes' mocha test/",
     "coverage": "istanbul cover _mocha -- -R spec"
   },
   "devDependencies": {
