@@ -1,8 +1,10 @@
 ## TPA - Total Precision Arithmetic
 
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/TPA)
 [![Build Status](https://secure.travis-ci.org/dthwaite/TPA.png)](http://travis-ci.org/dthwaite/TPA)
 [![Coverage Status](https://coveralls.io/repos/github/dthwaite/TPA/badge.svg?branch=master)](https://coveralls.io/github/dthwaite/TPA?branch=master)
 [![bitHound Overall Score](https://www.bithound.io/github/dthwaite/TPA/badges/score.svg)](https://www.bithound.io/github/dthwaite/TPA)
+[![bitHound Code](https://www.bithound.io/github/dthwaite/TPA/badges/code.svg)](https://www.bithound.io/github/dthwaite/TPA)
 
 ##### tpa.js performs basic arithmetic operations with total precision.
 
