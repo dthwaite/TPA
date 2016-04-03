@@ -4,7 +4,7 @@ var Tpa = require('../');
 
 alltests(); // Perform all tests on the standard base
 
-if (process.env.ALL_BASES=="yes") {
+if (process.env.ALL_BASES=='yes') {
     // Perform all the tests with 100 different bases which checks internal representational integrity
     for (var i = 0; i < 100; i++) {
         Tpa.setBASE(10 * (1 + i / 2) + Math.floor(Math.random() * Math.pow(2, i / 4)));
