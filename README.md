@@ -1,5 +1,7 @@
 ## TPA - Total Precision Arithmetic
 
+[![Join the chat at https://gitter.im/dthwaite/TPA](https://badges.gitter.im/dthwaite/TPA.svg)](https://gitter.im/dthwaite/TPA?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/TPA)
 [![Build Status](https://secure.travis-ci.org/dthwaite/TPA.png)](http://travis-ci.org/dthwaite/TPA)
 [![Coverage Status](https://coveralls.io/repos/github/dthwaite/TPA/badge.svg?branch=master)](https://coveralls.io/github/dthwaite/TPA?branch=master)
