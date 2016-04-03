@@ -3,6 +3,7 @@
 ### v1.0.8
 Added bithound analysis & eslinted all files
 Reconfigured travis to perform coverage
+More badges in README.md
 
 ### v1.0.7 (2016-04-02)
 Very minor optimisation for multiplication
