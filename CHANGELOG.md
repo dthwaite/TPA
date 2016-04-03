@@ -1,6 +1,6 @@
 ## TPA - Total Precision Arithmetic change log
 
-### v1.0.8
+### v1.0.8 (2016-04-03)
 Added bithound analysis & eslinted all files
 Reconfigured travis to perform coverage
 More badges in README.md
