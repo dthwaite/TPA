@@ -842,7 +842,7 @@ function alltests() {
                     assert.equal(n.toFraction(), '36209 110609/120015', 'Larger fraction simplification');
                     n.divide(1520.674);
                     assert.equal(n.simplify(1), false, '1 millisecond will not be enough time to simplify: ' + n.toFraction());
-                    if (n.simplify(1000)) assert.equal(n.toFraction(), '23 14814887147/18250369011', 'Larger fraction simplification');
+                    if (n.simplify(5000)) assert.equal(n.toFraction(), '23 14814887147/18250369011', 'Larger fraction simplification');
                     else assert.equal(false, '1st Simplification not performed within time constraint');
                     n.multiply(1520.674);
                     if (n.simplify()) assert.equal(n.toFraction(), '36209 110609/120015', 'Larger fraction considerably simplified');
