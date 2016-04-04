@@ -31,8 +31,10 @@ Test:
 `npm test`
 
 Coverage:
-`npm run coverage`
-`open coverage/lcov-report/index.html`
+`npm run coverage` then `open coverage/lcov-report/index.html`
+
+Lint:
+`npm run eslint`
 
 To use in Node:
 ```javascript

@@ -31,7 +31,8 @@
   },
   "scripts": {
     "test": "ALL_BASES='yes' mocha test/",
-    "coverage": "istanbul cover _mocha -- -R spec"
+    "coverage": "istanbul cover _mocha -- -R spec",
+    "eslint": "eslint lib/tpa.js"
   },
   "devDependencies": {
     "assert": "^1.3.0",
