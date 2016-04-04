@@ -1,5 +1,9 @@
 ## TPA - Total Precision Arithmetic change log
 
+### v1.0.9 (2016-04-03)
+Compatibility with Node v0.10 and v0.12
+Increased multiply() speed & polyfill Math.trunc()
+
 ### v1.0.8 (2016-04-03)
 Added bithound analysis & eslinted all files
 Reconfigured travis to perform coverage
