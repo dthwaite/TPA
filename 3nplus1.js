@@ -14,7 +14,7 @@ while (n.digits.length>1 && n.digits[0]>1) { // Go on until we reach 1!
         n.digitDivide(2);
         downs++;
     }
-    else { // If off multiply by 3, add 1 and the divide by 2
+    else { // If odd multiply by 3, add 1 and then divide by 2
         n._digitMultiplyWithAdd(3,1).digitDivide(2);
         ups++;
     }
