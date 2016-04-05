@@ -823,6 +823,7 @@ function alltests() {
             });
             if (Tpa.getBASE() > 500000) { // Note: Simplification requires a large base to work reliably
                 it('Simplification', function() {
+                    this.timeout(10000);
                     var n = Tpa('5 3/10');
                     n.simplify();
                     assert.equal(n.toFraction(), '5 3/10', 'No simplification');
