@@ -2,7 +2,6 @@
 .eslintrc
 .gitignore
 jsdoc.json
-performance.txt
 *.min.js
 .idea
 .travis.yml

@@ -15,14 +15,14 @@ Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http
 The main features are:
 
 * Simplicity - one library, add/subtract/multiply/divide
-* Performance - optimised to perform operations very, very fast
+* Performance - optimised to perform operations reasonably fast
 * Limitless - represents and operates on rational numbers of any size and precision
 * Expressive - inputs/outputs numbers using decimal or fractional forms
 * Quality - comprehensively tested and documented
 
 For a terse list of methods go to the end of this readme. The usage section below is more descriptive.
 
-There are many similar libraries available. I wrote this one partly as an exercise. But I also wrote it because it achieves all the features listed above as well as, or considerably better (IMHO ;-), than the others.
+There are many similar libraries available. I wrote this more as an exercise than anything else. Enjoy. 
 
 Installation:
 `npm install`
@@ -34,7 +34,10 @@ Coverage:
 `npm run coverage` then `open coverage/lcov-report/index.html`
 
 Lint:
-`npm run eslint`
+`npm run lint`
+
+Use it:
+`npm docs`
 
 To use in Node:
 ```javascript
@@ -211,8 +214,6 @@ console.log(Tpa.int(b).value());          // 12
 console.log(Tpa.abs(-23).value());        // 23
 ```
 Note that for methods that take two arguments the first one dictates whether the result is integer or fractional. Thus the subtraction of 12.5 from 5 yields 7 as the operation is only working on integer parts. As opposed to the division that takes the type of b which is fractional.
-### Performance
-I invested some effort in ensuring speed of operations. I have performed extensive comparisons with other libraries and can confidently say that this library is orders of magnitude faster in many areas. I have measured performance against two "competitors" for add, subtract, multiply and divide using numbers of various sizes ranging from a few decimal digits long to tens of thousands. Performance can also vary according to the order in which these numbers are presented. I have optimised in all these permutations and I have detailed timings for each. I present here a short summary (this all for integer values only):
 
 ##### Addition & subtraction
 

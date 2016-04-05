@@ -1,8 +1,11 @@
 ## TPA - Total Precision Arithmetic change log
 
+### v1.0.10 (2016-04-05)
+Some code tidying & doc changes
+
 ### v1.0.9 (2016-04-03)
 Compatibility with Node v0.10 and v0.12
-Increased multiply() speed & polyfill Math.trunc()
+Increased multiply() speed & polyfill Math.trunc(),Math.sign()
 
 ### v1.0.8 (2016-04-03)
 Added bithound analysis & eslinted all files

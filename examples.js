@@ -6,7 +6,7 @@ Examples as given in README.md
 
 var Tpa=require('./lib/tpa');
 var a,b, c, d;
-
+Tpa.random(1000).divide(Tpa.random(20000));
 // Inputting
 var n1=new Tpa();                // new integer set to zero
 var n2=new Tpa(123);             // new integer set to 123
