@@ -41,7 +41,7 @@ console.log(n.toString()); // Outputs '3.[3]'
 ##### Browser:
 To install it:
 
-* Download `lib/tpa.min.js` from my latest version on GitHub or use their CDN: 'https://cdn.rawgit.com/dthwaite/TPA/v1.0.11/lib/tpa.min.js'
+* Download `lib/tpa.min.js` from my latest version on GitHub or use their CDN: 'https://cdn.rawgit.com/dthwaite/TPA/v1.0.12/lib/tpa.min.js'
 * `tpa.min.js` is a UMD bundle with an export name of `Tpa`
 
 To see how to use it:
