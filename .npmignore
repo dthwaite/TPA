@@ -1,9 +1,14 @@
 3nplus1.js
 .eslintrc
 .gitignore
+.npmignore
+.bithoundrc
+.coveralls.yml
 jsdoc.json
 *.min.js
 .idea
 .travis.yml
 coverage
-run-tests.sh
+/lib/uglify
+/scripts
+/test

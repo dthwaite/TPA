@@ -7,13 +7,13 @@ alltests(); // Perform all tests on the standard base
 if (process.env.ALL_BASES=='yes') {
     // Perform all the tests with 100 different bases which checks internal representational integrity
     for (var i = 0; i < 100; i++) {
-        Tpa.setBASE(10 * (1 + i / 2) + Math.floor(Math.random() * Math.pow(2, i / 4)));
+        Tpa.N.setBASE(10 * (1 + i / 2) + Math.floor(Math.random() * Math.pow(2, i / 4)));
         alltests();
     }
 }
 
 function alltests() {
-    describe('Tpa.js with BASE set to '+Tpa.getBASE(), function() {
+    describe('Tpa.js with BASE set to '+Tpa.N.getBASE(), function() {
         it('N - internal Number class, basic sanity checks', function() {
             assert.equal(new Tpa.N().isZero(), true, 'New N is zero');
             assert.equal(new Tpa.N().set(100).value(), 100, 'Set a small value');
@@ -349,9 +349,6 @@ function alltests() {
                 assert.throws(function() {
                     new Tpa('125 1/.1').toString(parseInt('d123'));
                 }, Error, 'Nan to the toString function');
-                assert.throws(function() {
-                    Tpa(123.4).toDecimal('qwe');
-                }, Error, 'Bad argument to toDecimal');
             });
             it('Status changes', function() {
                 var n = Tpa(123);
@@ -589,6 +586,9 @@ function alltests() {
                 assert.equal(Tpa('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111').add(
                     '2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222').toString(),
                     '3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333', '100 digit number addition');
+                assert.equal(Tpa.add('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111',
+                    '2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222').toString(),
+                    '3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333', '100 digit number static addition');
                 assert.equal(Tpa('43216789895328312675790036721362674782378923750950234212368965373910384654').add(
                     '85764636478697019837453424264758699685764562524345456576868').toString(),
                     '43216789895328398440426515418382512235803188509649919976931489719366961522', 'Random very large number');
@@ -821,7 +821,7 @@ function alltests() {
                 assert.equal(Tpa(12542.123).mod('284 9/10').value(), 46, 'Larger modulus should ignore fractional part in denominator');
                 assert.equal(Tpa.mod(123, 5).value(), 3, 'Static call');
             });
-            if (Tpa.getBASE() > 500000) { // Note: Simplification requires a large base to work reliably
+            if (Tpa.N.getBASE() > 500000) { // Note: Simplification requires a large base to work reliably
                 it('Simplification', function() {
                     this.timeout(10000);
                     var n = Tpa('5 3/10');

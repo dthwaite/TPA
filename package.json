@@ -1,6 +1,6 @@
 {
   "name": "TPA",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Total Precision Arithmetic",
   "homepage": "http://dthwaite.github.io/tpa",
   "tonicExampleFilename": "tonicexample.js",
@@ -30,9 +30,10 @@
     "email": "dominicthwaites@mac.com"
   },
   "scripts": {
-    "test": "ALL_BASES='yes' mocha test/",
-    "coverage": "istanbul cover _mocha -- -R spec",
-    "lint": "eslint lib/tpa.js"
+    "test": "ALL_BASES='yes' mocha test/ && istanbul cover _mocha -- -R spec",
+    "coverage": "open coverage/lcov-report/index.html",
+    "lint": "eslint lib/tpa.js lib/N.js",
+    "build": "./scripts/build.sh"
   },
   "devDependencies": {
     "assert": "^1.3.0",
@@ -40,7 +41,9 @@
     "eslint": "^2.2.0",
     "istanbul": "^0.4.2",
     "mocha": "^2.3.0",
-    "mocha-lcov-reporter": "^1.2.0"
+    "mocha-lcov-reporter": "^1.2.0",
+    "uglify-js": "^2.6.2",
+    "browserify": "13.0.0"
   },
   "license": "MIT",
   "engines": {

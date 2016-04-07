@@ -1,5 +1,12 @@
 ## TPA - Total Precision Arithmetic change log
 
+### v1.0.11 (2016-04-07)
+Code reorganisation
+Further documentation updates
+New use of browserify
+New build scripts
+Improved fractional calculation performance
+
 ### v1.0.10 (2016-04-05)
 Some code tidying & doc changes
 

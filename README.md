@@ -15,7 +15,7 @@ Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http
 The main features are:
 
 * Simplicity - one library, add/subtract/multiply/divide
-* Performance - optimised to perform operations reasonably fast
+* Performance - optimised to perform operations reasonably fast (see below)
 * Limitless - represents and operates on rational numbers of any size and precision
 * Expressive - inputs/outputs numbers using decimal or fractional forms
 * Quality - comprehensively tested and documented
@@ -24,36 +24,66 @@ For a terse list of methods go to the end of this readme. The usage section belo
 
 There are many similar libraries available. I wrote this more as an exercise than anything else. Enjoy. 
 
-Installation:
-`npm install`
+##### Node.js:
+To install it:
+`npm install TPA`
 
-Test:
-`npm test`
+To see how to use it:
+`npm docs TPA`
 
-Coverage:
-`npm run coverage` then `open coverage/lcov-report/index.html`
-
-Lint:
-`npm run lint`
-
-Use it:
-`npm docs`
-
-To use in Node:
+To code with it:
 ```javascript
 var Tpa = require('Tpa');
 
-var n=new Tpa(100.123);
-console.log(n.toString()); // Outputs '123.123'
+var n=new Tpa('3 1/3');
+console.log(n.toString()); // Outputs '3.[3]'
 ```
-To use in the browser:
+##### Browser:
+To install it:
+
+* Download `lib/tpa.min.js` from my latest version on GitHub or use their CDN: 'https://cdn.rawgit.com/dthwaite/TPA/[version]/lib/tpa.min.js'
+* `tpa.min.js` is a UMD bundle with an export name of `Tpa`
+
+To see how to use it:
+<http://dthwaite.github.io/tpa/>
+
+To code with it:
 ```javascript
-<script src ="https://cdn.rawgit.com/dthwaite/TPA/V1.0.1/lib/tpa.min.js"></script>
+<script src ="tpa.min.js"></script>
 <script>
-var n=new Tpa(100.123);
-console.log(n.toString()); // Outputs '123.123'
+var n=new Tpa('3 1/3');
+console.log(n.toString()); // Outputs '3.[3]'
 </script>
 ```
+
+##### Development:
+Test:
+`npm test`
+
+Review Coverage (upon successful test):
+`npm run coverage`
+
+Lint (to ensure no `eslint` issues):
+`npm run lint`
+
+Build minified version for browser into lib/tpa.min.js:
+`npm run build`
+
+### A note about performance
+Measuring javascript performance is notoriously tricky. There are lots of variables; Your computer and operating system, how you set the test up and your  browser or javascript run-time environment which differ enormously in their treatment of different features of the language. You also need to compare with other libraries that do similar things. But again, such comparisons can be hugely misleading as the context when calling certain functions can be critical. I have set up various tests with other libraries and compared them to other peoples tests - you can get very varying results, sometimes in your favour other times not!
+
+After a lot of comparative testing with half a dozen of the other main "big number" libraries I have reached a point where I feel the performance is competitive in the right circumstances while properly maintaining the features as summarised earlier.
+
+For example, I have not tried to make the "toString()" method lightening fast - how many times do you really need to print out a human readable form of a 2,000 digit number? More important is that I can print out fractions and recurring decimals.
+
+Another example; the method a.add(b) is between 4 and 10 times faster (depending on browser!) than the method Tpa.add(a,b) for a 200 digit number. Why is this? It is because the overhead in creating a new object instance is highly significant (as happens in the latter case). Many other libraries make their objects immutable which means they have focussed on reducing object creation time. I have focussed on actual calculation time. Besides, calling a method on an object is generally expected to change that object (for some other libraries calling x.add(y) does not change x but returns x+y as a new number). In fact, it is arguable that manipulating *existing* numbers is the more usual case. So my library is *very* fast at performing calculations on existing numbers but comparatively slow in creating new numbers.
+
+I've also focussed on ensuring performance is good for large rather than small numbers. If your numbers are within the precision of a javascript floating point number then don't use this library!
+
+In summary, if you want consistent, cross-browser performance then this library is, on the whole, faster than the rest of them so long as you:
+
+* use the instance methods (`x.add(y)`, not `Tpa.add(x,y)`)
+* use it on numbers with lots of significant digits.  
 
 ### Usage
 
