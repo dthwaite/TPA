@@ -245,32 +245,6 @@ console.log(Tpa.abs(-23).value());        // 23
 ```
 Note that for methods that take two arguments the first one dictates whether the result is integer or fractional. Thus the subtraction of 12.5 from 5 yields 7 as the operation is only working on integer parts. As opposed to the division that takes the type of b which is fractional.
 
-##### Addition & subtraction
-
-* Around 5 million per second for either number < 500 digits
-* Around 1 million per second for both numbers in the region of 1,000 digits
-* Around 150 thousand per second for both numbers in the region of 10,000 digits
-
-##### Multiplication
-
-* Around 10 million per second for small numbers (<10 digits)
-* Around 1 million per second for both numbers in the region of 25 digits
-* Around 1/2 million per second for both numbers in the region of 100 digits
-* Around 10 thousand per second for both numbers in the region of 1,000 digits
-* Around 150 per second for both numbers in the region of 10,000 digits
-
-##### Division
-
-* Around 2-3 million per second for both numbers < 25 digits
-* Around 1 million per second for both numbers in < 100 digits
-* Around 300 thousand per second dividing 1,000 digit numbers by <8 digit numbers
-* Around 40 thousand per second dividing 10,000 digit numbers by <8 digit numbers
-* Around 15 thousand per second for dividing 1,000 digit numbers by 100 digit numbers
-* Around 1 thousand per second for dividing 10,000 digit numbers by 100 digit numbers
-* Around 250 per second for dividing 10,000 digit numbers by 1,000 digit numbers
-
-See `performance.txt` for full details of a test that compared this library (referred to as `Dom`) with two others (referred to `Alex` and `Mike`).
-
 ### Method index
 Construction and mutators take numbers as parameters in the following forms:
 
