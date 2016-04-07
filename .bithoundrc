@@ -1,7 +1,7 @@
 {
     "critics": {
-      "eslint": {"engine": "standard"},
-      "wc": { "limit": 1500 }
+      "lint": {"engine": "eslint"},
+      "wc": { "limit": 5000 }
     },
 
     "ignore": [
@@ -9,6 +9,7 @@
         "**/node_modules/**",
         "**/thirdparty/**",
         "**/third_party/**",
-        "**/**.min.**"
+        "**/**.min.**",
+        "/lib/uglify/**"
       ]
 }

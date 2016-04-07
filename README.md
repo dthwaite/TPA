@@ -70,21 +70,7 @@ Build minified version for browser into lib/tpa.min.js:
 `npm run build`
 
 ### A note about performance
-Measuring javascript performance is notoriously tricky. There are lots of variables; Your computer and operating system, how you set the test up and your  browser or javascript run-time environment which differ enormously in their treatment of different features of the language. You also need to compare with other libraries that do similar things. But again, such comparisons can be hugely misleading as the context when calling certain functions can be critical. I have set up various tests with other libraries and compared them to other peoples tests - you can get very varying results, sometimes in your favour other times not!
-
-After a lot of comparative testing with half a dozen of the other main "big number" libraries I have reached a point where I feel the performance is competitive in the right circumstances while properly maintaining the features as summarised earlier.
-
-For example, I have not tried to make the "toString()" method lightening fast - how many times do you really need to print out a human readable form of a 2,000 digit number? More important is that I can print out fractions and recurring decimals.
-
-Another example; the method a.add(b) is between 4 and 10 times faster (depending on browser!) than the method Tpa.add(a,b) for a 200 digit number. Why is this? It is because the overhead in creating a new object instance is highly significant (as happens in the latter case). Many other libraries make their objects immutable which means they have focussed on reducing object creation time. I have focussed on actual calculation time. Besides, calling a method on an object is generally expected to change that object (for some other libraries calling x.add(y) does not change x but returns x+y as a new number). In fact, it is arguable that manipulating *existing* numbers is the more usual case. So my library is *very* fast at performing calculations on existing numbers but comparatively slow in creating new numbers.
-
-I've also focussed on ensuring performance is good for large rather than small numbers. If your numbers are within the precision of a javascript floating point number then don't use this library!
-
-In summary, if you want consistent, cross-browser performance then this library is, on the whole, faster than the rest of them so long as you:
-
-* use the instance methods (`x.add(y)`, not `Tpa.add(x,y)`)
-* use it on numbers with lots of significant digits.  
-
+How fast is this library compared to others? Good question. And tricky to answer. It all depends on the operation, the size of the numbers, whether they are fractional or not (many libraries just do integers), whether you call static or instance methods and your run time environment. I spent some time comparing and contrasting and there's no straight answer. Most of the time this library performs quite well in comparison. Sometimes wildy better than most, sometimes not so good and it's difficult to summarise. If performance is really important then you must to do your own analysis specific to your environment and needs to then choose the fastest in your circumstance. If it's not that important then you could do a lot worse than choosing this one. I've focussed on delivering a healthy mix of the features listed earlier. It's not slow, by any means.
 ### Usage
 
 #### Set up
