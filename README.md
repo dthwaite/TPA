@@ -10,7 +10,7 @@
 
 ##### tpa.js performs basic arithmetic operations with total precision.
 
-Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http://dthwaite.github.io/tpa/docs/). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
+Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http://dthwaite.github.io/docs/TPA/1.0.13). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
 
 The main features are:
 
@@ -41,7 +41,7 @@ console.log(n.toString()); // Outputs '3.[3]'
 ##### Browser:
 To install it:
 
-* Download `lib/tpa.min.js` from my latest version on GitHub or use their CDN: 'https://cdn.rawgit.com/dthwaite/TPA/v1.0.12/lib/tpa.min.js'
+* Download `lib/tpa.min.js` from my latest version on GitHub or use their CDN: 'https://cdn.rawgit.com/dthwaite/TPA/v1.0.13/lib/tpa.min.js'
 * `tpa.min.js` is a UMD bundle with an export name of `Tpa`
 
 To see how to use it:

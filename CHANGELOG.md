@@ -1,5 +1,8 @@
 ## TPA - Total Precision Arithmetic change log
 
+### v1.0.13 (2016-04-08)
+* Upgraded documentation
+
 ### v1.0.12 (2016-04-07)
 * Updated `README.md`
 * Bug fix in `tpa.min.js`
