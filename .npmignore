@@ -9,6 +9,7 @@ jsdoc.json
 .idea
 .travis.yml
 coverage
+newVersionInstructions.md
 /lib/uglify
 /scripts
 /test

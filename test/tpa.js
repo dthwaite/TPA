@@ -855,7 +855,7 @@ function alltests() {
                     }, Error, 'Bad argument passed to simplify');
                     n.set('-0 575792/29506624');
                     n.simplify(0);
-                    assert.equal(n.toFraction(),'-0 53/2716',"Simplification of negative fraction>-1");
+                    assert.equal(n.toFraction(),'-0 53/2716','Simplification of negative fraction>-1');
                 });
             }
         });
