@@ -1,5 +1,8 @@
 ## TPA - Total Precision Arithmetic change log
 
+### v1.0.14 (2016-04-10)
+* Fixed simplification of negative fraction bug
+
 ### v1.0.13 (2016-04-08)
 * Upgraded documentation
 

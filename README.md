@@ -10,7 +10,7 @@
 
 ##### tpa.js performs basic arithmetic operations with total precision.
 
-Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http://dthwaite.github.io/docs/TPA/1.0.13). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
+Available on [GitHub](https://github.com/dthwaite/TPA), details on [JSDocs](http://dthwaite.github.io/docs/TPA/1.0.14). See it working: [Demonstration](http://dthwaite.github.io/tpa/)
 
 The main features are:
 
@@ -41,8 +41,8 @@ console.log(n.toString()); // Outputs '3.[3]'
 ##### Browser:
 To install it:
 
-* Download `lib/tpa.min.js` from my latest version on GitHub or use their CDN: 'https://cdn.rawgit.com/dthwaite/TPA/v1.0.13/lib/tpa.min.js'
-* `tpa.min.js` is a UMD bundle with an export name of `Tpa`
+* Download [tpa.min.js](https://github.com/dthwaite/TPA/tree/master/lib/tpa.min.js) from GitHub or use their CDN for my latest version: [v1.0.14](https://cdn.rawgit.com/dthwaite/TPA/v1.0.14/lib/tpa.min.js)
+* `tpa.min.js` is a UMD (Universal Module Definition) bundle with an export name of `Tpa`
 
 To see how to use it:
 <http://dthwaite.github.io/tpa/>
@@ -70,7 +70,7 @@ Build minified version for browser into lib/tpa.min.js:
 `npm run build`
 
 ### A note about performance
-How fast is this library compared to others? Good question. And tricky to answer. It all depends on the operation, the size of the numbers, whether they are fractional or not (many libraries just do integers), whether you call static or instance methods and your run time environment. I spent some time comparing and contrasting and there's no straight answer. Most of the time this library performs quite well in comparison. Sometimes wildy better than most, sometimes not so good and it's difficult to summarise. If performance is really important then you must to do your own analysis specific to your environment and needs to then choose the fastest in your circumstance. If it's not that important then you could do a lot worse than choosing this one. I've focussed on delivering a healthy mix of the features listed earlier. It's not slow, by any means.
+How fast is this library compared to others? Good question. And tricky to answer. It all depends on the operation, the size of the numbers, whether they are fractional or not (many libraries just do integers), whether you call static or instance methods and your run time environment. I spent some time comparing and contrasting and there's no straight answer. Most of the time this library performs quite well in comparison. Sometimes wildy better than most, sometimes not so good and it's difficult to summarise. If performance is really important then you must do your own analysis specific to your environment and needs to then choose the fastest in your circumstance. If it's not that important then you could do a lot worse than choosing this one. I've focussed on delivering a healthy mix of the features listed earlier. It's not slow, by any means.
 ### Usage
 
 #### Set up
@@ -203,7 +203,7 @@ console.log(Tpa(-3).sign());                        // -1
 console.log(Tpa(3.3).hasFraction());                // true
 console.log(Tpa('-3 1/3').frac().toFraction());     // '-0 1/3'
 console.log(Tpa('-3 1/3').int().toFraction());      // '-3'
-console.log(Tpa(22).modulus(3).toString());             // '1'
+console.log(Tpa(22).modulus(3).toString());         // '1'
 console.log(Tpa(-33.5).abs().value());              // 33.5
 ```
 #### Static methods
@@ -224,7 +224,7 @@ console.log(Tpa.add(a,b).value());        // 17
 console.log(Tpa.subtract(a,b).value());   // -7
 console.log(Tpa.multiply(a,b).value());   // 60
 console.log(Tpa.divide(b,a).toFraction());// '2 25/50'
-console.log(Tpa.modulus(a,b).value());        // 5
+console.log(Tpa.modulus(a,b).value());    // 5
 console.log(Tpa.frac(b).value());         // 0.5
 console.log(Tpa.int(b).value());          // 12
 console.log(Tpa.abs(-23).value());        // 23

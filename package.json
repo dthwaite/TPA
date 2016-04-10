@@ -1,6 +1,6 @@
 {
   "name": "TPA",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Total Precision Arithmetic",
   "homepage": "http://dthwaite.github.io/tpa",
   "tonicExampleFilename": "tonicexample.js",
