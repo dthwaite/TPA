@@ -1,4 +1,5 @@
 3nplus1.js
+test.js
 .eslintrc
 .gitignore
 .npmignore
@@ -11,5 +12,7 @@ jsdoc.json
 coverage
 newVersionInstructions.md
 /lib/uglify
+/lib/N.js
+/lib/tpa.js
 /scripts
 /test

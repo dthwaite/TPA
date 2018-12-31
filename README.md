@@ -44,8 +44,7 @@ To install it:
 * Download [tpa.min.js](https://github.com/dthwaite/TPA/tree/master/lib/tpa.min.js) from GitHub or use their CDN for my latest version: [v1.0.14](https://cdn.rawgit.com/dthwaite/TPA/v1.0.14/lib/tpa.min.js)
 * `tpa.min.js` is a UMD (Universal Module Definition) bundle with an export name of `Tpa`
 
-To see how to use it:
-<http://dthwaite.github.io/tpa/>
+To see how to use it: [Demo](http://dthwaite.github.io/tpa)
 
 To code with it:
 ```javascript
